@@ -18,7 +18,7 @@ def register_sharepoint_tools(mcp: FastMCP):
         try:
             request = get_http_request()
             return getattr(request.state, "current_user", None)
-        except RuntimeError:
+        except RuntimeError as e:
             return None
 
 

@@ -3,6 +3,7 @@
 import functools
 from loguru import logger
 from app.clients.graph_client import GraphClientError
+from app.core.token_manager import AuthRequiredError
 
 def graph_error_wrapper(as_list: bool = False):
     def decorator(func):
@@ -15,6 +16,11 @@ def graph_error_wrapper(as_list: bool = False):
                 # 예상 가능한 비즈니스 에러는 정상응답으로 LLM에 반환 합니다.
                 logger.warning(f"[LLM 반환 에러] {func.__name__} - {e.code}:{e.message}")
                 rtn_dict = {"status":"error", "code": e.code, "message": e.message, "error": e.error}
+                return [rtn_dict] if as_list else rtn_dict
+            except AuthRequiredError as e:
+                # delegated 권한 Token error인 경우 
+                logger.warning(f"[LLM 반환 에러] {func.__name__} - {e.code}:{e.message}")
+                rtn_dict = {"status":"error", "code": e.code, "message": e.message, "connect_url": e.connect_url}
                 return [rtn_dict] if as_list else rtn_dict
                 
             except Exception as e:

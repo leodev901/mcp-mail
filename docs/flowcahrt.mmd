@@ -1,0 +1,29 @@
+---
+config:
+    look: handDrawn
+    theme: default
+---
+flowchart TD
+    A[Tool 호출 시작] --> B{token_store에 사용자 토큰이 있는가?}
+
+    B -- 아니오 --> C[사용자에게 Microsoft 연결 필요 안내]
+    C --> D[브라우저에서 /auth/m365/start 호출]
+    D --> E[state 생성 및 저장]
+    E --> F[Microsoft 로그인/동의 화면으로 이동]
+    F --> G[callback으로 code + state 수신]
+    G --> H[state 검증]
+    H --> I[token 호출로 access_token, refresh_token 발급]
+    
+    I --> J[token_store에 저장]
+    J --> K[이후 Tool 재호출 가능]
+
+    B -- 예 --> L{access_token이 아직 유효한가?}
+
+    L -- 예 --> M[access_token으로 Graph API 호출]
+
+    L -- 아니오 --> N[refresh_token으로 /token 갱신 요청]
+    N --> O{refresh 성공?}
+    O -- 예 --> P[새 access_token, refresh_token 저장]
+    P --> M
+    O -- 아니오 --> Q[사용자에게 재연결 필요 안내]
+    Q --> D

@@ -3,16 +3,18 @@ import time
 import json
 from loguru import logger 
 
-
 from fastmcp.server.dependencies import get_http_request 
 
 from app.core.config import settings
 from app.models.user_info import UserInfo
+from app.core.token_manager import token_manager
+from app.core.token_manager import AuthRequiredError
+
+
+
+
 
 GRAPH_BASE = "https://graph.microsoft.com/v1.0"
-TOKEN_URL_TPL = "https://login.microsoftonline.com/{tenant_id}/oauth2/v2.0/token"
-
-DEFAULT_USER_EMAIL = ""
 
 BLACKLIST = [
     "admin@skcc.com",
@@ -62,7 +64,6 @@ class GraphResourceNotFoundError(GraphClientError):
 
 
 
-
 def _is_black_list(email: str) -> bool:
     return email in BLACKLIST
 
@@ -95,45 +96,11 @@ def logging_message(
     else:
         logger.error(message)
 
-async def get_access_token(company_cd: str = "leodev901") -> str:
-    """Return (access_token, default_user_email)."""
-
-    ms365_config = settings.get_m365_config(company_cd)
-    tenant_id = ms365_config["tenant_id"]
-    client_id = ms365_config["client_id"]
-    client_secret = ms365_config["client_secret"]
-    DEFAULT_USER_EMAIL = ms365_config.get("default_user_email","admin@leodev901.onmicrosoft.com")
-
-    if not client_id or not client_secret or not tenant_id:
-        # raise ValueError(f"MS365 config is incomplete for company_cd='{company_cd}'")
-        raise GraphCompanyConfigNotFoundError(company_cd)
-
-    token_url = TOKEN_URL_TPL.format(tenant_id=tenant_id)
-    data = {
-        "client_id": client_id,
-        "scope": "https://graph.microsoft.com/.default",
-        "client_secret": client_secret,
-        "grant_type": "client_credentials",
-    }
-    
-    try:
-        print(f"get access token for '{company_cd}'")
-        async with httpx.AsyncClient(timeout=15.0) as client:
-            resp = await client.post(token_url, data=data)
-            resp.raise_for_status()
-            return resp.json()["access_token"]
-    except Exception as e:
-        raise e
-
-
 async def graph_request(
     method: str,
     path: str,
-    user_email: str | None = None,
     json_body: dict | None = None,
-    company_cd: str = "leodev901",
     custom_headers: dict | None = None,
-    is_replace_path: bool = False,
 ) -> dict:
     """Common wrapper for Microsoft Graph user-scoped APIs."""
 
@@ -146,21 +113,36 @@ async def graph_request(
     except Exception as e:
         logger.error(f"HTTP 요청 정보를 가져오는 중 오류 발생: {str(e)}")
         trace_id = "unknown"
+
+
+    # 1순위: current_user
+    # 2순위: 기본값
+    if current_user:
+        user_email = current_user.email
+        company_cd = current_user.company_cd
+        user_id = current_user.user_id
+    else:
+        # raise ValueError("현재 사용자 정보를 찾을 수 없습니다.")
+        user_email = "admin@leodev901.onmicrosoft.com" #DEFAULT_USER_EMAIL
+        company_cd = "leodev901" #DEFAULT_COMPANY_CD
+        user_id = "20075487" #DEFAULT_COMPANY_CD
     
-
-    token = await get_access_token(company_cd)
-    # email = user_email or DEFAULT_USER_EMAIL
-
-    if not user_email:
-        raise ValueError("user_email is required or default_user_email must be configured")
-
     if _is_black_list(user_email):
         raise GraphAccessDeniedError(user_email)
+    try :
+        access_token = await token_manager.get_valid_access_token(user_id, company_cd)
+    except AuthRequiredError as e:
+        logger.error(f" {type(e).__name__}:{str(e)}")
+        raise e
+    except Exception as e:
+        raise e
 
-    url = f"{GRAPH_BASE}/users/{user_email}{path}"
-    if is_replace_path:
-        url = f"{GRAPH_BASE}{path}"
-    headers = {"Authorization": f"Bearer {token}", "Accept": "application/json"}
+    url = f"{GRAPH_BASE}/me{path}"
+    headers = {
+        "Authorization": f"Bearer {access_token}", 
+        "Accept": "application/json"
+    }
+
     if custom_headers:
         headers.update(custom_headers)
 

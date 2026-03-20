@@ -44,6 +44,7 @@ class Settings(BaseSettings):
     def get_m365_config(self, company_cd: str) -> dict:
         """Return MS365 configuration for the given company code."""
 
+        # 문자열 JSON을 파이썬 딕셔너리로 전환 json.loads(str)
         configs = json.loads(self.MS365_CONFIGS)
         company = company_cd.lower()
 
@@ -53,11 +54,32 @@ class Settings(BaseSettings):
             )
 
         config = configs[company]
-        config["default_user_email"] = config.get(
-            "default_user_email",
-            DEFAULT_USER_EMAILS.get(company, self.DEFAULT_USER_EMAIL),
-        )
+        # 위임 권한에서는 default user email 필요치 않음
+        # config["default_user_email"] = config.get(
+        #     "default_user_email",
+        #     DEFAULT_USER_EMAILS.get(company, self.DEFAULT_USER_EMAIL),
+        # )
+
+        required_keys = [
+            "tenant_id",
+            "client_id",
+            "client_secret",
+            "redirect_uri",
+            "scopes",
+        ]
+
+        missing_keys = [key for key in required_keys if not config.get(key)]
+        if missing_keys:
+            raise ValueError(
+                f"Company code '{company}' is missing required keys: {missing_keys}"
+            )
         return config
+    
+    def get_m365_scopes(self,company_cd:str) -> list[str]:
+        config = self.get_m365_config(company_cd)
+        scoeps = config["scopes"]
+        return [  scope for scope in scoeps.split(" ") if scope ] 
+
 
 
 settings = Settings()
