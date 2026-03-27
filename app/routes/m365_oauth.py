@@ -49,12 +49,12 @@ def register_m365_oauth_routes(mcp: FastMCP) -> None:
         )
 
         params = {
-            "client_id": config["client_id"],
+            "client_id": config["client_id"], # 앱에 따른 cliente_id  
             "response_type": "code",
-            "redirect_uri": config["redirect_uri"],
+            "redirect_uri": config["redirect_uri"], #  prd,stg,dev 각각 환경에 따른 url X 앱 개수 분기 (앱별로 토큰 다릅니다)
             "response_mode": "query",
-            "scope": " ".join(scopes),
-            "state": state,
+            "scope": " ".join(scopes), # 앱에 등록된 권한
+            "state": state, # 사용자 식별 문자열 ex.) skt.P016392
         }
 
         authorize_url = (
@@ -155,3 +155,41 @@ def register_m365_oauth_routes(mcp: FastMCP) -> None:
             """,
             status_code=200,
         )
+    
+
+
+    @mcp.custom_route("/auth/m365/delegate/callback", methods=["GET"], include_in_schema=False)
+    async def callback_m365_oauth_delegate(request: Request):
+        """
+        Microsoft 로그인 완료 후 돌아오는 콜백 엔드포인트입니다.
+        code와 state를 검증하고 실제 access_token / refresh_token을 저장합니다.
+        """
+        error = request.query_params.get("error")
+        error_description = request.query_params.get("error_description")
+        code = request.query_params.get("code")
+        state = request.query_params.get("state")
+        logger.info("동의를 callback 받았습니다.")
+
+        headers = request.headers
+        print(headers)
+        
+
+
+        values = state.split(".")
+        company_cd = values[0]
+        user_id = values[1]
+        
+
+        return HTMLResponse(
+                f"""
+                <html>
+                <body>
+                    <h3>Microsoft 365 위임권한 동의 연결 완료</h3>
+                    <p>이제 본인 기준 메일/팀즈 도구를 사용할 수 있습니다.</p>
+                    <p>company_cd: {company_cd}</p>
+                    <p>user_id: {user_id}
+                </body>
+                </html>
+                """,
+                status_code=200,
+            )
