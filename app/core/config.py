@@ -38,8 +38,18 @@ class Settings(BaseSettings):
     GRAFANA_INSTANCE_ID: str = ""
     GRAFANA_API_TOKEN: str = ""
 
+
+
     # Company-wise MS365 config JSON string.
     MS365_CONFIGS: str = "{}"
+    # {
+    #   "leodev901": {
+    #       "tenant_id": "...",
+    #       "client_id": "...",
+    #       "client_secret": "...",
+    #       "scopes": "...",
+    #   }
+    # }
 
     def get_m365_config(self, company_cd: str) -> dict:
         """Return MS365 configuration for the given company code."""

@@ -3,7 +3,6 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from cmn.api.routers import register_router
-from cmn.db.engine import create_engine
 from cmn.db.database import Database
 
 
@@ -16,8 +15,6 @@ async def lifespan(app: FastAPI):
     db = Database()
     app.state.db = db
 
-    
-    
 
     # yield 이전 구간은 startup, yield 이후 구간은 shutdown 이다.
     yield
