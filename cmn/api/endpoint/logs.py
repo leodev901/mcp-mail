@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from cmn.api.dependencies import get_db_session_for_compnay
+from cmn.core.dependencies import get_db_session_for_compnay
 from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import Request,Depends
 from loguru import logger

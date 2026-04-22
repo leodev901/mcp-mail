@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from cmn.api.endpoint.logs import logs_router
-from cmn.api.endpoint.m365_oauth import m365_oauth_router
+from cmn.api.endpoint.auth import m365_oauth_router
 
 
 

@@ -1,25 +1,45 @@
+from collections.abc import AsyncGenerator
 import secrets
 from urllib.parse import urlencode
 
 import httpx
-from fastapi import FastAPI, APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query
 from starlette.requests import Request
 from starlette.responses import HTMLResponse, RedirectResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 from loguru import logger
 from datetime import datetime, timedelta, timezone
 
-from cmn.api.dependencies import get_db_session_for_oauth_state, get_db_session_for_compnay
+from pydantic import BaseModel, Field
+
+from cmn.core.database import Database
+from cmn.core.dependencies import get_db_session_for_oauth_state, get_db_session_for_compnay
 from cmn.db.crud.m365_oauth_crud import get_graph_infos, save_user_token, get_user_app_token
 from cmn.db.models.m365_user_toekn import M365UserToken
-from pydantic import BaseModel
+from cmn.schemas.response import CommonResponse
 
-
-# from app.core.config import settings
-# from app.core.token_manager import token_manager
+from cmn.services.auth_service import AuthService
 
 
 m365_oauth_router = APIRouter(prefix="/api/auth",tags=["m365_oauth"])
+
+
+class AuthRequest(BaseModel):
+    company_cd: str = Field(...,description="회사 코드",example="leodev901")
+    app_name: str = Field(...,description="앱 이름",example="TODO")
+
+
+
+# MS 접근 권한 가져오기 
+@m365_oauth_router.post("/")
+async def auth(
+    payload: AuthRequest,
+    auth_service: AuthService = Depends(AuthService),
+):
+    data = await auth_service.get_auth_token(payload.company_cd,payload.app_name)
+    return CommonResponse.ok(data)
+
+    
 
 
 # @m365_oauth_router.get("/m365/start")
@@ -297,41 +317,3 @@ async def user_toekn(
     return {
         "access_token": access_token
     }
-    
-    
-
-# App 권한 가져오기 
-@m365_oauth_router.get("/app/token")
-async def app_toekn(
-    app_name: str = Query(...,description="앱 이름"),
-    db: AsyncSession = Depends(get_db_session_for_compnay)
-):
-    logger.info(f"app_name: {app_name}")    
-
-    graph_infos = await get_graph_infos(db,app_name.upper())
-    # 조회 결과를 dict으로 변환
-    config = { row.key: row.value for row in graph_infos}
-
-
-    token_url = f"https://login.microsoftonline.com/{config['tenant_id']}/oauth2/v2.0/token"
-
-    payload = {
-        "grant_type": "client_credentials",
-        "client_id": config["client_id"],
-        "client_secret": config["client_secret"],
-        "scope": "https://graph.microsoft.com/.default",
-    }
-
-    async with httpx.AsyncClient(timeout=20.0) as client:
-        response = await client.post(token_url, data=payload)
-
-    if response.status_code != 200:
-        return HTMLResponse(
-            f"Token exchange failed: {response.text}",
-            status_code=400,
-        )
-
-    token_data = response.json()
-    access_token = token_data.get("access_token")
-    
-    return {"access_token": access_token}

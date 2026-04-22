@@ -2,13 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "MCP: Debug Server",
+      "name": "MCP MAIL Server",
       "type": "debugpy",
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "module": "uvicorn",
       "python": "${workspaceFolder}/.venv/Scripts/python.exe",
-      "debugAdapterPython": "${workspaceFolder}/.venv/Scripts/python.exe",
+      // "debugAdapterPython": "${workspaceFolder}/.venv/Scripts/python.exe",
       "args": [
         "app.main:app",
         "--host",
@@ -18,6 +18,26 @@
       ],
       "env": {
         "PYTHONPATH": "${workspaceFolder}"
+      },
+      "jinja": true
+    },
+    {
+      "name": "MCP-CMN Server",
+      "type": "debugpy",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "module": "uvicorn",
+      "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+      // "debugAdapterPython": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": [
+        "cmn.main:app",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8004"
+      ],
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/.venv/Scripts/python.exe"
       },
       "jinja": true
     }

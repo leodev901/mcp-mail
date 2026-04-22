@@ -2,10 +2,13 @@ from fastapi import Request, Depends, Header, HTTPException, Query
 from collections.abc import AsyncGenerator
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from cmn.db.database import Database
+from cmn.core.database import Database
 
 from loguru import logger
 
+
+async def get_db(request: Request):
+     return request.app.state.db
 
 async def get_db_session_for_compnay(
         request: Request,
