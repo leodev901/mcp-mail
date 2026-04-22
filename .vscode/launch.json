@@ -22,7 +22,7 @@
       "jinja": true
     },
     {
-      "name": "MCP-CMN Server",
+      "name": "mcp-cmn Server",
       "type": "debugpy",
       "request": "launch",
       "cwd": "${workspaceFolder}",

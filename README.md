@@ -1,454 +1,309 @@
-# MCP-Mail & CMN (공통 API) 모노레포
+# mcp-mail
 
-Microsoft 365 데이터(메일, 일정, Teams 등) 연동을 제공하는 **FastMCP 서버** (`app`)와,  
-**M365 OAuth 인증 및 공통 관리 기능**을 독립적으로 서비스하는 **CMN API 서버** (`cmn`)로 구성된 모노레포 프로젝트입니다.
+`mcp-mail`은 Microsoft 365 연동을 위한 모노레포입니다.  
+현재 저장소는 두 개의 앱을 중심으로 구성됩니다.
 
----
+- `app`: FastMCP 기반 MCP 서버
+- `cmn`: FastAPI 기반 공통 API 서버
 
-## 🗂 전체 아키텍처 개요
+이 README는 "구상 중인 역할"과 "현재 코드 기준 상태"를 함께 적어, 설계와 구현 사이의 차이를 바로 이해할 수 있도록 정리했습니다.
 
-```
-mcp-mail/
-  app/     ← FastMCP MCP 서버 (MS365 Tools 제공)
-  cmn/     ← 공통 API 서버 (M365 OAuth 인증 / 로그 수집)
-```
+## 역할 요약
 
-두 앱은 **독립 프로세스로 각각 구동**되며, `app`은 `cmn`의 REST API를 HTTP로 호출하여 토큰 및 설정 정보를 획득합니다.
+| 영역 | 목표 역할 | 현재 코드 기준 상태 |
+| :-- | :-- | :-- |
+| `app` | LLM/에이전트가 호출하는 MCP 서버 | FastMCP 서버로 구성되어 있고, 현재는 메일 조회 중심으로 연결되어 있습니다. |
+| `cmn` | 인증, 토큰, 로그, DB 세션 등 공통 기능을 제공하는 API 서버 | FastAPI 앱으로 분리되어 있으며, OAuth 콜백, 사용자 토큰 조회, 앱 토큰 발급, 로그 저장 API를 가지고 있습니다. |
 
-```mermaid
-graph LR
-    Client["LLM Agent /\n MCP Client"]
-    APP["MCP 서버"]
-    CMN["MCP 공통"]
-    DB["PostgreSQL\n(회사별 Schema)"]
-    GRAPH["MS Graph API"]
-
-    Client -->|MCP Streamable HTTP| APP
-    APP -->|GET /api/auth/user/token| CMN
-    APP -->|GET /api/auth/app/token| CMN
-    CMN -->|Schema 전환 세션| DB
-    APP -->|Bearer Token| GRAPH
-    CMN -->|OAuth Callback 처리| DB
-```
-
----
-
-## 📦 `cmn` — 공통 API 서버
-
-> **별도 독립 FastAPI 앱**으로 서비스됩니다.  
-> M365 OAuth 인증 흐름 관리, 사용자/앱 토큰 발급, MCP Tool 로그 수집이 핵심 역할입니다.
-
-### 실행
-
-```bash
-# cmn 서버를 독립 포트(예: 8001)로 기동
-uvicorn cmn.main:app --host 0.0.0.0 --port 8001
-```
-
-### 디렉터리 구조
+## 현재 디렉터리 구조
 
 ```text
-cmn/
-  main.py                         # FastAPI 앱 생성 및 lifespan(DB 엔진 초기화) 설정
-
-  core/
-    config.py                     # 환경변수(.env) 로드 (DATABASE_URL, COMPANY_CODES)
-
-  api/
-    routers.py                    # 라우터 일괄 등록 + /health 헬스체크
-    dependencies.py               # X-Company-Code 헤더 → 스키마 DB 세션 DI
-    endpoint/
-      logs.py                     # MCP Tool 실행 로그 수집 API
-      m365_oauth.py               # M365 OAuth 콜백, 사용자/앱 토큰 발급 API
-
-  db/
-    database.py                   # 비동기 DB 엔진 및 회사별 스키마 세션 관리
-    crud/
-      m365_oauth_crud.py          # GraphInfo 조회, 사용자 토큰 upsert CRUD
-    models/
-      base.py                     # DeclarativeBase + AuditMixin (created_at, updated_at)
-      m365_mcp_graph_info.py      # M365 앱별 OAuth 설정 테이블 모델
-      m365_mcp_tool_log.py        # MCP Tool 실행 로그 테이블 모델
-      m365_user_toekn.py          # M365 사용자 위임 토큰 테이블 모델
+mcp-mail/
+├─ app/                         # FastMCP 기반 MCP 서버
+│  ├─ main.py                   # MCP 앱 조립 진입점
+│  ├─ server.py                 # 최소 예제 FastMCP 서버
+│  ├─ clients/                  # Graph/HTTP 클라이언트
+│  ├─ common/                   # 공통 로거
+│  ├─ core/                     # 설정, 토큰 매니저, 미들웨어
+│  ├─ models/                   # UserInfo 등 모델
+│  ├─ routes/                   # OAuth 보조 라우트
+│  ├─ security/                 # JWT 검증 및 키 캐시
+│  └─ tools/                    # MCP Tool 모음
+├─ cmn/                         # FastAPI 기반 공통 API 서버
+│  ├─ main.py                   # FastAPI 앱 조립 진입점
+│  ├─ api/                      # 라우터, 엔드포인트
+│  ├─ base/                     # 예외 처리, 로깅, 미들웨어
+│  ├─ core/                     # 설정, DB, DI
+│  ├─ db/                       # 모델, CRUD
+│  ├─ repositories/             # DB 접근 계층
+│  ├─ schemas/                  # 응답 스키마
+│  ├─ services/                 # 서비스 계층
+│  ├─ static/                   # Swagger 정적 리소스
+│  └─ utils/                    # 토큰/유틸리티
+├─ docs/                        # 각종 가이드 문서
+├─ requirements.txt
+└─ README.md
 ```
 
-### DB 멀티 스키마 전략
+## 아키텍처
 
-PostgreSQL의 `search_path`를 요청별로 전환하여 회사별 데이터를 격리합니다.
+### 1. 목표 아키텍처
 
+```mermaid
+flowchart LR
+    Client["LLM Agent / MCP Client"]
+    App["app<br/>FastMCP Server"]
+    Cmn["cmn<br/>FastAPI Common API"]
+    DB["PostgreSQL"]
+    Graph["Microsoft Graph API"]
+
+    Client --> App
+    App --> Cmn
+    Cmn --> DB
+    App --> Graph
 ```
-요청 헤더: X-Company-Code: leodev901
-            ↓
-dependencies.py → db.get_session_schema("leodev901")
-            ↓
-SET LOCAL search_path TO leodev901  (트랜잭션 범위 내에서만 유효)
-            ↓
-해당 회사 스키마의 테이블에 접근
+
+- `app`은 MCP 프로토콜 처리와 Tool 실행에 집중합니다.
+- `cmn`은 인증, 토큰, 로그, 회사별 스키마 세션 같은 공통 기능을 맡습니다.
+- 이렇게 분리하면 MCP 서버와 공통 API 서버의 책임이 섞이지 않습니다.
+- 관련 코드 경로는 `app/main.py`, `cmn/main.py`, `cmn/core/database.py` 입니다.
+
+### 2. 현재 코드 기준 상태
+
+```mermaid
+flowchart LR
+    Client["MCP Client"]
+    App["app<br/>FastMCP"]
+    AppToken["app/core/token_manager.py<br/>메모리 토큰 저장소"]
+    AppOAuth["app/routes/m365_oauth.py<br/>OAuth 보조 라우트"]
+    Cmn["cmn<br/>FastAPI Common API"]
+    CmnDB["PostgreSQL + schema"]
+    Graph["Microsoft Graph API"]
+
+    Client --> App
+    App --> Graph
+    App --> AppToken
+    App --> AppOAuth
+    Cmn --> CmnDB
 ```
 
-- `COMPANY_CODES` 환경변수에 허용된 코드만 스키마로 접근 가능 (미허가 코드는 오류 반환)
-- `SET LOCAL`은 트랜잭션 종료 시 자동 원복 → 커넥션 풀 오염 방지
+- `app` 쪽에는 아직 메모리 기반 토큰 매니저와 OAuth 보조 라우트가 남아 있습니다.
+- `cmn` 쪽에는 DB 기반 인증/토큰/API 구성이 따로 존재합니다.
+- 즉, 인증 관련 책임이 `app`과 `cmn`에 동시에 일부 존재하는 과도기 구조입니다.
+- 관련 코드 경로는 `app/core/token_manager.py`, `app/routes/m365_oauth.py`, `cmn/api/endpoint/auth.py` 입니다.
 
-### API 엔드포인트 목록
+## `app` 설명
 
-#### 인증 (`/api/auth`)
+`app`은 FastMCP 서버입니다.  
+LLM 또는 MCP 클라이언트가 이 서버의 Tool을 호출하면, 서버가 Microsoft Graph API를 대신 호출해서 결과를 반환합니다.
 
-| 메서드 | 경로 | 설명 | 필수 헤더/파라미터 |
-| :--: | :-- | :-- | :-- |
-| `GET` | `/api/auth/m365/callback` | M365 OAuth 인증 완료 콜백 — `code`, `state` 수신 후 사용자 토큰 저장 | `?code=&state={company_cd}.{user_id}` |
-| `GET` | `/api/auth/user/token` | 사용자 위임 토큰 조회 (만료 시 자동 갱신) | `X-Company-Code`, `?app_name=&user_id=` |
-| `GET` | `/api/auth/app/token` | 앱 전용 Client Credentials 토큰 발급 | `X-Company-Code`, `?app_name=` |
+### 주요 코드
 
-#### 로그 (`/api/logs`)
+| 파일 | 설명 |
+| :-- | :-- |
+| `app/main.py` | FastMCP 앱 생성, 미들웨어 등록, Tool 등록 |
+| `app/tools/mail_tools.py` | 메일 관련 MCP Tool 정의 |
+| `app/clients/graph_client.py` | Microsoft Graph API 호출 공통 래퍼 |
+| `app/core/http_middleware.py` | `x-request-id`, `mcp_user_token` 처리 |
+| `app/core/http_asgi_middleware.py` | MCP HTTP 요청/응답 로깅 |
+| `app/core/mcp_midleware.py` | Tool 실행 로깅 및 사용자 컨텍스트 처리 |
+| `app/security/jwt_auth.py` | JWT 해석 또는 개발용 사용자 매핑 |
+| `app/core/token_manager.py` | 메모리 기반 OAuth state / access token 저장소 |
 
-| 메서드 | 경로 | 설명 | 필수 헤더 |
-| :--: | :-- | :-- | :-- |
-| `POST` | `/api/logs/tool` | MCP Tool 실행 로그 저장 | `X-Company-Code` |
-| `POST` | `/api/logs/graph` | MS Graph API 호출 로그 저장 (구현 예정) | `X-Company-Code` |
+### 현재 활성화된 MCP 기능
 
-#### 헬스체크
+- `register_mail_tools(mcp)`가 등록되어 있습니다.
+- 실제 활성 Tool은 현재 `get_recent_emails` 중심입니다.
+- Teams, SharePoint 등의 Tool 모듈은 존재하지만 `app/main.py`에서는 아직 등록이 주석 처리되어 있습니다.
+
+### `app` 요청 흐름
+
+```mermaid
+sequenceDiagram
+    participant Client as MCP Client
+    participant App as app/main.py
+    participant HTTP as HttpMiddleware
+    participant ASGI as HttpLoggingASGIMiddleware
+    participant MCP as MCPLoggingMiddleware
+    participant Tool as mail_tools
+    participant Graph as Microsoft Graph API
+
+    Client->>App: MCP HTTP 요청
+    App->>HTTP: trace_id / user_token 저장
+    HTTP->>ASGI: 요청/응답 로깅 준비
+    ASGI->>MCP: Tool 호출 진입
+    MCP->>Tool: Tool 실행
+    Tool->>Graph: Graph API 호출
+    Graph-->>Tool: 응답 반환
+    Tool-->>Client: 결과 반환
+```
+
+- `HttpMiddleware`는 요청 헤더를 읽어 `request.state`에 값을 보관합니다.
+- `MCPLoggingMiddleware`는 Tool 실행 전후를 기록합니다.
+- `graph_client.py`는 실제 Graph API 호출을 감싸고 공통 예외를 정리합니다.
+- 관련 코드 경로는 `app/core/http_middleware.py`, `app/core/http_asgi_middleware.py`, `app/core/mcp_midleware.py` 입니다.
+
+## `cmn` 설명
+
+`cmn`은 FastAPI 기반 공통 API 서버입니다.  
+현재는 DB 연결, 회사별 스키마 처리, OAuth 콜백, 사용자 토큰 조회, 앱 토큰 발급, 로그 저장을 담당하는 구조로 정리되고 있습니다.
+
+### 주요 코드
+
+| 파일 | 설명 |
+| :-- | :-- |
+| `cmn/main.py` | FastAPI 앱 생성, lifespan, Swagger, 미들웨어 등록 |
+| `cmn/api/routers.py` | 엔드포인트 라우터 등록 |
+| `cmn/api/endpoint/auth.py` | 인증/OAuth 관련 API |
+| `cmn/api/endpoint/logs.py` | MCP Tool 로그 저장 API |
+| `cmn/core/database.py` | SQLAlchemy Async 엔진 및 schema session 제공 |
+| `cmn/core/dependencies.py` | `X-Company-Code` 기반 DB 세션 DI |
+| `cmn/services/auth_service.py` | 앱 토큰 발급 서비스 로직 |
+| `cmn/base/middleware.py` | 요청/응답 로깅 미들웨어 |
+| `cmn/base/exception.py` | 전역 예외 처리 핸들러 |
+
+### `cmn` API 흐름
+
+```mermaid
+sequenceDiagram
+    participant Client as API Client
+    participant CMN as cmn/main.py
+    participant MW as RequestLoggingMiddleware
+    participant DI as dependencies.py
+    participant Service as auth_service.py
+    participant DB as PostgreSQL
+
+    Client->>CMN: HTTP 요청 + X-Company-Code
+    CMN->>MW: trace_id 생성 및 로깅
+    MW->>DI: 회사 코드 기반 세션 준비
+    DI->>Service: 서비스 계층 호출
+    Service->>DB: 회사 schema 기준 조회
+    DB-->>Service: 결과 반환
+    Service-->>Client: API 응답
+```
+
+- `X-Company-Code` 헤더를 사용해 어떤 회사 스키마를 사용할지 결정합니다.
+- `Database.get_session_schema()`가 schema별 `AsyncSession`을 제공합니다.
+- 서비스 계층은 토큰 발급/조회 로직을 감싸고, 엔드포인트는 HTTP 입출력에 집중합니다.
+- 관련 코드 경로는 `cmn/core/dependencies.py`, `cmn/core/database.py`, `cmn/services/auth_service.py` 입니다.
+
+### 현재 제공 중인 엔드포인트
 
 | 메서드 | 경로 | 설명 |
 | :--: | :-- | :-- |
+| `POST` | `/api/auth/` | 앱 권한 토큰 발급 요청 |
+| `GET` | `/api/auth/m365/callback` | M365 OAuth 콜백 처리 |
+| `GET` | `/api/auth/user/token` | 사용자 위임 토큰 조회 및 필요 시 갱신 |
+| `POST` | `/api/logs/tool` | Tool 실행 로그 저장 |
+| `POST` | `/api/logs/graph` | Graph 로그용 placeholder API |
 | `POST` | `/health` | 서버 상태 확인 |
 
-### 환경 변수 (cmn)
+## 현재 구현에서 보이는 포인트
 
-```env
-DATABASE_URL=postgresql+asyncpg://user:pass@host:5432/dbname
-COMPANY_CODES=["leodev901","acme"]
-```
+### 장점
 
-| 변수명 | 설명 |
-| :-- | :-- |
-| `DATABASE_URL` | asyncpg 드라이버 형식의 PostgreSQL URL |
-| `COMPANY_CODES` | 허용된 회사 코드 목록 (JSON 배열 형태) |
+- `app`과 `cmn`이 디렉터리 레벨에서 이미 분리되어 있어 책임 분리 방향이 분명합니다.
+- `cmn`은 서비스, 저장소, DI, DB 모델이 나뉘어 있어 공통 API 서버로 확장하기 좋은 구조입니다.
+- `app`은 미들웨어, 보안, Tool, 클라이언트가 나뉘어 있어 MCP 서버 확장에 유리합니다.
 
-### DB 테이블 명세
+### 정리 필요 포인트
 
-#### `m365_mcp_graph_info` — 회사/앱별 OAuth 설정
+- 인증/토큰 책임이 현재 `app`과 `cmn`에 함께 존재합니다.
+- `app`은 메모리 기반 토큰 매니저를 사용하고, `cmn`은 DB 기반 토큰 관리를 향하고 있습니다.
+- 따라서 앞으로는 `app`은 MCP 실행에 집중하고, 인증/토큰/로그 공통 처리는 `cmn`으로 모으는 방향이 자연스럽습니다.
 
-| 컬럼 | 타입 | 설명 |
-| :-- | :-- | :-- |
-| `app_name` (PK) | VARCHAR | 앱 이름 (예: `MAIL`) |
-| `key` (PK) | VARCHAR | 설정 키 (예: `tenant_id`, `client_id`, `client_secret`, `redirect_uri`, `scopes`) |
-| `value` | TEXT | 설정 값 |
-| `created_at` | TIMESTAMPTZ | 생성일시 |
-| `updated_at` | TIMESTAMPTZ | 수정일시 |
+이렇게 한 이유는 현재 저장소가 "완성된 분리 구조"라기보다 "분리 중인 구조"이기 때문입니다.  
+README에서 이 차이를 분명히 적어 두면, 이후 리팩토링할 때도 문서가 거짓말하지 않습니다.
 
-#### `m365_user_toekn` — 사용자 위임 토큰
+대안으로는 README를 목표 구조만 중심으로 단순하게 쓰는 방법도 있습니다.  
+다만 그 경우 지금 코드를 처음 보는 사람이 실제 구현과 문서를 맞춰보며 혼란을 겪을 수 있다는 트레이드오프가 있습니다.
 
-| 컬럼 | 타입 | 설명 |
-| :-- | :-- | :-- |
-| `app_name` (PK) | VARCHAR | 앱 이름 |
-| `user_id` (PK) | VARCHAR | 사용자 ID |
-| `access_token` | TEXT | OAuth 액세스 토큰 |
-| `refresh_token` | TEXT | OAuth 리프레시 토큰 |
-| `expires_at` | TIMESTAMPTZ | 액세스 토큰 만료 일시 |
-| `created_at` | TIMESTAMPTZ | 생성일시 |
-| `updated_at` | TIMESTAMPTZ | 수정일시 |
+## 실행 방법
 
-#### `m365_mcp_tool_log` — MCP Tool 실행 로그
-
-| 컬럼 | 타입 | 설명 |
-| :-- | :-- | :-- |
-| `id` (PK) | UUID | 로그 고유 ID (`gen_random_uuid()`) |
-| `trace_id` | UUID | 요청 추적 ID |
-| `tool_name` | VARCHAR | 호출된 Tool 이름 |
-| `http_method` | VARCHAR | HTTP 메서드 |
-| `http_status` | BIGINT | HTTP 상태 코드 |
-| `status` | VARCHAR | 처리 상태 |
-| `message` | VARCHAR | 메시지 |
-| `request_body` | JSONB | 요청 바디 |
-| `response_body` | JSONB | 응답 바디 |
-| `created_at` | TIMESTAMPTZ | 생성일시 |
-| `updated_at` | TIMESTAMPTZ | 수정일시 |
-
-### M365 OAuth 흐름 (위임 권한)
-
-```mermaid
-sequenceDiagram
-    participant User as 사용자 브라우저
-    participant CMN as cmn API 서버
-    participant Entra as Microsoft Entra ID
-    participant DB as PostgreSQL
-
-    User->>Entra: 1. OAuth 동의 페이지 직접 접근 (또는 별도 redirect URL 구성)
-    Entra-->>CMN: 2. GET /api/auth/m365/callback?code=...&state={company_cd}.{user_id}
-    CMN->>DB: 3. m365_mcp_graph_info 에서 앱 설정 조회
-    CMN->>Entra: 4. POST /token (authorization_code grant)
-    Entra-->>CMN: 5. access_token + refresh_token 반환
-    CMN->>DB: 6. m365_user_toekn upsert 저장
-    CMN-->>User: 7. 동의 완료 HTML 응답
-```
-
-### 토큰 자동 갱신 로직 (`GET /api/auth/user/token`)
-
-```
-1. DB에서 (app_name, user_id) 기준 토큰 조회
-2. 토큰 없음 → 404 (사용자 동의 필요)
-3. expires_at - 5분 > 현재시각(KST) → DB 캐시 그대로 반환
-4. 만료 임박 → refresh_token으로 /token 재발급 → DB upsert → 신규 토큰 반환
-```
-
----
-
-## 📦 `app` — FastMCP MCP 서버
-
-> Microsoft 365 데이터를 LLM 에이전트에게 MCP Tool 형태로 제공하는 서버입니다.
-
-### 실행
-
-```bash
-# Windows
-.\.venv\Scripts\uvicorn.exe app.main:app --host 0.0.0.0 --port 8002
-
-# macOS / Linux
-uvicorn app.main:app --host 0.0.0.0 --port 8002
-```
-
-### 요청 처리 아키텍처
-
-HTTP 요청은 3개의 미들웨어 계층을 순서대로 거칩니다.
-
-```mermaid
-sequenceDiagram
-    participant Client
-    participant HTTP_MW as HttpMiddleware
-    participant ASGI_MW as HttpLoggingASGIMiddleware
-    participant MCP_MW as MCPLoggingMiddleware
-    participant Tool as MCP Tool
-    participant CMN as cmn API 서버
-    participant Graph as MS Graph API
-
-    Client->>HTTP_MW: HTTP 요청 (헤더: x-request-id, mcp_user_token)
-    note over HTTP_MW: trace_id 추출, 토큰 state 저장
-    HTTP_MW->>ASGI_MW: 요청 전달
-    note over ASGI_MW: SSE 스트리밍 호환 Req/Res 로깅
-    ASGI_MW->>MCP_MW: 요청 전달
-    note over MCP_MW: UserInfo 변환 (Lazy), Tool 실행 로깅
-    MCP_MW->>Tool: 도구 실행
-    Tool->>CMN: GET /api/auth/user/token or /api/auth/app/token
-    CMN-->>Tool: access_token 반환
-    Tool->>Graph: Graph API 호출 (Bearer)
-    Graph-->>Tool: M365 데이터 반환
-    Tool-->>Client: 결과 반환 (스트리밍)
-```
-
-### 미들웨어 3계층
-
-| 순서 | 미들웨어 | 파일 | 역할 |
-| :--: | :-- | :-- | :-- |
-| 1 | `HttpMiddleware` | `core/http_middleware.py` | `x-request-id` → `trace_id` 추출, `mcp_user_token` 파싱 후 `request.state` 저장 |
-| 2 | `HttpLoggingASGIMiddleware` | `core/http_asgi_middleware.py` | SSE 스트리밍 환경에서 HTTP Req/Res 전체 로깅 (request body 선독 후 재생) |
-| 3 | `MCPLoggingMiddleware` | `core/mcp_midleware.py` | JWT로 `UserInfo` 변환(Lazy 1회 파싱, 캐시), Tool 실행 전후 로깅 |
-
-### 🔍 trace_id 전파 경로
-
-```
-HTTP 헤더 x-request-id (없으면 uuid4 자동 생성)
-  │
-  ├─ [http_request]     로그 (HttpLoggingASGIMiddleware)
-  ├─ [mcp_tool_call]    로그 (MCPLoggingMiddleware)
-  └─ [GraphAPI Request] 로그 (graph_client.py)
-        ↓
-  응답 헤더 x-request-id 로 클라이언트에 반환
-```
-
-### 디렉터리 구조
-
-```text
-app/
-  main.py                       # FastMCP 앱 생성 및 미들웨어 등록 진입점
-  server.py                     # (테스트용) 단일 파일 FastMCP 샘플
-
-  core/
-    config.py                   # 환경변수(.env) 및 회사별 MS365 설정
-    http_middleware.py           # trace_id / 토큰 파싱 미들웨어
-    http_asgi_middleware.py      # ASGI 수준 SSE 스트리밍 로깅 미들웨어
-    mcp_midleware.py             # MCP Tool 실행 로깅 미들웨어
-    logger_config.py             # 로깅 설정
-
-  clients/
-    graph_client.py              # MS Graph API 호출 클라이언트 + [GraphAPI Request] 로그
-    http_client.py               # 공통 Async HTTP 클라이언트
-
-  common/
-    logger.py                    # OpenTelemetry → Grafana 파이프라인 로거
-
-  models/
-    user_info.py                 # JWT 토큰 파싱 결과 UserInfo 모델
-
-  security/
-    jwt_auth.py                  # JWT 검증 및 사용자 인가
-    key_cache.py                 # 공개키 캐싱
-
-  tools/
-    calendar_tools.py            # 일정 조회/생성/수정/삭제
-    mail_tools.py                # 메일 조회 (최신, 미읽음, 첨부, 키워드 검색 등)
-    sharepoint_tools.py          # SharePoint / OneDrive 파일 조회 및 검색
-    teams_tools.py               # Teams 채팅 목록 조회 및 메시지 전송
-    to_do_tools.py               # Microsoft To-Do 할 일 관리
-```
-
-### Tools 파라미터 우선순위 패턴
-
-모든 Tool 함수는 아래 3단계 우선순위로 `user_email`과 `company_cd`를 결정합니다.
-
-```python
-# ① HTTP request.state에서 현재 사용자 정보 읽기
-current_user = _get_request_current_user()
-
-# ② 이메일/회사코드 결정 (3단계 우선순위)
-if user_email is not None:          # 1순위: 호출 시 파라미터 직접 전달
-    query_email = user_email
-    query_company_cd = DEFAULT_COMPANY_CD
-elif current_user is not None:      # 2순위: JWT 토큰 파싱 사용자 정보
-    query_email = current_user.email
-    query_company_cd = current_user.company_cd
-else:                               # 3순위: .env 파일의 DEFAULT 값 (개발/테스트용)
-    query_email = DEFAULT_USER_EMAIL
-    query_company_cd = DEFAULT_COMPANY_CD
-
-# ③ Graph API 호출
-result = await graph_request(method="GET", path=path, user_email=query_email, ...)
-```
-
-### 📊 3계층 로깅 요약
-
-| 계층 | 파일 | 로그 태그 | 로깅 시점 | 레벨 |
-| :-- | :-- | :-- | :-- | :--: |
-| HTTP 요청/응답 | `http_asgi_middleware.py` | `[http_request]` / `[http_response]` | tools/call, tools/list 요청만 | INFO |
-| MCP Tool 실행 | `mcp_midleware.py` | `[mcp_tool_call]` | Tool 함수 실행 전후, 에러 시 | INFO / EXCEPTION |
-| Graph API 호출 | `graph_client.py` | `[GraphAPI Request]` | MS Graph API 호출 직후 finally 블록 | INFO / ERROR |
-
-### 선언된 MCP 도구(Tools) 목록
-
-#### 1) 캘린더 도구 (`calendar_tools.py`)
-
-| 도구명 | 상태 | 설명 | 연동 API |
-| :-- | :--: | :-- | :-- |
-| `list_calendar_events` | ✅ | 시작/종료일 기준 캘린더 일정 조회 | `/calendarView` |
-| `get_calendar_event` | ✅ | 단일 일정 상세 조회 | `/events/{id}` |
-| `create_calendar_event` | ✅ | 새로운 일정 생성 | `POST /events` |
-| `update_calendar_event` | ✅ | 기존 일정 부분 수정 | `PATCH /events/{id}` |
-| `delete_calendar_event` | ✅ | 기존 일정 삭제 | `DELETE /events/{id}` |
-
-#### 2) 메일 도구 (`mail_tools.py`)
-
-| 도구명 | 상태 | 설명 | 연동 API |
-| :-- | :--: | :-- | :-- |
-| `get_recent_emails` | ✅ | 최근 수신 이메일 목록 조회 | `/mailFolders/inbox/messages` |
-| `get_unread_emails` | ✅ | 읽지 않은 메일 조회 | `/mailFolders/inbox/messages` |
-| `get_important_or_flagged_emails` | ✅ | 중요/깃발 메일 조회 | `/mailFolders/inbox/messages` |
-| `search_emails_by_keyword_advanced` | ✅ | 제목/본문 키워드 풀텍스트 검색 | `/messages` |
-| `search_emails_by_sender_advanced` | ✅ | 발신자 기준 필터 검색 | `/messages` |
-| `search_emails_by_attachment` | ✅ | 첨부파일 유무/파일명 기준 검색 | `/messages` |
-| `get_sent_emails` | ✅ | 보낸 편지함 조회 | `/mailFolders/sentitems/messages` |
-| `get_email_detail_view` | ✅ | 단일 메일 상세 본문 및 첨부 목록 조회 | `/messages/{id}` |
-
-#### 3) Teams 도구 (`teams_tools.py`)
-
-| 도구명 | 상태 | 설명 | 연동 API |
-| :-- | :--: | :-- | :-- |
-| `list_my_chats` | ✅ | 참여 중인 채팅방 목록 조회 | `/chats` |
-| `get_chat_messages` | ✅ | 특정 채팅방 최근 메시지 조회 | `/chats/{id}/messages` |
-| `send_chat_message` | ✅ | 채팅방에 텍스트/HTML 메시지 전송 | `POST /chats/{id}/messages` |
-
-#### 4) SharePoint / OneDrive 도구 (`sharepoint_tools.py`)
-
-| 도구명 | 상태 | 설명 | 연동 API |
-| :-- | :--: | :-- | :-- |
-| `list_drive_files` | ✅ | 드라이브 파일/폴더 목록 조회 | `/drive/.../children` |
-| `search_drive_files` | ✅ | 드라이브 전체 키워드 검색 | `/drive/root/search` |
-| `get_drive_file_info` | ✅ | 파일 상세 정보 및 다운로드 링크 조회 | `/drive/items/{id}` |
-
-#### 5) To-Do 도구 (`to_do_tools.py`)
-
-| 도구명 | 상태 | 설명 | 연동 API |
-| :-- | :--: | :-- | :-- |
-| `todo_list_task_lists` | ✅ | 할 일 목록(카테고리) 조회 | `/todo/lists` |
-| `todo_list_tasks` | ✅ | 특정 목록의 할 일 조회 | `/todo/lists/{id}/tasks` |
-| `todo_create_task` | ✅ | 새 할 일 생성 | `POST /todo/lists/{id}/tasks` |
-| `todo_update_task` | ✅ | 기존 할 일 수정 | `PATCH /todo/lists/{id}/tasks/{id}` |
-| `todo_delete_task` | ✅ | 기존 할 일 삭제 | `DELETE /todo/lists/{id}/tasks/{id}` |
-
-### 환경 변수 (app)
-
-```env
-LOG_LEVEL=DEBUG
-AUTH_JWT_USER_TOKEN=false
-MS365_CONFIGS={"leodev901":{"tenant_id":"...","client_id":"...","client_secret":"..."}}
-```
-
-| 변수명 | 설명 |
-| :-- | :-- |
-| `LOG_LEVEL` | 로그 레벨 (DEBUG / INFO / WARNING / ERROR) |
-| `AUTH_JWT_USER_TOKEN` | `true` → JWT 실제 검증, `false` → 샘플 사용자 정보 매핑 (개발용) |
-| `MS365_CONFIGS` | 회사별 Entra ID 설정 (tenant_id, client_id, client_secret) JSON |
-
----
-
-## 🚀 실행 방법
-
-### 두 서버 각각 기동
-
-```bash
-# 1. CMN 공통 API 서버 (포트 8001)
-uvicorn cmn.main:app --host 0.0.0.0 --port 8001
-
-# 2. MCP FastMCP 서버 (포트 8002)
-uvicorn app.main:app --host 0.0.0.0 --port 8002
-```
-
-### 패키지 설치
+### 1. 의존성 설치
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### MCP Inspector 테스트
+전제조건:
+- Python 3.11 이상 권장
+- `.env` 파일 필요
+
+기대 결과:
+- FastAPI, FastMCP, SQLAlchemy, httpx 등 필수 패키지가 설치됩니다.
+
+실패 예시:
+- `ModuleNotFoundError` 또는 빌드 오류가 발생하면 가상환경이 활성화되지 않았을 수 있습니다.
+
+해결 방법:
+- Windows 기준 `.venv\\Scripts\\Activate.ps1` 실행 후 다시 설치합니다.
+
+### 2. `cmn` 서버 실행
+
+```bash
+uvicorn cmn.main:app --host 0.0.0.0 --port 8001
+```
+
+전제조건:
+- `DATABASE_URL`, `COMPANY_CODES` 등이 `.env`에 설정되어 있어야 합니다.
+
+기대 결과:
+- `http://localhost:8001/docs` 또는 환경별 `root_path` 기준 Swagger UI에 접속할 수 있습니다.
+
+### 3. `app` 서버 실행
+
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port 8002
+```
+
+전제조건:
+- `MS365_CONFIGS`, `AUTH_JWT_USER_TOKEN`, `LOG_LEVEL` 등이 `.env`에 있어야 합니다.
+
+기대 결과:
+- MCP HTTP 엔드포인트가 `/mcp` 경로에 열립니다.
+
+### 4. MCP Inspector 연결
 
 ```bash
 npx @modelcontextprotocol/inspector
 ```
 
-- **Transport Type:** `streamable-http`
-- **URL:** `http://127.0.0.1:8002/mcp`
+설정값:
+- Transport Type: `streamable-http`
+- URL: `http://127.0.0.1:8002/mcp`
 
----
+## 환경 변수
 
-## 📊 OpenTelemetry → Grafana 로깅 아키텍처
+### `app` 주요 환경 변수
 
-앱에서 `logger.info()` 호출 시, 아래 파이프라인을 통해 Grafana 대시보드로 전달됩니다.
+| 변수명 | 설명 |
+| :-- | :-- |
+| `LOG_LEVEL` | 로그 레벨 |
+| `ENV` | 실행 환경 |
+| `AUTH_JWT_USER_TOKEN` | JWT 검증 사용 여부 |
+| `MS365_CONFIGS` | 회사별 M365 설정 JSON |
+| `GRAFANA_ENDPOINT` | Grafana OTLP endpoint |
 
-```mermaid
-sequenceDiagram
-    participant App as 앱 코드 (logger.info)
-    participant Handler as LoggingHandler (파이프)
-    participant OTLP as OpenTelemetry (배달부)
-    participant Grafana as Grafana 서버 (상황실)
+### `cmn` 주요 환경 변수
 
-    App->>Handler: 1. 로그 발생
-    note over Handler: 2. OTLP 국제 규격으로 변환
-    Handler->>OTLP: 3. 변환된 로그 전달
-    note over OTLP: 4. Batch 프로세서가 모음
-    OTLP->>Grafana: 5. gRPC로 일괄 전송
-    note over Grafana: 6. 대시보드에서 검색/시각화
-```
+| 변수명 | 설명 |
+| :-- | :-- |
+| `DATABASE_URL` | PostgreSQL Async 연결 문자열 |
+| `COMPANY_CODES` | 허용할 회사 코드 목록 |
+| `ENV` | 실행 환경 |
 
-| Exporter | 비용 | 특징 |
-| :-- | :--: | :-- |
-| **Grafana (Loki/Tempo)** | 무료/유료 | 강력한 오픈소스 시각화 대시보드 *(기본 설정)* |
-| Datadog | 유료 | 연동 쉬움, AI 분석 제공 |
-| Dynatrace | 유료 | MSA 자동 구조 파악 |
-| Jaeger | 무료 | 분산 트레이싱 특화 |
-| Prometheus | 무료 | 메트릭(CPU/메모리) 중심 |
-| ELK Stack | 무료/유료 | 대용량 텍스트 로그 검색 |
+## 관련 문서
 
----
+- `GUIDE.md`
+- `PROJECT.md`
+- `GRAPH_LOGGING_GUIDE.md`
+- `docs/CMN_DEPENDENCY_INJECTION_GUIDE.md`
+- `docs/EXCEPTION_HANDLING_GUIDE.md`
+- `docs/HTTP_LOGGING_GUIDE.md`
+- `docs/SQLALCHEMY_ENGINE_GUIDE.md`
 
-## 한 줄 요약
+## 한 줄 정리
 
-> **`cmn`은 M365 OAuth 인증과 공통 기능을 전담하는 독립 API 서버이고,  
-> `app`은 cmn의 토큰을 활용하여 LLM 에이전트에 MS365 데이터를 제공하는 FastMCP 서버입니다.**
+현재 이 저장소는 `app = FastMCP 서버`, `cmn = FastAPI 공통 API 서버`로 역할을 나누는 방향으로 정리되고 있으며,  
+실제 코드도 그 방향을 따라가고 있지만 인증/토큰 책임은 아직 과도기적으로 일부 중복되어 있습니다.
