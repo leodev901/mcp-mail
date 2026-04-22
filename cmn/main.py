@@ -14,6 +14,7 @@ from cmn.core.config import settings
 from cmn.base.logger import logger
 from cmn.base.exception import register_exception_handler
 from cmn.base.middleware import RequestLoggingMiddleware
+from cmn.base.opentelemetry import setup_opentelemetry, shutdown_opentelemetry
 
 
 
@@ -40,6 +41,9 @@ async def lifespan(app: FastAPI):
     # engine = create_engine()
     # app.state.engine = engine
     # session_factory = async_sessionmaker(engine, expire_on_commit=False)
+    # Direct OTLP는 앱 시작 시 1회만 연결합니다.
+    # 왜냐하면 로거 handler와 provider는 요청마다 붙이는 자원이 아니라 앱 전역 자원이기 때문입니다.
+    setup_opentelemetry()
     logger.info("Starting mcp-cmn server...")
     db = Database()
     app.state.db = db
@@ -52,6 +56,7 @@ async def lifespan(app: FastAPI):
     # 종료 시 엔진 연결 풀을 정리한다.
     # await engine.dispose()
     await db.dispose()
+    shutdown_opentelemetry()
 
 
 
