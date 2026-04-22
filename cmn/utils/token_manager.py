@@ -32,7 +32,7 @@ class TokenManager:
     def get_valid_access_token(self, key: str) -> str | None:
         """캐시에 유효한 토큰이 있을 경우 반환 """
         record = self._tokens.get(key)
-        if record and record.is_vali/d():
+        if record and record.is_valid():
             # hit
             return record.access_token
         # miss
