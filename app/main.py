@@ -4,7 +4,7 @@ from app.core.http_middleware import HttpMiddleware
 from app.core.http_asgi_middleware import HttpLoggingASGIMiddleware
 from app.core.mcp_midleware import MCPLoggingMiddleware
 from app.tools.mail_tools import register_mail_tools
-from cmn.api.endpoint.m365_oauth import register_m365_oauth_routes
+from cmn.api.endpoint.auth import register_m365_oauth_routes
 from app.common.logger import init_logger
 
 init_logger()
