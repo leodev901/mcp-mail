@@ -7,7 +7,6 @@ from app.tools.mail_tools import register_mail_tools
 from cmn.api.endpoint.auth import register_m365_oauth_routes
 from app.common.logger import init_logger
 
-init_logger()
 
 def create_app():
     mcp = FastMCP(

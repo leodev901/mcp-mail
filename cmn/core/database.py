@@ -84,6 +84,7 @@ class Database:
         # 앱 종료 시 engine 이 가진 연결 자원을 정리합니다.
         logger.info("---- dispose datbase engein -----")
         await self.engine.dispose()
+        
 
     async def get_session_schema(self, schema: str) -> AsyncGenerator[AsyncSession, None]:
         schema = schema.strip()

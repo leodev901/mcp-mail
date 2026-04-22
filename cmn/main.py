@@ -5,11 +5,22 @@ from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from fastapi.openapi.docs import get_swagger_ui_html
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 
 
 from cmn.api.routers import register_router
 from cmn.core.database import Database
 from cmn.core.config import settings
+from cmn.base.logger import logger
+from cmn.base.exception import register_exception_handler
+from cmn.base.middleware import RequestLoggingMiddleware
+
+
+
+
+
+
+
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -19,7 +30,7 @@ STATIC_DIR = BASE_DIR / "static"
 if settings.ENV.lower() == "local":
     PREFIX = ""
 else : 
-    PREFIX = "/abiz-mcp-cmn"
+    PREFIX = "/mcp-cmn"
    
 
 
@@ -29,6 +40,7 @@ async def lifespan(app: FastAPI):
     # engine = create_engine()
     # app.state.engine = engine
     # session_factory = async_sessionmaker(engine, expire_on_commit=False)
+    logger.info("Starting mcp-cmn server...")
     db = Database()
     app.state.db = db
 
@@ -36,6 +48,7 @@ async def lifespan(app: FastAPI):
     # yield 이전 구간은 startup, yield 이후 구간은 shutdown 이다.
     yield
 
+    logger.info("Shutting down mcp-cmn server...")
     # 종료 시 엔진 연결 풀을 정리한다.
     # await engine.dispose()
     await db.dispose()
@@ -51,15 +64,25 @@ def create_app() -> FastAPI:
         root_path=PREFIX,
     )
 
-
     # 라우터 등록
     register_router(app)
 
+    # Exception 핸들러 등록
+    register_exception_handler(app)
+
     # 미들웨어 등록
+    app.add_middleware(RequestLoggingMiddleware)
 
-
+    # # CORS 미들웨어 추가 (프론트엔드 호출 허용) - 가장 마지막에 추가
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"], # 실무에서는 Vercel 도메인으로 특정하는 것이 안전합니다.
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+    
     return app
-
 
 
 app = create_app()
@@ -81,6 +104,7 @@ app.mount(
 @app.get("/", include_in_schema=False)
 async def root():
     return RedirectResponse(url=f"{PREFIX}/docs")
+
 
 @app.get("/docs", include_in_schema=False)
 async def custom_swagger_ui_html():

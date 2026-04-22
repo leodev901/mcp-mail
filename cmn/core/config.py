@@ -7,6 +7,10 @@ class Settings(BaseSettings):
     COMPANY_CODES:list[str] = ["leodev901"]
     ENV:str = "local"
 
+    LOG_LEVEL:str = "INFO"
+    LOG_FILE_PATH:str = "logs/mcp-cmn.log"
+
+
     
 
 settings = Settings()
