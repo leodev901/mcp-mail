@@ -2793,3 +2793,1789 @@ jwt.exceptions.DecodeError: Invalid header padding
 [INFO][2026-04-23 14:27:23][mcp-cmn][exception.py:14]- Registering exception handlers...
 [INFO][2026-04-23 14:27:23][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
 [INFO][2026-04-23 14:27:23][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 14:35:27][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 14:35:27][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 14:35:27][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 14:35:37][mcp-cmn][middleware.py:50]- Request-[be884728-8c3f-47ff-a68c-3f81d2d2285d] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 14:35:37][mcp-cmn][middleware.py:51]- Headers-[be884728-8c3f-47ff-a68c-3f81d2d2285d] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 14:35:37][mcp-cmn][middleware.py:71]- Response-[be884728-8c3f-47ff-a68c-3f81d2d2285d] GET /mcp-cmn/docs 200 5.94ms
+[INFO][2026-04-23 14:35:37][mcp-cmn][middleware.py:50]- Request-[ba82c3a4-d3ca-4cd0-bbac-d3ecd642597f] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 14:35:37][mcp-cmn][middleware.py:51]- Headers-[ba82c3a4-d3ca-4cd0-bbac-d3ecd642597f] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 14:35:37][mcp-cmn][middleware.py:71]- Response-[ba82c3a4-d3ca-4cd0-bbac-d3ecd642597f] GET /mcp-cmn/openapi.json 200 49.83ms
+[INFO][2026-04-23 14:35:57][mcp-cmn][middleware.py:50]- Request-[71db4416-4cfa-4cae-8fa8-bafa6470871e] POST /mcp-cmn/api/logs/api 127.0.0.1
+[INFO][2026-04-23 14:35:57][mcp-cmn][middleware.py:51]- Headers-[71db4416-4cfa-4cae-8fa8-bafa6470871e] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "content-length": "322",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "content-type": "application/json",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://127.0.0.1:8004",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[DEBUG][2026-04-23 14:35:59][mcp-cmn][logs_router.py:54]- save: m365_mcp_api_log - 581ba721-964b-4bd2-8a57-4ea81ef0fb26
+[INFO][2026-04-23 14:35:59][mcp-cmn][middleware.py:71]- Response-[71db4416-4cfa-4cae-8fa8-bafa6470871e] POST /mcp-cmn/api/logs/api 200 2364.51ms
+[INFO][2026-04-23 14:54:48][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 14:54:48][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 14:54:48][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 15:01:01][mcp-cmn][middleware.py:50]- Request-[11fd9c70-eeae-45d2-8889-c586680f5f2c] POST /mcp-cmn/health 127.0.0.1
+[INFO][2026-04-23 15:01:01][mcp-cmn][middleware.py:51]- Headers-[11fd9c70-eeae-45d2-8889-c586680f5f2c] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "content-length": "0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://127.0.0.1:8004",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 15:01:01][mcp-cmn][middleware.py:71]- Response-[11fd9c70-eeae-45d2-8889-c586680f5f2c] POST /mcp-cmn/health 200 7.21ms
+[INFO][2026-04-23 15:01:20][mcp-cmn][middleware.py:50]- Request-[f4f887d7-0d69-4f19-97ec-89497f9bd7ac] GET /mcp-cmn/api/oauth/ 127.0.0.1
+[INFO][2026-04-23 15:01:20][mcp-cmn][middleware.py:51]- Headers-[f4f887d7-0d69-4f19-97ec-89497f9bd7ac] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 15:01:23][mcp-cmn][middleware.py:71]- Response-[f4f887d7-0d69-4f19-97ec-89497f9bd7ac] GET /mcp-cmn/api/oauth/ 200 3086.02ms
+[INFO][2026-04-23 15:01:30][mcp-cmn][middleware.py:50]- Request-[858bf6cb-ffe6-4e00-89d2-c1dca4fa6ac1] GET /mcp-cmn/api/oauth/ 127.0.0.1
+[INFO][2026-04-23 15:01:30][mcp-cmn][middleware.py:51]- Headers-[858bf6cb-ffe6-4e00-89d2-c1dca4fa6ac1] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[ERROR][2026-04-23 15:01:31][mcp-cmn][exception.py:48]- [858bf6cb-ffe6-4e00-89d2-c1dca4fa6ac1] HTTPException -404- 404: graph config not found: app_name=GRAPH
+[INFO][2026-04-23 15:01:31][mcp-cmn][middleware.py:71]- Response-[858bf6cb-ffe6-4e00-89d2-c1dca4fa6ac1] GET /mcp-cmn/api/oauth/ 404 1106.44ms
+[INFO][2026-04-23 15:08:27][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 15:08:27][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 15:08:27][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 15:08:36][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 15:08:36][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 15:08:36][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 15:08:45][mcp-cmn][middleware.py:50]- Request-[2382d425-8598-4573-885f-d8b6c4cab800] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 15:08:45][mcp-cmn][middleware.py:51]- Headers-[2382d425-8598-4573-885f-d8b6c4cab800] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 15:08:45][mcp-cmn][middleware.py:71]- Response-[2382d425-8598-4573-885f-d8b6c4cab800] GET /mcp-cmn/docs 200 7.21ms
+[INFO][2026-04-23 15:08:45][mcp-cmn][middleware.py:50]- Request-[03ce5d23-2e60-459c-a22a-6d5be80cb7ab] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 15:08:45][mcp-cmn][middleware.py:51]- Headers-[03ce5d23-2e60-459c-a22a-6d5be80cb7ab] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 15:08:45][mcp-cmn][middleware.py:71]- Response-[03ce5d23-2e60-459c-a22a-6d5be80cb7ab] GET /mcp-cmn/openapi.json 200 50.46ms
+[INFO][2026-04-23 15:08:53][mcp-cmn][middleware.py:50]- Request-[d6f04743-4aa3-4adb-86a8-b9afda2734d7] GET /mcp-cmn/api/oauth/ 127.0.0.1
+[INFO][2026-04-23 15:08:53][mcp-cmn][middleware.py:51]- Headers-[d6f04743-4aa3-4adb-86a8-b9afda2734d7] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 15:08:53][mcp-cmn][middleware.py:71]- Response-[d6f04743-4aa3-4adb-86a8-b9afda2734d7] GET /mcp-cmn/api/oauth/ error 19.85ms
+[ERROR][2026-04-23 15:08:53][mcp-cmn][exception.py:28]- [d6f04743-4aa3-4adb-86a8-b9afda2734d7] UnboundLocalError - local variable 'user_info' referenced before assignment
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    |     solved_result = await solve_dependencies(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 640, in solve_dependencies
+    |     solved = await run_in_threadpool(call, **solved_result.values)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    |     return await anyio.to_thread.run_sync(func, *args)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    |     return await get_async_backend().run_sync_in_worker_thread(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    |     return await future
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    |     result = context.run(func, *args)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 61, in get_current_user
+    |     if user_info:
+    | UnboundLocalError: local variable 'user_info' referenced before assignment
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    solved_result = await solve_dependencies(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 640, in solve_dependencies
+    solved = await run_in_threadpool(call, **solved_result.values)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 61, in get_current_user
+    if user_info:
+UnboundLocalError: local variable 'user_info' referenced before assignment
+[INFO][2026-04-23 15:09:51][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 15:09:51][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 15:09:51][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 15:09:52][mcp-cmn][middleware.py:50]- Request-[fe1e48a0-35e5-4689-a3e8-e019719feaf0] GET /mcp-cmn/api/oauth/ 127.0.0.1
+[INFO][2026-04-23 15:09:52][mcp-cmn][middleware.py:51]- Headers-[fe1e48a0-35e5-4689-a3e8-e019719feaf0] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 15:09:52][mcp-cmn][middleware.py:71]- Response-[fe1e48a0-35e5-4689-a3e8-e019719feaf0] GET /mcp-cmn/api/oauth/ error 23.75ms
+[ERROR][2026-04-23 15:09:52][mcp-cmn][exception.py:28]- [fe1e48a0-35e5-4689-a3e8-e019719feaf0] AttributeError - 'coroutine' object has no attribute 'company_code'
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    |     raw_response = await run_endpoint_function(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\api\endpoint\oauth.py", line 42, in auth
+    |     data = await auth_service.get_oauth_token(current_user.company_code, app_name)
+    | AttributeError: 'coroutine' object has no attribute 'company_code'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\api\endpoint\oauth.py", line 42, in auth
+    data = await auth_service.get_oauth_token(current_user.company_code, app_name)
+AttributeError: 'coroutine' object has no attribute 'company_code'
+[INFO][2026-04-23 15:10:07][mcp-cmn][main.py:55]- Shutting down mcp-cmn server...
+[INFO][2026-04-23 15:11:57][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 15:11:57][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 15:11:57][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 15:12:11][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 15:12:11][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 15:12:11][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 15:12:14][mcp-cmn][middleware.py:50]- Request-[4a7401df-812e-4fdd-9e8d-16481ffa5b7e] GET /mcp-cmn/api/oauth/ 127.0.0.1
+[INFO][2026-04-23 15:12:14][mcp-cmn][middleware.py:51]- Headers-[4a7401df-812e-4fdd-9e8d-16481ffa5b7e] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 15:12:14][mcp-cmn][middleware.py:71]- Response-[4a7401df-812e-4fdd-9e8d-16481ffa5b7e] GET /mcp-cmn/api/oauth/ error 20.81ms
+[ERROR][2026-04-23 15:12:14][mcp-cmn][exception.py:28]- [4a7401df-812e-4fdd-9e8d-16481ffa5b7e] AttributeError - 'coroutine' object has no attribute 'company_code'
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    |     raw_response = await run_endpoint_function(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\api\endpoint\oauth.py", line 42, in auth
+    |     data = await auth_service.get_oauth_token(current_user.company_code, app_name)
+    | AttributeError: 'coroutine' object has no attribute 'company_code'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\api\endpoint\oauth.py", line 42, in auth
+    data = await auth_service.get_oauth_token(current_user.company_code, app_name)
+AttributeError: 'coroutine' object has no attribute 'company_code'
+[INFO][2026-04-23 15:12:17][mcp-cmn][middleware.py:50]- Request-[6659782a-9631-49cd-8407-45ce27578040] GET /mcp-cmn/api/oauth/ 127.0.0.1
+[INFO][2026-04-23 15:12:17][mcp-cmn][middleware.py:51]- Headers-[6659782a-9631-49cd-8407-45ce27578040] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 15:12:17][mcp-cmn][middleware.py:71]- Response-[6659782a-9631-49cd-8407-45ce27578040] GET /mcp-cmn/api/oauth/ error 6.33ms
+[ERROR][2026-04-23 15:12:17][mcp-cmn][exception.py:28]- [6659782a-9631-49cd-8407-45ce27578040] AttributeError - 'coroutine' object has no attribute 'company_code'
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    |     raw_response = await run_endpoint_function(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\api\endpoint\oauth.py", line 42, in auth
+    |     data = await auth_service.get_oauth_token(current_user.company_code, app_name)
+    | AttributeError: 'coroutine' object has no attribute 'company_code'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\api\endpoint\oauth.py", line 42, in auth
+    data = await auth_service.get_oauth_token(current_user.company_code, app_name)
+AttributeError: 'coroutine' object has no attribute 'company_code'
+[INFO][2026-04-23 15:12:37][mcp-cmn][middleware.py:50]- Request-[087e7979-b01e-4b14-92a2-f26257ea31e6] GET /mcp-cmn/api/oauth/ 127.0.0.1
+[INFO][2026-04-23 15:12:37][mcp-cmn][middleware.py:51]- Headers-[087e7979-b01e-4b14-92a2-f26257ea31e6] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 15:12:37][mcp-cmn][middleware.py:71]- Response-[087e7979-b01e-4b14-92a2-f26257ea31e6] GET /mcp-cmn/api/oauth/ error 11.87ms
+[ERROR][2026-04-23 15:12:37][mcp-cmn][exception.py:28]- [087e7979-b01e-4b14-92a2-f26257ea31e6] AttributeError - 'coroutine' object has no attribute 'company_code'
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    |     raw_response = await run_endpoint_function(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\api\endpoint\oauth.py", line 42, in auth
+    |     data = await auth_service.get_oauth_token(current_user.company_code, app_name)
+    | AttributeError: 'coroutine' object has no attribute 'company_code'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\api\endpoint\oauth.py", line 42, in auth
+    data = await auth_service.get_oauth_token(current_user.company_code, app_name)
+AttributeError: 'coroutine' object has no attribute 'company_code'
+[INFO][2026-04-23 15:12:39][mcp-cmn][middleware.py:50]- Request-[fd37ae1d-36a7-457c-88f3-be868e8b2a55] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 15:12:39][mcp-cmn][middleware.py:51]- Headers-[fd37ae1d-36a7-457c-88f3-be868e8b2a55] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 15:12:39][mcp-cmn][middleware.py:71]- Response-[fd37ae1d-36a7-457c-88f3-be868e8b2a55] GET /mcp-cmn/docs 200 3.23ms
+[INFO][2026-04-23 15:12:40][mcp-cmn][middleware.py:50]- Request-[87a854ea-d787-4a78-968d-495292db3455] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 15:12:40][mcp-cmn][middleware.py:51]- Headers-[87a854ea-d787-4a78-968d-495292db3455] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 15:12:40][mcp-cmn][middleware.py:71]- Response-[87a854ea-d787-4a78-968d-495292db3455] GET /mcp-cmn/openapi.json 200 63.12ms
+[INFO][2026-04-23 15:12:50][mcp-cmn][middleware.py:50]- Request-[66556207-e729-4673-ab2b-47b1ebc89f04] GET /mcp-cmn/api/oauth/ 127.0.0.1
+[INFO][2026-04-23 15:12:50][mcp-cmn][middleware.py:51]- Headers-[66556207-e729-4673-ab2b-47b1ebc89f04] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 15:12:50][mcp-cmn][middleware.py:71]- Response-[66556207-e729-4673-ab2b-47b1ebc89f04] GET /mcp-cmn/api/oauth/ error 7.93ms
+[ERROR][2026-04-23 15:12:50][mcp-cmn][exception.py:28]- [66556207-e729-4673-ab2b-47b1ebc89f04] AttributeError - 'coroutine' object has no attribute 'company_code'
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    |     raw_response = await run_endpoint_function(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\api\endpoint\oauth.py", line 42, in auth
+    |     data = await auth_service.get_oauth_token(current_user.company_code, app_name)
+    | AttributeError: 'coroutine' object has no attribute 'company_code'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\api\endpoint\oauth.py", line 42, in auth
+    data = await auth_service.get_oauth_token(current_user.company_code, app_name)
+AttributeError: 'coroutine' object has no attribute 'company_code'
+[INFO][2026-04-23 15:13:02][mcp-cmn][middleware.py:50]- Request-[dc95448c-0db3-4804-be49-5c330dc24ecb] GET /mcp-cmn/api/oauth/ 127.0.0.1
+[INFO][2026-04-23 15:13:02][mcp-cmn][middleware.py:51]- Headers-[dc95448c-0db3-4804-be49-5c330dc24ecb] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 15:14:07][mcp-cmn][middleware.py:71]- Response-[dc95448c-0db3-4804-be49-5c330dc24ecb] GET /mcp-cmn/api/oauth/ error 64975.31ms
+[ERROR][2026-04-23 15:14:07][mcp-cmn][exception.py:28]- [dc95448c-0db3-4804-be49-5c330dc24ecb] AttributeError - 'coroutine' object has no attribute 'company_code'
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    |     raw_response = await run_endpoint_function(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\api\endpoint\oauth.py", line 42, in auth
+    |     data = await auth_service.get_oauth_token(current_user.company_code, app_name)
+    | AttributeError: 'coroutine' object has no attribute 'company_code'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\api\endpoint\oauth.py", line 42, in auth
+    data = await auth_service.get_oauth_token(current_user.company_code, app_name)
+AttributeError: 'coroutine' object has no attribute 'company_code'
+[INFO][2026-04-23 15:16:11][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 15:16:11][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 15:16:11][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 15:16:14][mcp-cmn][middleware.py:50]- Request-[7d191876-ea3b-4ec2-809d-081735ad6c1e] GET /mcp-cmn/api/oauth/ 127.0.0.1
+[INFO][2026-04-23 15:16:14][mcp-cmn][middleware.py:51]- Headers-[7d191876-ea3b-4ec2-809d-081735ad6c1e] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 15:16:44][mcp-cmn][middleware.py:71]- Response-[7d191876-ea3b-4ec2-809d-081735ad6c1e] GET /mcp-cmn/api/oauth/ error 29507.41ms
+[ERROR][2026-04-23 15:16:44][mcp-cmn][exception.py:28]- [7d191876-ea3b-4ec2-809d-081735ad6c1e] AttributeError - 'coroutine' object has no attribute 'company_code'
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    |     raw_response = await run_endpoint_function(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\api\endpoint\oauth.py", line 43, in auth
+    |     data = await auth_service.get_oauth_token(current_user.company_code, app_name)
+    | AttributeError: 'coroutine' object has no attribute 'company_code'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\api\endpoint\oauth.py", line 43, in auth
+    data = await auth_service.get_oauth_token(current_user.company_code, app_name)
+AttributeError: 'coroutine' object has no attribute 'company_code'
+[INFO][2026-04-23 15:16:53][mcp-cmn][middleware.py:50]- Request-[c02b5eac-7e52-4966-a602-8d03cafe9cb3] GET /mcp-cmn/api/oauth/ 127.0.0.1
+[INFO][2026-04-23 15:16:53][mcp-cmn][middleware.py:51]- Headers-[c02b5eac-7e52-4966-a602-8d03cafe9cb3] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 15:17:07][mcp-cmn][middleware.py:71]- Response-[c02b5eac-7e52-4966-a602-8d03cafe9cb3] GET /mcp-cmn/api/oauth/ error 13762.75ms
+[ERROR][2026-04-23 15:17:07][mcp-cmn][exception.py:28]- [c02b5eac-7e52-4966-a602-8d03cafe9cb3] AttributeError - 'coroutine' object has no attribute 'company_code'
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    |     raw_response = await run_endpoint_function(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\api\endpoint\oauth.py", line 43, in auth
+    |     data = await auth_service.get_oauth_token(current_user.company_code, app_name)
+    | AttributeError: 'coroutine' object has no attribute 'company_code'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\api\endpoint\oauth.py", line 43, in auth
+    data = await auth_service.get_oauth_token(current_user.company_code, app_name)
+AttributeError: 'coroutine' object has no attribute 'company_code'
+[INFO][2026-04-23 15:17:25][mcp-cmn][middleware.py:50]- Request-[098b5c0a-7554-4ec9-8b6f-2e8457ac090a] GET /mcp-cmn/api/oauth/ 127.0.0.1
+[INFO][2026-04-23 15:17:25][mcp-cmn][middleware.py:51]- Headers-[098b5c0a-7554-4ec9-8b6f-2e8457ac090a] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 15:17:51][mcp-cmn][middleware.py:71]- Response-[098b5c0a-7554-4ec9-8b6f-2e8457ac090a] GET /mcp-cmn/api/oauth/ error 26244.91ms
+[ERROR][2026-04-23 15:17:51][mcp-cmn][exception.py:28]- [098b5c0a-7554-4ec9-8b6f-2e8457ac090a] AttributeError - 'coroutine' object has no attribute 'company_code'
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    |     raw_response = await run_endpoint_function(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\api\endpoint\oauth.py", line 43, in auth
+    |     data = await auth_service.get_oauth_token(current_user.company_code, app_name)
+    | AttributeError: 'coroutine' object has no attribute 'company_code'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\api\endpoint\oauth.py", line 43, in auth
+    data = await auth_service.get_oauth_token(current_user.company_code, app_name)
+AttributeError: 'coroutine' object has no attribute 'company_code'
+[INFO][2026-04-23 15:18:57][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 15:18:57][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 15:18:57][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 15:18:59][mcp-cmn][middleware.py:50]- Request-[ff05e4c5-3e71-471c-8052-aac81b2f17a1] GET /mcp-cmn/api/oauth/ 127.0.0.1
+[INFO][2026-04-23 15:18:59][mcp-cmn][middleware.py:51]- Headers-[ff05e4c5-3e71-471c-8052-aac81b2f17a1] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 15:19:03][mcp-cmn][middleware.py:71]- Response-[ff05e4c5-3e71-471c-8052-aac81b2f17a1] GET /mcp-cmn/api/oauth/ error 4236.56ms
+[ERROR][2026-04-23 15:19:03][mcp-cmn][exception.py:28]- [ff05e4c5-3e71-471c-8052-aac81b2f17a1] NameError - name 'user_cache' is not defined
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    |     solved_result = await solve_dependencies(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 638, in solve_dependencies
+    |     solved = await call(**solved_result.values)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 60, in get_current_user
+    |     user_info = await get_user_form_cache( data.get("company_code"), data.get("sub") )
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\user_cache.py", line 17, in get_user_form_cache
+    |     if key in user_cache:
+    | NameError: name 'user_cache' is not defined
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    solved_result = await solve_dependencies(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 638, in solve_dependencies
+    solved = await call(**solved_result.values)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 60, in get_current_user
+    user_info = await get_user_form_cache( data.get("company_code"), data.get("sub") )
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\user_cache.py", line 17, in get_user_form_cache
+    if key in user_cache:
+NameError: name 'user_cache' is not defined
+[INFO][2026-04-23 15:19:30][mcp-cmn][middleware.py:50]- Request-[7ca66b09-f38d-4afc-a8c8-fece13c701cb] GET /mcp-cmn/api/oauth/ 127.0.0.1
+[INFO][2026-04-23 15:19:30][mcp-cmn][middleware.py:51]- Headers-[7ca66b09-f38d-4afc-a8c8-fece13c701cb] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 15:19:43][mcp-cmn][middleware.py:71]- Response-[7ca66b09-f38d-4afc-a8c8-fece13c701cb] GET /mcp-cmn/api/oauth/ error 13403.26ms
+[ERROR][2026-04-23 15:19:43][mcp-cmn][exception.py:28]- [7ca66b09-f38d-4afc-a8c8-fece13c701cb] NameError - name 'user_cache' is not defined
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    |     solved_result = await solve_dependencies(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 638, in solve_dependencies
+    |     solved = await call(**solved_result.values)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 60, in get_current_user
+    |     user_info = await get_user_form_cache( data.get("company_code"), data.get("sub") )
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\user_cache.py", line 17, in get_user_form_cache
+    |     if key in user_cache:
+    | NameError: name 'user_cache' is not defined
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    solved_result = await solve_dependencies(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 638, in solve_dependencies
+    solved = await call(**solved_result.values)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 60, in get_current_user
+    user_info = await get_user_form_cache( data.get("company_code"), data.get("sub") )
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\user_cache.py", line 17, in get_user_form_cache
+    if key in user_cache:
+NameError: name 'user_cache' is not defined
+[INFO][2026-04-23 15:20:39][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 15:20:39][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 15:20:39][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 15:20:42][mcp-cmn][middleware.py:50]- Request-[fa0650d7-ccc8-4d70-a93b-d04678fda451] GET /mcp-cmn/api/oauth/ 127.0.0.1
+[INFO][2026-04-23 15:20:42][mcp-cmn][middleware.py:51]- Headers-[fa0650d7-ccc8-4d70-a93b-d04678fda451] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[DEBUG][2026-04-23 15:20:45][mcp-cmn][user_cache.py:23]- Miss user cache - leodev901:20075487
+[INFO][2026-04-23 15:20:55][mcp-cmn][middleware.py:71]- Response-[fa0650d7-ccc8-4d70-a93b-d04678fda451] GET /mcp-cmn/api/oauth/ 200 12963.30ms
+[INFO][2026-04-23 15:20:58][mcp-cmn][middleware.py:50]- Request-[0ed67955-a917-4e0f-9a84-412ef5a70bed] GET /mcp-cmn/api/oauth/ 127.0.0.1
+[INFO][2026-04-23 15:20:58][mcp-cmn][middleware.py:51]- Headers-[0ed67955-a917-4e0f-9a84-412ef5a70bed] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[DEBUG][2026-04-23 15:21:03][mcp-cmn][user_cache.py:20]- Hit user cache - leodev901:20075487
+[INFO][2026-04-23 15:21:12][mcp-cmn][middleware.py:71]- Response-[0ed67955-a917-4e0f-9a84-412ef5a70bed] GET /mcp-cmn/api/oauth/ 200 14105.85ms
+[INFO][2026-04-23 15:21:36][mcp-cmn][middleware.py:50]- Request-[1674142d-56f6-413d-a1b3-c62d7d970045] GET /mcp-cmn/api/oauth/ 127.0.0.1
+[INFO][2026-04-23 15:21:36][mcp-cmn][middleware.py:51]- Headers-[1674142d-56f6-413d-a1b3-c62d7d970045] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[DEBUG][2026-04-23 15:21:40][mcp-cmn][user_cache.py:20]- Hit user cache - leodev901:20075487
+[INFO][2026-04-23 15:21:40][mcp-cmn][middleware.py:71]- Response-[1674142d-56f6-413d-a1b3-c62d7d970045] GET /mcp-cmn/api/oauth/ 200 3738.40ms

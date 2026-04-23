@@ -7,6 +7,8 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from cmn.core.config import settings
 from cmn.base.logger import logger
 from cmn.schemas.user import User
+from cmn.utils.user_cache import get_user_form_cache, set_user_to_cache
+
 
 
 
@@ -51,13 +53,26 @@ def decode(token: str):
         raise exc
 
 
-def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security))->User:
+async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security))->User:
     data = decode(credentials.credentials)
-    user_info = User(
+    
+    # fetch user
+    user_info = await get_user_form_cache( data.get("company_code"), data.get("sub") )
+    if user_info:
+       return user_info
+    
+    # 원래는 공통 서비스를 통해 유효한 user_info롤 호출(http)해야 함 여기선 mock으로 구현
+    user_info = _mock_fetch_user(data)
+    # 캐싱
+    set_user_to_cache(user_info)
+    
+    return user_info
+
+def _mock_fetch_user(data: dict[str, any]) -> User:
+    return User(
         user_id=data.get("sub","N/A"),
         company_code=data.get("company_code","N/A"),
         user_name=data.get("user_name","N/A"),
         user_email=data.get("user_email","N/A"),
     )
-    print(user_info)
-    return user_info
+

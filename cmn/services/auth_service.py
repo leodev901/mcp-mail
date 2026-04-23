@@ -1,6 +1,5 @@
 import httpx
 from fastapi import Depends, HTTPException
-from loguru import logger
 from datetime import datetime, timedelta, timezone
 
 
@@ -9,6 +8,9 @@ from cmn.core.dependencies import get_db
 from cmn.db.crud.m365_oauth_crud import get_graph_infos
 from cmn.repositories.auth_repository import AuthRepository
 from cmn.utils.token_manager import token_manager
+from cmn.base.logger import logger
+
+
 
 
 KST = timezone(timedelta(hours=9))

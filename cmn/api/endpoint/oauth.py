@@ -39,6 +39,7 @@ async def auth(
     current_user: User = Depends(jwt_manager.get_current_user),
     auth_service: AuthService = Depends(AuthService),
 ):
+    print(current_user)
     data = await auth_service.get_oauth_token(current_user.company_code, app_name)
     return CommonResponse.ok(data)
 

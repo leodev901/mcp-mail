@@ -9,10 +9,11 @@ OpenTelemetry 로그를 HTTP로 전송하기 위해서는 아래 패키지들이
 
 1. `requirements.txt`에 다음 라인을 추가하거나 직접 터미널에 입력하세요:
    ```bash
-   pip install opentelemetry-api opentelemetry-sdk opentelemetry-exporter-otlp-proto-http
+   python -m pip install opentelemetry-api opentelemetry-sdk opentelemetry-exporter-otlp-proto-http
    ```
    > [!IMPORTANT]
    > `opentelemetry-exporter-otlp-proto-http` 패키지가 누락되면 `ModuleNotFoundError`가 발생합니다.
+   > Windows에서 `pip` 실행이 막히는 환경은 `python -m pip` 형식이 더 안전합니다.
 
 ---
 
