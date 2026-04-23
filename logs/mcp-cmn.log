@@ -1,0 +1,2509 @@
+[INFO][2026-04-23 09:03:21][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 09:03:21][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 09:03:21][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 09:03:25][mcp-cmn][middleware.py:50]- Request-[09940d00-4d4a-425a-bcd7-cecd80926483] GET / 127.0.0.1
+[INFO][2026-04-23 09:03:25][mcp-cmn][middleware.py:51]- Headers-[09940d00-4d4a-425a-bcd7-cecd80926483] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "none",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 09:03:25][mcp-cmn][middleware.py:70]- Response-[09940d00-4d4a-425a-bcd7-cecd80926483] GET / 307 14.48ms
+[INFO][2026-04-23 09:03:25][mcp-cmn][middleware.py:50]- Request-[bcc3dbd5-ba61-40ee-a8d9-dfc05325e212] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 09:03:25][mcp-cmn][middleware.py:51]- Headers-[bcc3dbd5-ba61-40ee-a8d9-dfc05325e212] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "none",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 09:03:25][mcp-cmn][middleware.py:70]- Response-[bcc3dbd5-ba61-40ee-a8d9-dfc05325e212] GET /mcp-cmn/docs 200 6.76ms
+[INFO][2026-04-23 09:03:25][mcp-cmn][middleware.py:50]- Request-[e3204753-027e-42cd-9929-9fa84362b2d9] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 09:03:25][mcp-cmn][middleware.py:51]- Headers-[e3204753-027e-42cd-9929-9fa84362b2d9] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 09:03:25][mcp-cmn][middleware.py:70]- Response-[e3204753-027e-42cd-9929-9fa84362b2d9] GET /mcp-cmn/openapi.json 200 61.81ms
+[INFO][2026-04-23 09:03:35][mcp-cmn][middleware.py:50]- Request-[61c3e614-9a9a-4bf9-b1c9-a8c8c5036ad8] POST /mcp-cmn/api/logs/tool 127.0.0.1
+[INFO][2026-04-23 09:03:35][mcp-cmn][middleware.py:51]- Headers-[61c3e614-9a9a-4bf9-b1c9-a8c8c5036ad8] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "content-length": "276",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "content-type": "application/json",
+  "x-company-code": "leodev901",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://127.0.0.1:8004",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 09:03:38][mcp-cmn][middleware.py:70]- Response-[61c3e614-9a9a-4bf9-b1c9-a8c8c5036ad8] POST /mcp-cmn/api/logs/tool 200 2629.17ms
+[INFO][2026-04-23 09:16:29][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 09:16:29][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 09:16:29][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 10:35:21][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 10:35:21][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 10:35:21][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 10:47:37][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 10:47:37][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 10:47:37][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 10:49:23][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 10:49:23][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 10:49:23][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 10:49:28][mcp-cmn][middleware.py:50]- Request-[073b4425-f163-41e1-86b8-f083580b7dc3] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 10:49:28][mcp-cmn][middleware.py:51]- Headers-[073b4425-f163-41e1-86b8-f083580b7dc3] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 10:49:28][mcp-cmn][middleware.py:70]- Response-[073b4425-f163-41e1-86b8-f083580b7dc3] GET /mcp-cmn/docs 200 16.00ms
+[INFO][2026-04-23 10:49:29][mcp-cmn][middleware.py:50]- Request-[13d99588-a465-4070-baad-d1293d754d22] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 10:49:29][mcp-cmn][middleware.py:51]- Headers-[13d99588-a465-4070-baad-d1293d754d22] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 10:49:29][mcp-cmn][middleware.py:70]- Response-[13d99588-a465-4070-baad-d1293d754d22] GET /mcp-cmn/openapi.json 200 37.91ms
+[INFO][2026-04-23 10:49:34][mcp-cmn][middleware.py:50]- Request-[ac529b2f-b161-412f-9433-c859197338fc] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 10:49:34][mcp-cmn][middleware.py:51]- Headers-[ac529b2f-b161-412f-9433-c859197338fc] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 10:49:34][mcp-cmn][middleware.py:70]- Response-[ac529b2f-b161-412f-9433-c859197338fc] GET /mcp-cmn/docs 200 2.71ms
+[INFO][2026-04-23 10:49:34][mcp-cmn][middleware.py:50]- Request-[af1171c4-4a0f-4a7a-bac6-8908c1f274ba] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 10:49:34][mcp-cmn][middleware.py:51]- Headers-[af1171c4-4a0f-4a7a-bac6-8908c1f274ba] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 10:49:34][mcp-cmn][middleware.py:70]- Response-[af1171c4-4a0f-4a7a-bac6-8908c1f274ba] GET /mcp-cmn/openapi.json 200 4.22ms
+[INFO][2026-04-23 10:49:35][mcp-cmn][middleware.py:50]- Request-[52b752c7-3a77-4cb9-b33f-09ac93cee297] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 10:49:35][mcp-cmn][middleware.py:51]- Headers-[52b752c7-3a77-4cb9-b33f-09ac93cee297] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 10:49:35][mcp-cmn][middleware.py:70]- Response-[52b752c7-3a77-4cb9-b33f-09ac93cee297] GET /mcp-cmn/docs 200 2.88ms
+[INFO][2026-04-23 10:49:35][mcp-cmn][middleware.py:50]- Request-[e7442f31-6929-4bfd-a91d-c16db007169a] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 10:49:35][mcp-cmn][middleware.py:51]- Headers-[e7442f31-6929-4bfd-a91d-c16db007169a] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 10:49:35][mcp-cmn][middleware.py:70]- Response-[e7442f31-6929-4bfd-a91d-c16db007169a] GET /mcp-cmn/openapi.json 200 3.89ms
+[INFO][2026-04-23 10:49:36][mcp-cmn][middleware.py:50]- Request-[25fd2bd0-fd9e-43e6-bbab-4267d5fb336c] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 10:49:36][mcp-cmn][middleware.py:51]- Headers-[25fd2bd0-fd9e-43e6-bbab-4267d5fb336c] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 10:49:36][mcp-cmn][middleware.py:70]- Response-[25fd2bd0-fd9e-43e6-bbab-4267d5fb336c] GET /mcp-cmn/docs 200 4.26ms
+[INFO][2026-04-23 10:49:36][mcp-cmn][middleware.py:50]- Request-[17aa6e69-1d10-4406-a90d-8232e58818f7] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 10:49:36][mcp-cmn][middleware.py:51]- Headers-[17aa6e69-1d10-4406-a90d-8232e58818f7] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 10:49:36][mcp-cmn][middleware.py:70]- Response-[17aa6e69-1d10-4406-a90d-8232e58818f7] GET /mcp-cmn/openapi.json 200 5.17ms
+[INFO][2026-04-23 10:53:04][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 10:53:04][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 10:53:04][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 10:53:07][mcp-cmn][middleware.py:50]- Request-[7f457d51-0721-40cc-842b-cfa93c6081b6] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 10:53:07][mcp-cmn][middleware.py:51]- Headers-[7f457d51-0721-40cc-842b-cfa93c6081b6] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 10:53:07][mcp-cmn][middleware.py:70]- Response-[7f457d51-0721-40cc-842b-cfa93c6081b6] GET /mcp-cmn/docs 200 8.24ms
+[INFO][2026-04-23 10:53:08][mcp-cmn][middleware.py:50]- Request-[cd12c6d4-14c7-4250-bfca-39aa2bedcda5] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 10:53:08][mcp-cmn][middleware.py:51]- Headers-[cd12c6d4-14c7-4250-bfca-39aa2bedcda5] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 10:53:08][mcp-cmn][middleware.py:70]- Response-[cd12c6d4-14c7-4250-bfca-39aa2bedcda5] GET /mcp-cmn/openapi.json 200 69.85ms
+[INFO][2026-04-23 10:53:37][mcp-cmn][middleware.py:50]- Request-[9828d63f-8f88-46cf-84fc-0077ef09f87d] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 10:53:37][mcp-cmn][middleware.py:51]- Headers-[9828d63f-8f88-46cf-84fc-0077ef09f87d] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 10:53:37][mcp-cmn][middleware.py:70]- Response-[9828d63f-8f88-46cf-84fc-0077ef09f87d] GET /mcp-cmn/docs 200 5.14ms
+[INFO][2026-04-23 10:53:37][mcp-cmn][middleware.py:50]- Request-[a385f209-3bc4-4fe5-86b9-5c97e693df1b] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 10:53:37][mcp-cmn][middleware.py:51]- Headers-[a385f209-3bc4-4fe5-86b9-5c97e693df1b] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 10:53:37][mcp-cmn][middleware.py:70]- Response-[a385f209-3bc4-4fe5-86b9-5c97e693df1b] GET /mcp-cmn/openapi.json 200 3.85ms
+[INFO][2026-04-23 10:53:48][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 10:53:48][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 10:53:48][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 10:53:51][mcp-cmn][middleware.py:50]- Request-[d530b2db-dd96-485e-a676-a5b18b273b91] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 10:53:51][mcp-cmn][middleware.py:51]- Headers-[d530b2db-dd96-485e-a676-a5b18b273b91] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 10:53:51][mcp-cmn][middleware.py:70]- Response-[d530b2db-dd96-485e-a676-a5b18b273b91] GET /mcp-cmn/docs 200 6.37ms
+[INFO][2026-04-23 10:53:51][mcp-cmn][middleware.py:50]- Request-[50803f3d-a8fd-4e7b-baf2-270eadd5c4df] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 10:53:51][mcp-cmn][middleware.py:51]- Headers-[50803f3d-a8fd-4e7b-baf2-270eadd5c4df] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 10:53:51][mcp-cmn][middleware.py:70]- Response-[50803f3d-a8fd-4e7b-baf2-270eadd5c4df] GET /mcp-cmn/openapi.json 200 33.34ms
+[INFO][2026-04-23 10:53:59][mcp-cmn][middleware.py:50]- Request-[36ce8afd-2d13-463c-afcc-c90f8bda173b] GET /mcp-cmn/utils/jwt/decode 127.0.0.1
+[INFO][2026-04-23 10:53:59][mcp-cmn][middleware.py:51]- Headers-[36ce8afd-2d13-463c-afcc-c90f8bda173b] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[ERROR][2026-04-23 10:53:59][mcp-cmn][exception.py:28]- [36ce8afd-2d13-463c-afcc-c90f8bda173b] UnboundLocalError - local variable 'response' referenced before assignment
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 68, in dispatch
+    |     status_code = response.status_code if response else "error"
+    | UnboundLocalError: local variable 'response' referenced before assignment
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 68, in dispatch
+    status_code = response.status_code if response else "error"
+UnboundLocalError: local variable 'response' referenced before assignment
+[INFO][2026-04-23 11:00:22][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 11:00:22][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 11:00:22][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 11:00:33][mcp-cmn][middleware.py:50]- Request-[14a42914-59ea-40b6-8556-6ba6008d532a] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 11:00:33][mcp-cmn][middleware.py:51]- Headers-[14a42914-59ea-40b6-8556-6ba6008d532a] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:00:33][mcp-cmn][middleware.py:71]- Response-[14a42914-59ea-40b6-8556-6ba6008d532a] GET /mcp-cmn/docs 200 8.60ms
+[INFO][2026-04-23 11:00:33][mcp-cmn][middleware.py:50]- Request-[6cab0f72-6bc9-4d50-b047-bab83ce7bd86] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 11:00:33][mcp-cmn][middleware.py:51]- Headers-[6cab0f72-6bc9-4d50-b047-bab83ce7bd86] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:00:33][mcp-cmn][middleware.py:71]- Response-[6cab0f72-6bc9-4d50-b047-bab83ce7bd86] GET /mcp-cmn/openapi.json 200 62.19ms
+[INFO][2026-04-23 11:00:37][mcp-cmn][middleware.py:50]- Request-[583bc18a-0b55-4f2a-b740-ff2d818865f4] GET /mcp-cmn/utils/jwt/decode 127.0.0.1
+[INFO][2026-04-23 11:00:37][mcp-cmn][middleware.py:51]- Headers-[583bc18a-0b55-4f2a-b740-ff2d818865f4] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:00:37][mcp-cmn][middleware.py:71]- Response-[583bc18a-0b55-4f2a-b740-ff2d818865f4] GET /mcp-cmn/utils/jwt/decode error 4.56ms
+[ERROR][2026-04-23 11:00:37][mcp-cmn][exception.py:28]- [583bc18a-0b55-4f2a-b740-ff2d818865f4] AttributeError - 'NoneType' object has no attribute 'credentials'
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    |     solved_result = await solve_dependencies(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 638, in solve_dependencies
+    |     solved = await call(**solved_result.values)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\core\dependencies.py", line 56, in get_current_user
+    |     data = await jwt_manager.decode(credentials.credentials)
+    | AttributeError: 'NoneType' object has no attribute 'credentials'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    solved_result = await solve_dependencies(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 638, in solve_dependencies
+    solved = await call(**solved_result.values)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\core\dependencies.py", line 56, in get_current_user
+    data = await jwt_manager.decode(credentials.credentials)
+AttributeError: 'NoneType' object has no attribute 'credentials'
+[INFO][2026-04-23 11:01:41][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 11:01:41][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 11:01:41][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 11:01:48][mcp-cmn][middleware.py:50]- Request-[a761d877-d4d6-4497-9161-a2e19bf98208] GET /mcp-cmn/utils/jwt/decode 127.0.0.1
+[INFO][2026-04-23 11:01:48][mcp-cmn][middleware.py:51]- Headers-[a761d877-d4d6-4497-9161-a2e19bf98208] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[ERROR][2026-04-23 11:01:48][mcp-cmn][exception.py:48]- [a761d877-d4d6-4497-9161-a2e19bf98208] HTTPException -403- 403: Not authenticated
+[INFO][2026-04-23 11:01:48][mcp-cmn][middleware.py:71]- Response-[a761d877-d4d6-4497-9161-a2e19bf98208] GET /mcp-cmn/utils/jwt/decode 403 8.25ms
+[INFO][2026-04-23 11:02:19][mcp-cmn][middleware.py:50]- Request-[4caf8bfb-1a13-458c-abbe-87a311f5215e] GET /mcp-cmn/utils/jwt/decode 127.0.0.1
+[INFO][2026-04-23 11:02:19][mcp-cmn][middleware.py:51]- Headers-[4caf8bfb-1a13-458c-abbe-87a311f5215e] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:02:19][mcp-cmn][middleware.py:71]- Response-[4caf8bfb-1a13-458c-abbe-87a311f5215e] GET /mcp-cmn/utils/jwt/decode 200 4.24ms
+[INFO][2026-04-23 11:06:18][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 11:06:18][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 11:06:18][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 11:10:48][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 11:10:48][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 11:10:48][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 11:11:16][mcp-cmn][middleware.py:50]- Request-[14a2d414-0d94-4ede-8076-4ed59d66ea05] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 11:11:16][mcp-cmn][middleware.py:51]- Headers-[14a2d414-0d94-4ede-8076-4ed59d66ea05] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:11:16][mcp-cmn][middleware.py:71]- Response-[14a2d414-0d94-4ede-8076-4ed59d66ea05] GET /mcp-cmn/docs 200 6.23ms
+[INFO][2026-04-23 11:11:16][mcp-cmn][middleware.py:50]- Request-[aab42c2c-9c14-434a-981c-1b3083d5865b] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 11:11:16][mcp-cmn][middleware.py:51]- Headers-[aab42c2c-9c14-434a-981c-1b3083d5865b] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:11:16][mcp-cmn][middleware.py:71]- Response-[aab42c2c-9c14-434a-981c-1b3083d5865b] GET /mcp-cmn/openapi.json 200 37.05ms
+[INFO][2026-04-23 11:11:30][mcp-cmn][middleware.py:50]- Request-[aeb460eb-2c6a-4437-b709-0d2761ffaded] GET /mcp-cmn/utils/jwt/decode 127.0.0.1
+[INFO][2026-04-23 11:11:30][mcp-cmn][middleware.py:51]- Headers-[aeb460eb-2c6a-4437-b709-0d2761ffaded] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[ERROR][2026-04-23 11:11:30][mcp-cmn][jwt_manager.py:34]- [Error] 유효하지 않은 토큰입니다. (서명 불일치 또는 변조) Not enough segments
+[INFO][2026-04-23 11:11:30][mcp-cmn][middleware.py:71]- Response-[aeb460eb-2c6a-4437-b709-0d2761ffaded] GET /mcp-cmn/utils/jwt/decode error 22.11ms
+[ERROR][2026-04-23 11:11:30][mcp-cmn][exception.py:28]- [aeb460eb-2c6a-4437-b709-0d2761ffaded] DecodeError - Not enough segments
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 302, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    solved_result = await solve_dependencies(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 640, in solve_dependencies
+    solved = await run_in_threadpool(call, **solved_result.values)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 42, in get_current_user
+    data = decode(credentials.credentials)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 35, in decode
+    raise exc
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 27, in decode
+    data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 365, in decode
+    decoded = self.decode_complete(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 262, in decode_complete
+    decoded = self._jws.decode_complete(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 240, in decode_complete
+    payload, signing_input, header, signature = self._load(jwt)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 305, in _load
+    raise DecodeError("Not enough segments") from err
+jwt.exceptions.DecodeError: Not enough segments
+[INFO][2026-04-23 11:14:20][mcp-cmn][middleware.py:50]- Request-[b44d5885-9f09-4019-bfb1-c9389333037b] GET /mcp-cmn/utils/jwt/decode 127.0.0.1
+[INFO][2026-04-23 11:14:20][mcp-cmn][middleware.py:51]- Headers-[b44d5885-9f09-4019-bfb1-c9389333037b] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[ERROR][2026-04-23 11:14:20][mcp-cmn][jwt_manager.py:34]- [Error] 유효하지 않은 토큰입니다. (서명 불일치 또는 변조) Signature verification failed
+[INFO][2026-04-23 11:14:20][mcp-cmn][middleware.py:71]- Response-[b44d5885-9f09-4019-bfb1-c9389333037b] GET /mcp-cmn/utils/jwt/decode error 6.96ms
+[ERROR][2026-04-23 11:14:20][mcp-cmn][exception.py:28]- [b44d5885-9f09-4019-bfb1-c9389333037b] InvalidSignatureError - Signature verification failed
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    |     solved_result = await solve_dependencies(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 640, in solve_dependencies
+    |     solved = await run_in_threadpool(call, **solved_result.values)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    |     return await anyio.to_thread.run_sync(func, *args)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    |     return await get_async_backend().run_sync_in_worker_thread(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    |     return await future
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    |     result = context.run(func, *args)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 42, in get_current_user
+    |     data = decode(credentials.credentials)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 35, in decode
+    |     raise exc
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 27, in decode
+    |     data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 365, in decode
+    |     decoded = self.decode_complete(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 262, in decode_complete
+    |     decoded = self._jws.decode_complete(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 253, in decode_complete
+    |     self._verify_signature(signing_input, header, signature, key, algorithms)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 368, in _verify_signature
+    |     raise InvalidSignatureError("Signature verification failed")
+    | jwt.exceptions.InvalidSignatureError: Signature verification failed
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    solved_result = await solve_dependencies(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 640, in solve_dependencies
+    solved = await run_in_threadpool(call, **solved_result.values)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 42, in get_current_user
+    data = decode(credentials.credentials)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 35, in decode
+    raise exc
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 27, in decode
+    data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 365, in decode
+    decoded = self.decode_complete(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 262, in decode_complete
+    decoded = self._jws.decode_complete(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 253, in decode_complete
+    self._verify_signature(signing_input, header, signature, key, algorithms)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 368, in _verify_signature
+    raise InvalidSignatureError("Signature verification failed")
+jwt.exceptions.InvalidSignatureError: Signature verification failed
+[INFO][2026-04-23 11:14:22][mcp-cmn][middleware.py:50]- Request-[af11cc45-4aaa-4d6f-a4a4-50ab85e0e6ba] GET /mcp-cmn/utils/jwt/decode 127.0.0.1
+[INFO][2026-04-23 11:14:22][mcp-cmn][middleware.py:51]- Headers-[af11cc45-4aaa-4d6f-a4a4-50ab85e0e6ba] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[ERROR][2026-04-23 11:14:22][mcp-cmn][jwt_manager.py:34]- [Error] 유효하지 않은 토큰입니다. (서명 불일치 또는 변조) Signature verification failed
+[INFO][2026-04-23 11:14:22][mcp-cmn][middleware.py:71]- Response-[af11cc45-4aaa-4d6f-a4a4-50ab85e0e6ba] GET /mcp-cmn/utils/jwt/decode error 6.77ms
+[ERROR][2026-04-23 11:14:22][mcp-cmn][exception.py:28]- [af11cc45-4aaa-4d6f-a4a4-50ab85e0e6ba] InvalidSignatureError - Signature verification failed
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    |     solved_result = await solve_dependencies(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 640, in solve_dependencies
+    |     solved = await run_in_threadpool(call, **solved_result.values)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    |     return await anyio.to_thread.run_sync(func, *args)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    |     return await get_async_backend().run_sync_in_worker_thread(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    |     return await future
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    |     result = context.run(func, *args)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 42, in get_current_user
+    |     data = decode(credentials.credentials)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 35, in decode
+    |     raise exc
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 27, in decode
+    |     data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 365, in decode
+    |     decoded = self.decode_complete(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 262, in decode_complete
+    |     decoded = self._jws.decode_complete(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 253, in decode_complete
+    |     self._verify_signature(signing_input, header, signature, key, algorithms)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 368, in _verify_signature
+    |     raise InvalidSignatureError("Signature verification failed")
+    | jwt.exceptions.InvalidSignatureError: Signature verification failed
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    solved_result = await solve_dependencies(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 640, in solve_dependencies
+    solved = await run_in_threadpool(call, **solved_result.values)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 42, in get_current_user
+    data = decode(credentials.credentials)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 35, in decode
+    raise exc
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 27, in decode
+    data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 365, in decode
+    decoded = self.decode_complete(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 262, in decode_complete
+    decoded = self._jws.decode_complete(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 253, in decode_complete
+    self._verify_signature(signing_input, header, signature, key, algorithms)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 368, in _verify_signature
+    raise InvalidSignatureError("Signature verification failed")
+jwt.exceptions.InvalidSignatureError: Signature verification failed
+[INFO][2026-04-23 11:15:13][mcp-cmn][middleware.py:50]- Request-[38c88e7c-e115-453a-a328-1cafd245df4b] GET /mcp-cmn/utils/jwt/decode 127.0.0.1
+[INFO][2026-04-23 11:15:13][mcp-cmn][middleware.py:51]- Headers-[38c88e7c-e115-453a-a328-1cafd245df4b] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[ERROR][2026-04-23 11:15:13][mcp-cmn][jwt_manager.py:34]- [Error] 유효하지 않은 토큰입니다. (서명 불일치 또는 변조) Signature verification failed
+[INFO][2026-04-23 11:15:13][mcp-cmn][middleware.py:71]- Response-[38c88e7c-e115-453a-a328-1cafd245df4b] GET /mcp-cmn/utils/jwt/decode error 14.91ms
+[ERROR][2026-04-23 11:15:13][mcp-cmn][exception.py:28]- [38c88e7c-e115-453a-a328-1cafd245df4b] InvalidSignatureError - Signature verification failed
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    |     solved_result = await solve_dependencies(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 640, in solve_dependencies
+    |     solved = await run_in_threadpool(call, **solved_result.values)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    |     return await anyio.to_thread.run_sync(func, *args)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    |     return await get_async_backend().run_sync_in_worker_thread(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    |     return await future
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    |     result = context.run(func, *args)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 42, in get_current_user
+    |     data = decode(credentials.credentials)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 35, in decode
+    |     raise exc
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 27, in decode
+    |     data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 365, in decode
+    |     decoded = self.decode_complete(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 262, in decode_complete
+    |     decoded = self._jws.decode_complete(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 253, in decode_complete
+    |     self._verify_signature(signing_input, header, signature, key, algorithms)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 368, in _verify_signature
+    |     raise InvalidSignatureError("Signature verification failed")
+    | jwt.exceptions.InvalidSignatureError: Signature verification failed
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    solved_result = await solve_dependencies(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 640, in solve_dependencies
+    solved = await run_in_threadpool(call, **solved_result.values)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 42, in get_current_user
+    data = decode(credentials.credentials)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 35, in decode
+    raise exc
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 27, in decode
+    data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 365, in decode
+    decoded = self.decode_complete(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 262, in decode_complete
+    decoded = self._jws.decode_complete(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 253, in decode_complete
+    self._verify_signature(signing_input, header, signature, key, algorithms)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 368, in _verify_signature
+    raise InvalidSignatureError("Signature verification failed")
+jwt.exceptions.InvalidSignatureError: Signature verification failed
+[INFO][2026-04-23 11:18:31][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 11:18:31][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 11:18:31][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 11:18:43][mcp-cmn][middleware.py:50]- Request-[059921aa-cb3c-47f5-890d-0b6b6dbd8b7b] GET /mcp-cmn/utils/jwt/decode 127.0.0.1
+[INFO][2026-04-23 11:18:43][mcp-cmn][middleware.py:51]- Headers-[059921aa-cb3c-47f5-890d-0b6b6dbd8b7b] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[ERROR][2026-04-23 11:18:43][mcp-cmn][jwt_manager.py:34]- [Error] 유효하지 않은 토큰입니다. (서명 불일치 또는 변조) Signature verification failed
+[INFO][2026-04-23 11:18:43][mcp-cmn][middleware.py:71]- Response-[059921aa-cb3c-47f5-890d-0b6b6dbd8b7b] GET /mcp-cmn/utils/jwt/decode error 18.42ms
+[ERROR][2026-04-23 11:18:43][mcp-cmn][exception.py:28]- [059921aa-cb3c-47f5-890d-0b6b6dbd8b7b] InvalidSignatureError - Signature verification failed
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    |     solved_result = await solve_dependencies(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 640, in solve_dependencies
+    |     solved = await run_in_threadpool(call, **solved_result.values)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    |     return await anyio.to_thread.run_sync(func, *args)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    |     return await get_async_backend().run_sync_in_worker_thread(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    |     return await future
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    |     result = context.run(func, *args)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 42, in get_current_user
+    |     data = decode(credentials.credentials)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 35, in decode
+    |     raise exc
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 27, in decode
+    |     data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 365, in decode
+    |     decoded = self.decode_complete(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 262, in decode_complete
+    |     decoded = self._jws.decode_complete(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 253, in decode_complete
+    |     self._verify_signature(signing_input, header, signature, key, algorithms)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 368, in _verify_signature
+    |     raise InvalidSignatureError("Signature verification failed")
+    | jwt.exceptions.InvalidSignatureError: Signature verification failed
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    solved_result = await solve_dependencies(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 640, in solve_dependencies
+    solved = await run_in_threadpool(call, **solved_result.values)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 42, in get_current_user
+    data = decode(credentials.credentials)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 35, in decode
+    raise exc
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 27, in decode
+    data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 365, in decode
+    decoded = self.decode_complete(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 262, in decode_complete
+    decoded = self._jws.decode_complete(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 253, in decode_complete
+    self._verify_signature(signing_input, header, signature, key, algorithms)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 368, in _verify_signature
+    raise InvalidSignatureError("Signature verification failed")
+jwt.exceptions.InvalidSignatureError: Signature verification failed
+[INFO][2026-04-23 11:18:46][mcp-cmn][middleware.py:50]- Request-[c79f0414-6e24-4da3-b551-683e99625b5f] GET /mcp-cmn/utils/jwt/decode 127.0.0.1
+[INFO][2026-04-23 11:18:46][mcp-cmn][middleware.py:51]- Headers-[c79f0414-6e24-4da3-b551-683e99625b5f] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[ERROR][2026-04-23 11:18:46][mcp-cmn][jwt_manager.py:34]- [Error] 유효하지 않은 토큰입니다. (서명 불일치 또는 변조) Signature verification failed
+[INFO][2026-04-23 11:18:46][mcp-cmn][middleware.py:71]- Response-[c79f0414-6e24-4da3-b551-683e99625b5f] GET /mcp-cmn/utils/jwt/decode error 14.30ms
+[ERROR][2026-04-23 11:18:46][mcp-cmn][exception.py:28]- [c79f0414-6e24-4da3-b551-683e99625b5f] InvalidSignatureError - Signature verification failed
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    |     solved_result = await solve_dependencies(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 640, in solve_dependencies
+    |     solved = await run_in_threadpool(call, **solved_result.values)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    |     return await anyio.to_thread.run_sync(func, *args)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    |     return await get_async_backend().run_sync_in_worker_thread(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    |     return await future
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    |     result = context.run(func, *args)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 42, in get_current_user
+    |     data = decode(credentials.credentials)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 35, in decode
+    |     raise exc
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 27, in decode
+    |     data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 365, in decode
+    |     decoded = self.decode_complete(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 262, in decode_complete
+    |     decoded = self._jws.decode_complete(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 253, in decode_complete
+    |     self._verify_signature(signing_input, header, signature, key, algorithms)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 368, in _verify_signature
+    |     raise InvalidSignatureError("Signature verification failed")
+    | jwt.exceptions.InvalidSignatureError: Signature verification failed
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    solved_result = await solve_dependencies(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 640, in solve_dependencies
+    solved = await run_in_threadpool(call, **solved_result.values)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 42, in get_current_user
+    data = decode(credentials.credentials)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 35, in decode
+    raise exc
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 27, in decode
+    data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 365, in decode
+    decoded = self.decode_complete(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 262, in decode_complete
+    decoded = self._jws.decode_complete(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 253, in decode_complete
+    self._verify_signature(signing_input, header, signature, key, algorithms)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 368, in _verify_signature
+    raise InvalidSignatureError("Signature verification failed")
+jwt.exceptions.InvalidSignatureError: Signature verification failed
+[INFO][2026-04-23 11:18:49][mcp-cmn][middleware.py:50]- Request-[f682f2c7-d3a6-4657-b354-c2d2abfb6c0f] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 11:18:49][mcp-cmn][middleware.py:51]- Headers-[f682f2c7-d3a6-4657-b354-c2d2abfb6c0f] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:18:49][mcp-cmn][middleware.py:71]- Response-[f682f2c7-d3a6-4657-b354-c2d2abfb6c0f] GET /mcp-cmn/docs 200 5.74ms
+[INFO][2026-04-23 11:18:49][mcp-cmn][middleware.py:50]- Request-[7f7466c4-843b-4adc-bae5-5806a10e6999] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 11:18:49][mcp-cmn][middleware.py:51]- Headers-[7f7466c4-843b-4adc-bae5-5806a10e6999] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:18:49][mcp-cmn][middleware.py:71]- Response-[7f7466c4-843b-4adc-bae5-5806a10e6999] GET /mcp-cmn/openapi.json 200 43.19ms
+[INFO][2026-04-23 11:18:56][mcp-cmn][middleware.py:50]- Request-[c67e94d3-270f-4b37-ab33-f14ef4d54cc4] GET /mcp-cmn/utils/jwt/decode 127.0.0.1
+[INFO][2026-04-23 11:18:56][mcp-cmn][middleware.py:51]- Headers-[c67e94d3-270f-4b37-ab33-f14ef4d54cc4] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:18:56][mcp-cmn][middleware.py:71]- Response-[c67e94d3-270f-4b37-ab33-f14ef4d54cc4] GET /mcp-cmn/utils/jwt/decode error 4.97ms
+[ERROR][2026-04-23 11:18:56][mcp-cmn][exception.py:28]- [c67e94d3-270f-4b37-ab33-f14ef4d54cc4] AttributeError - 'NoneType' object has no attribute 'credentials'
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    |     solved_result = await solve_dependencies(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 640, in solve_dependencies
+    |     solved = await run_in_threadpool(call, **solved_result.values)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    |     return await anyio.to_thread.run_sync(func, *args)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    |     return await get_async_backend().run_sync_in_worker_thread(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    |     return await future
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    |     result = context.run(func, *args)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 42, in get_current_user
+    |     data = decode(credentials.credentials)
+    | AttributeError: 'NoneType' object has no attribute 'credentials'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    solved_result = await solve_dependencies(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 640, in solve_dependencies
+    solved = await run_in_threadpool(call, **solved_result.values)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 42, in get_current_user
+    data = decode(credentials.credentials)
+AttributeError: 'NoneType' object has no attribute 'credentials'
+[INFO][2026-04-23 11:19:24][mcp-cmn][middleware.py:50]- Request-[561a3bae-3b5a-41a9-b7e4-8068052c6205] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 11:19:24][mcp-cmn][middleware.py:51]- Headers-[561a3bae-3b5a-41a9-b7e4-8068052c6205] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:19:24][mcp-cmn][middleware.py:71]- Response-[561a3bae-3b5a-41a9-b7e4-8068052c6205] GET /mcp-cmn/docs 200 2.41ms
+[INFO][2026-04-23 11:19:24][mcp-cmn][middleware.py:50]- Request-[b4f3365f-c8d6-43bd-a250-fda1fa51e057] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 11:19:24][mcp-cmn][middleware.py:51]- Headers-[b4f3365f-c8d6-43bd-a250-fda1fa51e057] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:19:24][mcp-cmn][middleware.py:71]- Response-[b4f3365f-c8d6-43bd-a250-fda1fa51e057] GET /mcp-cmn/openapi.json 200 3.24ms
+[INFO][2026-04-23 11:19:34][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 11:19:34][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 11:19:34][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 11:19:36][mcp-cmn][middleware.py:50]- Request-[fcb642e3-b082-48a8-be31-01a0bb4f97f4] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 11:19:36][mcp-cmn][middleware.py:51]- Headers-[fcb642e3-b082-48a8-be31-01a0bb4f97f4] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:19:36][mcp-cmn][middleware.py:71]- Response-[fcb642e3-b082-48a8-be31-01a0bb4f97f4] GET /mcp-cmn/docs 200 6.29ms
+[INFO][2026-04-23 11:19:37][mcp-cmn][middleware.py:50]- Request-[bf55a5d5-0278-4ef3-891f-8f58b93eff70] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 11:19:37][mcp-cmn][middleware.py:51]- Headers-[bf55a5d5-0278-4ef3-891f-8f58b93eff70] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:19:37][mcp-cmn][middleware.py:71]- Response-[bf55a5d5-0278-4ef3-891f-8f58b93eff70] GET /mcp-cmn/openapi.json 200 38.72ms
+[INFO][2026-04-23 11:19:45][mcp-cmn][middleware.py:50]- Request-[82ab9abb-dd09-4bc2-87d8-b6cae593916d] GET /mcp-cmn/utils/jwt/decode 127.0.0.1
+[INFO][2026-04-23 11:19:45][mcp-cmn][middleware.py:51]- Headers-[82ab9abb-dd09-4bc2-87d8-b6cae593916d] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[ERROR][2026-04-23 11:19:45][mcp-cmn][exception.py:48]- [82ab9abb-dd09-4bc2-87d8-b6cae593916d] HTTPException -403- 403: Not authenticated
+[INFO][2026-04-23 11:19:45][mcp-cmn][middleware.py:71]- Response-[82ab9abb-dd09-4bc2-87d8-b6cae593916d] GET /mcp-cmn/utils/jwt/decode 403 4.95ms
+[INFO][2026-04-23 11:20:17][mcp-cmn][middleware.py:50]- Request-[d9ba0b5a-e5b9-4062-a383-62bc57bc144e] GET /mcp-cmn/utils/jwt/decode 127.0.0.1
+[INFO][2026-04-23 11:20:17][mcp-cmn][middleware.py:51]- Headers-[d9ba0b5a-e5b9-4062-a383-62bc57bc144e] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[ERROR][2026-04-23 11:20:17][mcp-cmn][jwt_manager.py:34]- [Error] 유효하지 않은 토큰입니다. (서명 불일치 또는 변조) Signature verification failed
+[INFO][2026-04-23 11:20:17][mcp-cmn][middleware.py:71]- Response-[d9ba0b5a-e5b9-4062-a383-62bc57bc144e] GET /mcp-cmn/utils/jwt/decode error 17.88ms
+[ERROR][2026-04-23 11:20:17][mcp-cmn][exception.py:28]- [d9ba0b5a-e5b9-4062-a383-62bc57bc144e] InvalidSignatureError - Signature verification failed
+  + Exception Group Traceback (most recent call last):
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 186, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    |     with collapse_excgroups():
+    |   File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    |     response = await call_next(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    |     raise app_exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    |     await route.handle(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    |     solved_result = await solve_dependencies(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 640, in solve_dependencies
+    |     solved = await run_in_threadpool(call, **solved_result.values)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    |     return await anyio.to_thread.run_sync(func, *args)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    |     return await get_async_backend().run_sync_in_worker_thread(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    |     return await future
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    |     result = context.run(func, *args)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 42, in get_current_user
+    |     data = decode(credentials.credentials)
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 35, in decode
+    |     raise exc
+    |   File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 27, in decode
+    |     data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 365, in decode
+    |     decoded = self.decode_complete(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 262, in decode_complete
+    |     decoded = self._jws.decode_complete(
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 253, in decode_complete
+    |     self._verify_signature(signing_input, header, signature, key, algorithms)
+    |   File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 368, in _verify_signature
+    |     raise InvalidSignatureError("Signature verification failed")
+    | jwt.exceptions.InvalidSignatureError: Signature verification failed
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    solved_result = await solve_dependencies(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 640, in solve_dependencies
+    solved = await run_in_threadpool(call, **solved_result.values)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 42, in get_current_user
+    data = decode(credentials.credentials)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 35, in decode
+    raise exc
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 27, in decode
+    data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 365, in decode
+    decoded = self.decode_complete(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 262, in decode_complete
+    decoded = self._jws.decode_complete(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 253, in decode_complete
+    self._verify_signature(signing_input, header, signature, key, algorithms)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 368, in _verify_signature
+    raise InvalidSignatureError("Signature verification failed")
+jwt.exceptions.InvalidSignatureError: Signature verification failed
+[INFO][2026-04-23 11:25:17][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 11:25:17][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 11:25:17][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 11:25:35][mcp-cmn][middleware.py:50]- Request-[420c7f87-201c-4a28-bfc5-720b375f6e9a] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 11:25:35][mcp-cmn][middleware.py:51]- Headers-[420c7f87-201c-4a28-bfc5-720b375f6e9a] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:25:35][mcp-cmn][middleware.py:71]- Response-[420c7f87-201c-4a28-bfc5-720b375f6e9a] GET /mcp-cmn/docs 200 7.72ms
+[INFO][2026-04-23 11:25:35][mcp-cmn][middleware.py:50]- Request-[e8199557-0026-4cc2-94d3-19cd50c850b0] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 11:25:35][mcp-cmn][middleware.py:51]- Headers-[e8199557-0026-4cc2-94d3-19cd50c850b0] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:25:35][mcp-cmn][middleware.py:71]- Response-[e8199557-0026-4cc2-94d3-19cd50c850b0] GET /mcp-cmn/openapi.json 200 41.67ms
+[INFO][2026-04-23 11:26:12][mcp-cmn][middleware.py:50]- Request-[60eed0ff-e029-4097-a8fb-fa9e14799c2e] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 11:26:12][mcp-cmn][middleware.py:51]- Headers-[60eed0ff-e029-4097-a8fb-fa9e14799c2e] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:26:12][mcp-cmn][middleware.py:71]- Response-[60eed0ff-e029-4097-a8fb-fa9e14799c2e] GET /mcp-cmn/docs 200 4.09ms
+[INFO][2026-04-23 11:26:12][mcp-cmn][middleware.py:50]- Request-[9be1aca8-7323-44f0-9997-2c7810ba4eea] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 11:26:12][mcp-cmn][middleware.py:51]- Headers-[9be1aca8-7323-44f0-9997-2c7810ba4eea] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:26:12][mcp-cmn][middleware.py:71]- Response-[9be1aca8-7323-44f0-9997-2c7810ba4eea] GET /mcp-cmn/openapi.json 200 3.37ms
+[INFO][2026-04-23 11:27:11][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 11:27:11][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 11:27:11][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 11:27:19][mcp-cmn][middleware.py:50]- Request-[a82eac3e-be90-44a3-ae88-9351e786c983] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 11:27:19][mcp-cmn][middleware.py:51]- Headers-[a82eac3e-be90-44a3-ae88-9351e786c983] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:27:19][mcp-cmn][middleware.py:71]- Response-[a82eac3e-be90-44a3-ae88-9351e786c983] GET /mcp-cmn/docs 200 5.58ms
+[INFO][2026-04-23 11:27:19][mcp-cmn][middleware.py:50]- Request-[a3508f66-17c3-4439-abc0-244db9f4515b] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 11:27:19][mcp-cmn][middleware.py:51]- Headers-[a3508f66-17c3-4439-abc0-244db9f4515b] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:27:19][mcp-cmn][middleware.py:71]- Response-[a3508f66-17c3-4439-abc0-244db9f4515b] GET /mcp-cmn/openapi.json 200 40.12ms
+[INFO][2026-04-23 11:27:20][mcp-cmn][middleware.py:50]- Request-[5589aa43-67ab-41fc-88a5-f167e8ad44a3] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 11:27:20][mcp-cmn][middleware.py:51]- Headers-[5589aa43-67ab-41fc-88a5-f167e8ad44a3] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:27:20][mcp-cmn][middleware.py:71]- Response-[5589aa43-67ab-41fc-88a5-f167e8ad44a3] GET /mcp-cmn/docs 200 4.12ms
+[INFO][2026-04-23 11:27:20][mcp-cmn][middleware.py:50]- Request-[a07ed638-44eb-4ebb-85b3-e69fcdf1ba85] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 11:27:20][mcp-cmn][middleware.py:51]- Headers-[a07ed638-44eb-4ebb-85b3-e69fcdf1ba85] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:27:20][mcp-cmn][middleware.py:71]- Response-[a07ed638-44eb-4ebb-85b3-e69fcdf1ba85] GET /mcp-cmn/openapi.json 200 4.75ms
+[INFO][2026-04-23 11:27:54][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 11:27:54][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 11:27:54][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 11:28:15][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 11:28:15][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 11:28:15][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 11:28:17][mcp-cmn][middleware.py:50]- Request-[cfc2c7ac-7efb-437c-bb24-581c9fc0a502] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 11:28:17][mcp-cmn][middleware.py:51]- Headers-[cfc2c7ac-7efb-437c-bb24-581c9fc0a502] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:28:17][mcp-cmn][middleware.py:71]- Response-[cfc2c7ac-7efb-437c-bb24-581c9fc0a502] GET /mcp-cmn/docs 200 6.08ms
+[INFO][2026-04-23 11:28:17][mcp-cmn][middleware.py:50]- Request-[059f118c-93a5-4642-ac31-59906f33ece2] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 11:28:17][mcp-cmn][middleware.py:51]- Headers-[059f118c-93a5-4642-ac31-59906f33ece2] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:28:17][mcp-cmn][middleware.py:71]- Response-[059f118c-93a5-4642-ac31-59906f33ece2] GET /mcp-cmn/openapi.json 200 42.79ms
+[INFO][2026-04-23 11:28:21][mcp-cmn][middleware.py:50]- Request-[9696c08f-9ce2-4311-a066-696bc90a8201] POST /mcp-cmn/utils/jwt/encode 127.0.0.1
+[INFO][2026-04-23 11:28:21][mcp-cmn][middleware.py:51]- Headers-[9696c08f-9ce2-4311-a066-696bc90a8201] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "content-length": "137",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "content-type": "application/json",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://127.0.0.1:8004",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:28:21][mcp-cmn][middleware.py:71]- Response-[9696c08f-9ce2-4311-a066-696bc90a8201] POST /mcp-cmn/utils/jwt/encode 200 21.35ms
+[INFO][2026-04-23 11:28:46][mcp-cmn][middleware.py:50]- Request-[21064f04-e412-485d-8642-ad963048b27d] GET /mcp-cmn/utils/jwt/decode 127.0.0.1
+[INFO][2026-04-23 11:28:46][mcp-cmn][middleware.py:51]- Headers-[21064f04-e412-485d-8642-ad963048b27d] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:28:46][mcp-cmn][middleware.py:71]- Response-[21064f04-e412-485d-8642-ad963048b27d] GET /mcp-cmn/utils/jwt/decode 200 11.57ms
+[INFO][2026-04-23 11:29:46][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 11:29:46][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 11:29:46][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 11:30:01][mcp-cmn][middleware.py:50]- Request-[e0631171-ba8d-4668-b3e2-d101f2f01d50] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 11:30:01][mcp-cmn][middleware.py:51]- Headers-[e0631171-ba8d-4668-b3e2-d101f2f01d50] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:30:01][mcp-cmn][middleware.py:71]- Response-[e0631171-ba8d-4668-b3e2-d101f2f01d50] GET /mcp-cmn/docs 200 7.80ms
+[INFO][2026-04-23 11:30:01][mcp-cmn][middleware.py:50]- Request-[2eb9341c-3135-4957-b3ae-277302dace00] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 11:30:01][mcp-cmn][middleware.py:51]- Headers-[2eb9341c-3135-4957-b3ae-277302dace00] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:30:01][mcp-cmn][middleware.py:71]- Response-[2eb9341c-3135-4957-b3ae-277302dace00] GET /mcp-cmn/openapi.json 200 38.31ms
+[INFO][2026-04-23 11:30:06][mcp-cmn][middleware.py:50]- Request-[4226f273-66fe-4fda-81ab-4c72c1cdf94d] POST /mcp-cmn/utils/jwt/encode 127.0.0.1
+[INFO][2026-04-23 11:30:06][mcp-cmn][middleware.py:51]- Headers-[4226f273-66fe-4fda-81ab-4c72c1cdf94d] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "content-length": "137",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "content-type": "application/json",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://127.0.0.1:8004",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:30:37][mcp-cmn][middleware.py:71]- Response-[4226f273-66fe-4fda-81ab-4c72c1cdf94d] POST /mcp-cmn/utils/jwt/encode 200 30448.35ms
+[INFO][2026-04-23 11:31:10][mcp-cmn][middleware.py:50]- Request-[f20640b0-2f9a-4dca-9b1a-8048ab035a15] GET /mcp-cmn/utils/jwt/decode 127.0.0.1
+[INFO][2026-04-23 11:31:10][mcp-cmn][middleware.py:51]- Headers-[f20640b0-2f9a-4dca-9b1a-8048ab035a15] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[ERROR][2026-04-23 11:31:26][mcp-cmn][jwt_manager.py:46]- [Error] 유효하지 않은 토큰입니다. (서명 불일치 또는 변조) Invalid header padding
+[INFO][2026-04-23 11:31:26][mcp-cmn][middleware.py:71]- Response-[f20640b0-2f9a-4dca-9b1a-8048ab035a15] GET /mcp-cmn/utils/jwt/decode error 15420.24ms
+[ERROR][2026-04-23 11:31:26][mcp-cmn][exception.py:28]- [f20640b0-2f9a-4dca-9b1a-8048ab035a15] DecodeError - Invalid header padding
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 308, in _load
+    header_data = base64url_decode(header_segment)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\utils.py", line 33, in base64url_decode
+    return base64.urlsafe_b64decode(input_bytes)
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\base64.py", line 133, in urlsafe_b64decode
+    return b64decode(s)
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\base64.py", line 87, in b64decode
+    return binascii.a2b_base64(s)
+binascii.Error: Incorrect padding
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\LAPTOP-01\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\base\middleware.py", line 57, in dispatch
+    response = await call_next(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\routing.py", line 291, in app
+    solved_result = await solve_dependencies(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\fastapi\dependencies\utils.py", line 640, in solve_dependencies
+    solved = await run_in_threadpool(call, **solved_result.values)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 54, in get_current_user
+    def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security))->User:
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 47, in decode
+    logger.error(f"[Error] 유효하지 않은 토큰입니다. (서명 불일치 또는 변조) {exc}")
+  File "C:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\cmn\utils\jwt_manager.py", line 39, in decode
+    data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 365, in decode
+    decoded = self.decode_complete(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jwt.py", line 262, in decode_complete
+    decoded = self._jws.decode_complete(
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 240, in decode_complete
+    payload, signing_input, header, signature = self._load(jwt)
+  File "c:\Users\LAPTOP-01\Desktop\workspace\mcp-mail\.venv\lib\site-packages\jwt\api_jws.py", line 310, in _load
+    raise DecodeError("Invalid header padding") from err
+jwt.exceptions.DecodeError: Invalid header padding
+[INFO][2026-04-23 11:31:43][mcp-cmn][middleware.py:50]- Request-[03dff7b2-8263-469d-8852-45551d19c0be] POST /mcp-cmn/utils/jwt/encode 127.0.0.1
+[INFO][2026-04-23 11:31:43][mcp-cmn][middleware.py:51]- Headers-[03dff7b2-8263-469d-8852-45551d19c0be] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "content-length": "137",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "content-type": "application/json",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://127.0.0.1:8004",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:31:53][mcp-cmn][middleware.py:71]- Response-[03dff7b2-8263-469d-8852-45551d19c0be] POST /mcp-cmn/utils/jwt/encode 200 10365.02ms
+[INFO][2026-04-23 11:31:58][mcp-cmn][middleware.py:50]- Request-[ff0537d4-511e-462e-a1ff-54955177cf04] GET /mcp-cmn/utils/jwt/decode 127.0.0.1
+[INFO][2026-04-23 11:31:58][mcp-cmn][middleware.py:51]- Headers-[ff0537d4-511e-462e-a1ff-54955177cf04] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:32:46][mcp-cmn][middleware.py:71]- Response-[ff0537d4-511e-462e-a1ff-54955177cf04] GET /mcp-cmn/utils/jwt/decode 200 47809.20ms
+[INFO][2026-04-23 11:35:27][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 11:35:27][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 11:35:27][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 11:35:46][mcp-cmn][middleware.py:50]- Request-[ec92daca-1ee0-4549-8ad8-e8338706844e] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 11:35:46][mcp-cmn][middleware.py:51]- Headers-[ec92daca-1ee0-4549-8ad8-e8338706844e] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:35:46][mcp-cmn][middleware.py:71]- Response-[ec92daca-1ee0-4549-8ad8-e8338706844e] GET /mcp-cmn/docs 200 8.02ms
+[INFO][2026-04-23 11:35:46][mcp-cmn][middleware.py:50]- Request-[44c5c346-a54e-4d8f-b150-6ccdc1f3b69c] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 11:35:46][mcp-cmn][middleware.py:51]- Headers-[44c5c346-a54e-4d8f-b150-6ccdc1f3b69c] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:35:46][mcp-cmn][middleware.py:71]- Response-[44c5c346-a54e-4d8f-b150-6ccdc1f3b69c] GET /mcp-cmn/openapi.json 200 43.72ms
+[INFO][2026-04-23 11:35:51][mcp-cmn][middleware.py:50]- Request-[1428d136-5aba-4a1f-90ec-1cb59d01d2e7] POST /mcp-cmn/utils/jwt/encode 127.0.0.1
+[INFO][2026-04-23 11:35:51][mcp-cmn][middleware.py:51]- Headers-[1428d136-5aba-4a1f-90ec-1cb59d01d2e7] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "content-length": "137",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "content-type": "application/json",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://127.0.0.1:8004",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:35:57][mcp-cmn][middleware.py:71]- Response-[1428d136-5aba-4a1f-90ec-1cb59d01d2e7] POST /mcp-cmn/utils/jwt/encode 200 6143.66ms
+[INFO][2026-04-23 11:36:13][mcp-cmn][middleware.py:50]- Request-[6a478943-b36e-4e54-8361-bf82e782a032] GET /mcp-cmn/utils/jwt/decode 127.0.0.1
+[INFO][2026-04-23 11:36:13][mcp-cmn][middleware.py:51]- Headers-[6a478943-b36e-4e54-8361-bf82e782a032] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:36:26][mcp-cmn][middleware.py:71]- Response-[6a478943-b36e-4e54-8361-bf82e782a032] GET /mcp-cmn/utils/jwt/decode 200 12269.48ms

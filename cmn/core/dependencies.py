@@ -1,12 +1,17 @@
 from fastapi import Request, Depends, Header, HTTPException, Query
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from collections.abc import AsyncGenerator
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from cmn.core.database import Database
+from cmn.schemas.user import User
+from cmn.utils import jwt_manager
 
 from loguru import logger
 
 
+
+# db engine을 그대로 받아서 서비스에서 세션 연결
 async def get_db(request: Request):
      return request.app.state.db
 
@@ -44,3 +49,9 @@ async def get_db_session_for_oauth_state(
     
     async for session in db.get_session_schema(company_code):
             yield session
+
+
+
+
+     
+     

@@ -21,7 +21,7 @@ from cmn.schemas.response import CommonResponse
 from cmn.services.auth_service import AuthService
 
 
-m365_oauth_router = APIRouter(prefix="/api/auth",tags=["m365_oauth"])
+auth_router = APIRouter(prefix="/api/auth",tags=["m365_oauth"])
 
 
 class AuthRequest(BaseModel):
@@ -31,7 +31,7 @@ class AuthRequest(BaseModel):
 
 
 # MS 접근 권한 가져오기 
-@m365_oauth_router.post("/")
+@auth_router.post("/")
 async def auth(
     payload: AuthRequest,
     auth_service: AuthService = Depends(AuthService),
@@ -42,7 +42,7 @@ async def auth(
     
 
 
-# @m365_oauth_router.get("/m365/start")
+# @auth_router.get("/m365/start")
 # async def start_m365_oauth(request: Request):
 #     """
 #     브라우저에서 호출되는 OAuth 시작점입니다.
@@ -89,7 +89,7 @@ async def auth(
 
 
 
-@m365_oauth_router.get("/m365/callback")
+@auth_router.get("/m365/callback")
 async def callback_m365_oauth_delegate(
     request: Request,
     db: AsyncSession = Depends(get_db_session_for_oauth_state)
@@ -213,7 +213,7 @@ async def callback_m365_oauth_delegate(
 
 
 # user 위임 권한 가져오기
-@m365_oauth_router.get("/user/token")
+@auth_router.get("/user/token")
 async def user_toekn(
     app_name: str = Query(...,description="앱 이름"),
     user_id: str = Query(...,description="사용자 ID"),
@@ -317,3 +317,7 @@ async def user_toekn(
     return {
         "access_token": access_token
     }
+
+
+
+

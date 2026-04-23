@@ -20,4 +20,7 @@ class Settings(BaseSettings):
     OTEL_SERVICE_NAME: str = "mcp-cmn"
     OTEL_SERVICE_VERSION: str = "1.0.0"
 
+    JWT_SECRET_KEY: str = "your_jwt_decode_secret_key"
+    JWT_ALGORITHM: str = "HS256"
+
 settings = Settings()
