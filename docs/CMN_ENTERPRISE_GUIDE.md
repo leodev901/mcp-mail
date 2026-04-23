@@ -2,7 +2,8 @@
 
 ## 목적
 
-`cmn` 앱에 반영한 엔터프라이즈 스타일 설계 의도를 정리합니다. 이 문서는 현재 구현이 왜 `router -> dependency -> service -> repository/crud -> model` 흐름을 지향하는지 설명합니다.
+`cmn` 앱에 반영한 엔터프라이즈 스타일 설계 의도를 정리합니다. 이 문서는 현재 구현이 왜 `router -> dependency -> service -> repository/crud -> model` 흐름을 지향하는지 설명합니다.  
+동시에 이 구조가 공통 서버 1개와 MCP 서버 N개를 독립 배포하는 MSA 운영 모델과 어떻게 연결되는지도 함께 설명합니다.
 
 ## 핵심 구조
 
@@ -44,6 +45,44 @@ flowchart LR
 - Service는 유스케이스를 조합하고, Repository/CRUD는 DB 조회와 저장 접근을 분리합니다.
 - Middleware와 Exception Handler는 비즈니스 코드 밖에서 횡단 관심사를 처리합니다.
 
+## MSA 관점에서 본 `cmn`
+
+```mermaid
+flowchart LR
+    Client["Client / Agent"]
+    MCP1["MCP Server A"]
+    MCP2["MCP Server B"]
+    MCPN["MCP Server N"]
+    CMN["cmn<br/>Common Platform API"]
+    DB["PostgreSQL"]
+    Pipeline1["CI/CD A + Helm A"]
+    Pipeline2["CI/CD B + Helm B"]
+    PipelineC["CI/CD cmn + Helm cmn"]
+
+    Client --> MCP1
+    Client --> MCP2
+    Client --> MCPN
+    MCP1 --> CMN
+    MCP2 --> CMN
+    MCPN --> CMN
+    CMN --> DB
+    Pipeline1 --> MCP1
+    Pipeline2 --> MCP2
+    PipelineC --> CMN
+```
+
+코드 경로:
+- `app/`
+- `cmn/`
+- `cmn/main.py`
+- `app/main.py`
+
+설명:
+- 애플리케이션 경계는 `cmn`과 각 MCP 서버가 독립 배포될 수 있도록 나눠 두었습니다.
+- `cmn`은 인증, 토큰, 로그, 세션 같은 공통 기능을 담당하는 플랫폼 서버 역할입니다.
+- 각 MCP 서버는 업무별 Tool 실행에 집중하고, 공통 기능은 `cmn`을 통해 공유하는 구조를 목표로 합니다.
+- 이 분리는 향후 서비스별 Helm chart와 서비스별 CI/CD 파이프라인을 따로 가져가기 위한 전제이기도 합니다.
+
 ## 지금 코드에서 보이는 패턴
 
 1. 얇은 Router
@@ -80,12 +119,15 @@ flowchart LR
 
 `cmn`은 완전히 고정된 최종 아키텍처라기보다, 공통 API 서버를 엔터프라이즈스럽게 키우기 위한 골격을 먼저 잡은 상태입니다. 그래서 일부 영역은 CRUD와 Service가 공존하고, 일부 로그 저장은 얇은 Active Record 스타일을 남겨 두고 있습니다.
 
+다만 큰 방향은 분명합니다. 이 저장소는 처음부터 `공통 서버 1 + MCP 서버 N` 구조로 독립 배포할 수 있도록 경계를 나누고 있습니다. 폴더를 분리한 이유도 단순 정리가 아니라, 나중에 `cmn`과 각 MCP 서버가 서로 다른 Helm chart, 서로 다른 CI workflow, 서로 다른 배포 주기를 가져갈 수 있게 하기 위해서입니다.
+
 그럼에도 전체 방향은 분명합니다.
 - Router는 얇게 유지한다.
 - 인증/세션/테넌트 문맥은 Dependency에서 정리한다.
 - 유스케이스는 Service로 모은다.
 - 공통 컬럼과 로그 공통 구조는 Base/Mixin/추상 모델로 재사용한다.
 - 로깅과 예외는 Middleware/Exception Handler로 분리한다.
+- 공통 기능은 `cmn`에 모으고, 업무별 실행 책임은 각 MCP 서버가 별도 배포 단위로 가진다.
 
 ## 실행 관점 예시
 
