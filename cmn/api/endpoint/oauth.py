@@ -12,16 +12,18 @@ from datetime import datetime, timedelta, timezone
 
 from pydantic import BaseModel, Field
 
+from cmn.utils import jwt_manager 
 from cmn.core.database import Database
 from cmn.core.dependencies import get_db_session_for_oauth_state, get_db_session_for_compnay
 from cmn.db.crud.m365_oauth_crud import get_graph_infos, save_user_token, get_user_app_token
 from cmn.db.models.m365_user_toekn import M365UserToken
 from cmn.schemas.response import CommonResponse
+from cmn.schemas.user import User
 
 from cmn.services.auth_service import AuthService
 
 
-auth_router = APIRouter(prefix="/api/auth",tags=["m365_oauth"])
+auth_router = APIRouter(prefix="/api/oauth",tags=["m365_oauth"])
 
 
 class AuthRequest(BaseModel):
@@ -31,12 +33,13 @@ class AuthRequest(BaseModel):
 
 
 # MS 접근 권한 가져오기 
-@auth_router.post("/")
+@auth_router.get("/", response_model=CommonResponse)
 async def auth(
-    payload: AuthRequest,
+    app_name: str = Query(..., description="MS 접근 권한을 받을 앱 이름", example="TODO"),
+    current_user: User = Depends(jwt_manager.get_current_user),
     auth_service: AuthService = Depends(AuthService),
 ):
-    data = await auth_service.get_auth_token(payload.company_cd,payload.app_name)
+    data = await auth_service.get_oauth_token(current_user.company_code, app_name)
     return CommonResponse.ok(data)
 
     

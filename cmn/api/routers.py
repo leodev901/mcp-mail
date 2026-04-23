@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from cmn.api.endpoint.logs import logs_router
+from cmn.api.endpoint.logs_router import logs_router
 from cmn.api.endpoint.oauth import auth_router
 from cmn.api.endpoint.utils_router import utils_router
 

@@ -2507,3 +2507,289 @@ jwt.exceptions.DecodeError: Invalid header padding
   "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
 }
 [INFO][2026-04-23 11:36:26][mcp-cmn][middleware.py:71]- Response-[6a478943-b36e-4e54-8361-bf82e782a032] GET /mcp-cmn/utils/jwt/decode 200 12269.48ms
+[INFO][2026-04-23 11:46:57][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 11:46:57][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 11:46:58][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 11:47:18][mcp-cmn][middleware.py:50]- Request-[eb309d53-39b7-451f-8113-b1d40133ec46] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 11:47:18][mcp-cmn][middleware.py:51]- Headers-[eb309d53-39b7-451f-8113-b1d40133ec46] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:47:18][mcp-cmn][middleware.py:71]- Response-[eb309d53-39b7-451f-8113-b1d40133ec46] GET /mcp-cmn/docs 200 8.53ms
+[INFO][2026-04-23 11:47:18][mcp-cmn][middleware.py:50]- Request-[acfaa165-19f1-419b-b8e4-d0573c106fd9] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 11:47:18][mcp-cmn][middleware.py:51]- Headers-[acfaa165-19f1-419b-b8e4-d0573c106fd9] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:47:18][mcp-cmn][middleware.py:71]- Response-[acfaa165-19f1-419b-b8e4-d0573c106fd9] GET /mcp-cmn/openapi.json 200 47.44ms
+[INFO][2026-04-23 11:47:26][mcp-cmn][middleware.py:50]- Request-[c07c330f-a6b3-4492-9084-153ee3959bab] GET /mcp-cmn/utils/jwt/decode 127.0.0.1
+[INFO][2026-04-23 11:47:26][mcp-cmn][middleware.py:51]- Headers-[c07c330f-a6b3-4492-9084-153ee3959bab] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:47:30][mcp-cmn][middleware.py:71]- Response-[c07c330f-a6b3-4492-9084-153ee3959bab] GET /mcp-cmn/utils/jwt/decode 200 3507.55ms
+[INFO][2026-04-23 11:48:08][mcp-cmn][middleware.py:50]- Request-[c1304404-d1fb-4130-9d82-79095688ff57] GET /mcp-cmn/api/auth/ 127.0.0.1
+[INFO][2026-04-23 11:48:08][mcp-cmn][middleware.py:51]- Headers-[c1304404-d1fb-4130-9d82-79095688ff57] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 11:48:10][mcp-cmn][middleware.py:71]- Response-[c1304404-d1fb-4130-9d82-79095688ff57] GET /mcp-cmn/api/auth/ 200 2597.71ms
+[INFO][2026-04-23 12:05:54][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 12:05:54][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 12:05:54][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 12:18:56][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 12:18:56][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 12:18:56][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 12:19:28][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 12:19:28][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 12:19:28][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 12:19:48][mcp-cmn][middleware.py:50]- Request-[42e1b214-3836-4634-8d15-079363d770c5] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 12:19:48][mcp-cmn][middleware.py:51]- Headers-[42e1b214-3836-4634-8d15-079363d770c5] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 12:19:48][mcp-cmn][middleware.py:71]- Response-[42e1b214-3836-4634-8d15-079363d770c5] GET /mcp-cmn/docs 200 8.48ms
+[INFO][2026-04-23 12:19:48][mcp-cmn][middleware.py:50]- Request-[2e179904-0f5a-4e61-b808-200bf4f5be22] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 12:19:48][mcp-cmn][middleware.py:51]- Headers-[2e179904-0f5a-4e61-b808-200bf4f5be22] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 12:19:48][mcp-cmn][middleware.py:71]- Response-[2e179904-0f5a-4e61-b808-200bf4f5be22] GET /mcp-cmn/openapi.json 200 55.29ms
+[INFO][2026-04-23 12:20:21][mcp-cmn][middleware.py:50]- Request-[075bf7c8-68e1-4993-9dc9-ab0fec685b7e] POST /mcp-cmn/api/log/tool 127.0.0.1
+[INFO][2026-04-23 12:20:21][mcp-cmn][middleware.py:51]- Headers-[075bf7c8-68e1-4993-9dc9-ab0fec685b7e] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "content-length": "276",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "content-type": "application/json",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://127.0.0.1:8004",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 12:20:24][mcp-cmn][middleware.py:71]- Response-[075bf7c8-68e1-4993-9dc9-ab0fec685b7e] POST /mcp-cmn/api/log/tool 200 2446.75ms
+[INFO][2026-04-23 12:37:24][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 12:37:24][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 12:37:24][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 12:37:34][mcp-cmn][middleware.py:50]- Request-[71ed23d7-ac0b-47af-a350-dcabcccfb3dc] POST /mcp-cmn/api/log/tool 127.0.0.1
+[INFO][2026-04-23 12:37:34][mcp-cmn][middleware.py:51]- Headers-[71ed23d7-ac0b-47af-a350-dcabcccfb3dc] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "content-length": "276",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "content-type": "application/json",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://127.0.0.1:8004",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 12:37:34][mcp-cmn][middleware.py:71]- Response-[71ed23d7-ac0b-47af-a350-dcabcccfb3dc] POST /mcp-cmn/api/log/tool 404 6.68ms
+[INFO][2026-04-23 12:37:40][mcp-cmn][middleware.py:50]- Request-[f2b59937-3c3c-4a24-af60-5fe1a939efd8] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 12:37:40][mcp-cmn][middleware.py:51]- Headers-[f2b59937-3c3c-4a24-af60-5fe1a939efd8] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 12:37:40][mcp-cmn][middleware.py:71]- Response-[f2b59937-3c3c-4a24-af60-5fe1a939efd8] GET /mcp-cmn/docs 200 4.62ms
+[INFO][2026-04-23 12:37:40][mcp-cmn][middleware.py:50]- Request-[ddc0e3d0-b1dc-46eb-a350-cb5afa7fdf7a] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 12:37:40][mcp-cmn][middleware.py:51]- Headers-[ddc0e3d0-b1dc-46eb-a350-cb5afa7fdf7a] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 12:37:40][mcp-cmn][middleware.py:71]- Response-[ddc0e3d0-b1dc-46eb-a350-cb5afa7fdf7a] GET /mcp-cmn/openapi.json 200 39.23ms
+[INFO][2026-04-23 12:37:56][mcp-cmn][middleware.py:50]- Request-[bf104f83-d411-4ff1-b2fc-dd346a04bc44] POST /mcp-cmn/api/logs/tool 127.0.0.1
+[INFO][2026-04-23 12:37:56][mcp-cmn][middleware.py:51]- Headers-[bf104f83-d411-4ff1-b2fc-dd346a04bc44] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "content-length": "276",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "content-type": "application/json",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://127.0.0.1:8004",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 12:37:58][mcp-cmn][middleware.py:71]- Response-[bf104f83-d411-4ff1-b2fc-dd346a04bc44] POST /mcp-cmn/api/logs/tool 200 2342.92ms
+[INFO][2026-04-23 12:47:05][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 12:47:05][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 12:47:05][mcp-cmn][main.py:47]- Starting mcp-cmn server...
+[INFO][2026-04-23 12:47:12][mcp-cmn][middleware.py:50]- Request-[f2d030a9-1167-4986-8c3e-c79cd2dbd1b4] POST /mcp-cmn/api/logs/tool 127.0.0.1
+[INFO][2026-04-23 12:47:12][mcp-cmn][middleware.py:51]- Headers-[f2d030a9-1167-4986-8c3e-c79cd2dbd1b4] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "content-length": "276",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "***MASKED***",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "content-type": "application/json",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://127.0.0.1:8004",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[DEBUG][2026-04-23 12:47:14][mcp-cmn][logs_router.py:38]- save: m365_mcp_tool_log - 7c1b724f-2cf5-47c0-b814-175b1942b82b
+[INFO][2026-04-23 12:47:14][mcp-cmn][middleware.py:71]- Response-[f2d030a9-1167-4986-8c3e-c79cd2dbd1b4] POST /mcp-cmn/api/logs/tool 200 2349.87ms
+[INFO][2026-04-23 13:41:44][mcp-cmn][middleware.py:50]- Request-[120fa74b-fbb8-41b3-b2e2-21d1fe720ed1] GET /mcp-cmn/docs 127.0.0.1
+[INFO][2026-04-23 13:41:44][mcp-cmn][middleware.py:51]- Headers-[120fa74b-fbb8-41b3-b2e2-21d1fe720ed1] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "cache-control": "max-age=0",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 13:41:44][mcp-cmn][middleware.py:71]- Response-[120fa74b-fbb8-41b3-b2e2-21d1fe720ed1] GET /mcp-cmn/docs 200 3.97ms
+[INFO][2026-04-23 13:41:45][mcp-cmn][middleware.py:50]- Request-[93d1d36e-4e66-49c8-a19d-453d8784ef51] GET /mcp-cmn/openapi.json 127.0.0.1
+[INFO][2026-04-23 13:41:45][mcp-cmn][middleware.py:51]- Headers-[93d1d36e-4e66-49c8-a19d-453d8784ef51] {
+  "host": "127.0.0.1:8004",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+  "accept": "application/json,*/*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://127.0.0.1:8004/mcp-cmn/docs",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+[INFO][2026-04-23 13:41:45][mcp-cmn][middleware.py:71]- Response-[93d1d36e-4e66-49c8-a19d-453d8784ef51] GET /mcp-cmn/openapi.json 200 51.09ms
+[INFO][2026-04-23 14:27:23][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 14:27:23][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 14:27:23][mcp-cmn][main.py:47]- Starting mcp-cmn server...

@@ -40,10 +40,20 @@ async def save_tool_log(
             { "save": f"{saved.__tablename__} - {saved.id}"}
         )
     else:
-        return CommonResponse.error("MCP Tool Log 저장 실패")
+        return CommonResponse.error("Tool Log 저장 실패")
+
+@logs_router.post("/api", response_model=CommonResponse)
+async def save_api_log(
+    payload: ApiLogRequest,
+    session: AsyncSession = Depends(get_db_session_authorize_header),
+):
+    api_log = M365McpApiLog(**payload.model_dump())
+    saved = await api_log.save(session)
+    
+    if saved.id:
+        logger.debug(f"save: {saved.__tablename__} - {saved.id}")
+        return CommonResponse.ok({ "save": f"{saved.__tablename__} - {saved.id}"})
+    else:
+        return CommonResponse.error("Api Log 저장 실패")
 
 
-@logs_router.post("/graph")
-async def log_grphs(db: AsyncSession = Depends(get_db_session_for_compnay)):
-    # 회사코드(company_cd)에 따라 해라서 해당 schema에 DB seesion 가져와서 저장
-    return {"status": "api logging"}
