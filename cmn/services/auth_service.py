@@ -21,6 +21,34 @@ class AuthService:
         # 생성자에서 AsyncSession을 받아 두면 같은 요청 안에서 재사용할 수 있습니다.
         self.db = db
 
+    async def get_oauth_token(self, company_cd: str, app_name: str) -> dict[str, str]:
+
+        # 입력값 정규화를 먼저 해야 설정 조회 실패를 줄일 수 있습니다.
+        company_cd = company_cd.strip()
+        app_name = app_name.strip().upper()
+
+        if not company_cd or not app_name:
+            raise HTTPException(
+                status_code=400,
+                detail="company_cd and app_name are required",
+            )
+            
+        token = await self._handle_token(company_cd, app_name)
+                
+
+        # TO-DO 그 외 다른 서비스 로직이 있을 경우 여기에서 처리 
+        # user info 해석
+        user_info = "user"
+
+        result = {
+            "user_info":user_info,
+            "token":token
+        }
+
+        # 최종 반환
+        return result 
+    
+
     async def _handle_token(self, company_cd: str, app_name: str) -> dict[str, str]:
         key = token_manager.build_key(company_cd, app_name)
 
@@ -89,33 +117,7 @@ class AuthService:
             return {"access_token": access_token}
 
 
-    async def get_auth_token(self, company_cd: str, app_name: str) -> dict[str, str]:
-
-        # strip()은 문자열 양쪽 공백을 제거하는 문법이며,
-        # 입력값 정규화를 먼저 해야 설정 조회 실패를 줄일 수 있습니다.
-        company_cd = company_cd.strip()
-        app_name = app_name.strip().upper()
-
-        if not company_cd or not app_name:
-            raise HTTPException(
-                status_code=400,
-                detail="company_cd and app_name are required",
-            )
-            
-        token = await self._handle_token(company_cd, app_name)
-                
-
-        # TO-DO 그 외 다른 서비스 로직이 있을 경우 여기에서 처리 
-        # user info 해석
-        user_info = "user"
-
-        result = {
-            "user_info":user_info,
-            "token":token
-        }
-
-        # 최종 반환
-        return result 
+    
 
     
 
