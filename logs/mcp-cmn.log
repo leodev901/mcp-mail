@@ -4579,3 +4579,6 @@ NameError: name 'user_cache' is not defined
 }
 [DEBUG][2026-04-23 15:21:40][mcp-cmn][user_cache.py:20]- Hit user cache - leodev901:20075487
 [INFO][2026-04-23 15:21:40][mcp-cmn][middleware.py:71]- Response-[1674142d-56f6-413d-a1b3-c62d7d970045] GET /mcp-cmn/api/oauth/ 200 3738.40ms
+[INFO][2026-04-23 16:45:10][mcp-cmn][exception.py:14]- Registering exception handlers...
+[INFO][2026-04-23 16:45:10][mcp-cmn][opentelemetry.py:31]- OpenTelemetry direct export is disabled.
+[INFO][2026-04-23 16:45:10][mcp-cmn][main.py:47]- Starting mcp-cmn server...

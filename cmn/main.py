@@ -15,7 +15,7 @@ from cmn.base.logger import logger
 from cmn.base.exception import register_exception_handler
 from cmn.base.middleware import RequestLoggingMiddleware
 from cmn.base.opentelemetry import setup_opentelemetry, shutdown_opentelemetry
-
+from cmn.base.http_client import get_httpx_client, httpx_client_close
 
 
 
@@ -47,6 +47,9 @@ async def lifespan(app: FastAPI):
     logger.info("Starting mcp-cmn server...")
     db = Database()
     app.state.db = db
+    # 앱 시작 시 공통 httpx client를 미리 생성합니다.
+    # 왜냐하면 외부 API 호출에서 같은 커넥션 풀을 재사용하기 위해서입니다.
+    await get_httpx_client()
 
 
     # yield 이전 구간은 startup, yield 이후 구간은 shutdown 이다.
@@ -56,7 +59,11 @@ async def lifespan(app: FastAPI):
     # 종료 시 엔진 연결 풀을 정리한다.
     # await engine.dispose()
     await db.dispose()
+    # OPTL-Grafana 닫아주기
     shutdown_opentelemetry()
+    # httpx-client 닫아주기
+    httpx_client_close()
+
 
 
 
