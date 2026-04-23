@@ -53,6 +53,7 @@ class RequestLoggingMiddleware(BaseHTTPMiddleware):
         
         try:
             # awiat 비동 작업중 응답을 받지 못할 경우를 고려하여 응답 객체를 None으로 먼저 초기화합니다.
+            response = None
             response = await call_next(request)
             response.headers["x-trace-id"] = trace_id
             return response
