@@ -103,17 +103,57 @@ flowchart LR
 - 대안: 라우터에서 바로 처리할 수 있습니다.
 - 트레이드오프: 파일 수는 줄지만 업무 규칙이 HTTP 코드에 묶입니다.
 
-4. 공통 Base / Mixin / 추상 모델
+4. delegated OAuth를 service 유스케이스로 재사용
+- `cmn/services/delegated_auth_service.py`는 브라우저 callback과 `/api/oauth/user/token/{app_name}` API가 공통으로 쓰는 delegated token 교환/저장/갱신 흐름을 한곳에 모읍니다.
+- 왜 이렇게 했는지: callback 전용 코드와 사용자 토큰 재발급 로직이 중복되지 않게 하고, `Router -> Service -> Repository` 경계를 유지하기 위해서입니다.
+- 대안: callback 엔드포인트와 user token 엔드포인트가 각각 토큰 교환 로직을 직접 가질 수 있습니다.
+- 트레이드오프: 처음에는 빠르지만, 외부 OAuth 연동 로직과 DB 저장 규칙이 쉽게 복제되어 유지보수가 어려워집니다.
+
+5. 공통 Base / Mixin / 추상 모델
 - `cmn/db/models/base.py`의 `AuditMixin`, `cmn/db/models/mcp_log.py`의 `LogBase`로 공통 컬럼을 재사용합니다.
 - 왜 이렇게 했는지: 감사 컬럼과 로그 공통 필드를 중복 없이 유지하기 위해서입니다.
 - 대안: 각 모델에 컬럼을 반복 선언할 수 있습니다.
 - 트레이드오프: 선언은 명시적이지만 테이블이 늘수록 누락과 불일치 위험이 커집니다.
 
-5. 횡단 관심사 분리
+6. 횡단 관심사 분리
 - `cmn/base/middleware.py`는 trace_id와 요청/응답 로깅을, `cmn/base/exception.py`는 공통 오류 응답을 담당합니다.
 - 왜 이렇게 했는지: 모든 엔드포인트에 공통으로 필요한 관심사를 비즈니스 코드 밖으로 빼기 위해서입니다.
 - 대안: 각 엔드포인트에서 직접 로깅과 예외 응답을 처리할 수 있습니다.
 - 트레이드오프: 단건 처리에는 단순하지만 전체 일관성이 깨집니다.
+
+## delegated OAuth 흐름
+
+```mermaid
+flowchart LR
+    Router["auth_router.py"]
+    QueryDto["OAuthCallbackParams"]
+    ValueObj["CallbackState"]
+    Service["DelegatedAuthService"]
+    Http["Microsoft OAuth Token Endpoint"]
+    Repo["AuthRepository"]
+    Session["Database.session(schema)"]
+
+    Router --> QueryDto
+    QueryDto --> Service
+    Service --> ValueObj
+    Service --> Http
+    Service --> Repo
+    Repo --> Session
+```
+
+코드 경로:
+- `cmn/api/endpoint/auth_router.py`
+- `cmn/services/delegated_auth_service.py`
+- `cmn/repositories/auth_repository.py`
+- `cmn/schemas/callback.py`
+- `cmn/schemas/token.py`
+- `cmn/schemas/credentials.py`
+
+설명:
+- callback query는 `OAuthCallbackParams`로 먼저 정규화하고, service에서 `CallbackState`로 파싱해 HTTP 입력과 내부 문맥을 분리합니다.
+- 외부 OAuth token endpoint 호출은 service가 담당하고, Graph 설정 조회와 사용자 토큰 저장/조회는 repository로 분리합니다.
+- DB session은 `async with db.session(schema)`로 필요한 시점에만 짧게 열어, 외부 HTTP 호출 동안 세션을 오래 점유하지 않도록 했습니다.
+- callback은 HTML 응답, delegated token 조회 API는 JSON 응답을 반환하지만, 핵심 토큰 처리 로직은 같은 service에서 재사용합니다.
 
 ## 현재 단계의 해석
 

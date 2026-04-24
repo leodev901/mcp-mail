@@ -7,7 +7,7 @@ from sqlalchemy.pool import NullPool
 
 from cmn.core.config import settings
 
-from loguru import logger
+from cmn.base.logger import logger
 
 # 데이터베이스 URL은 환경 설정에서 읽어 옵니다.
 DATABASE_URL = settings.DATABASE_URL
@@ -47,8 +47,15 @@ class Database:
 
     def get_engine(self) -> AsyncEngine:
         return self.engine
+    
+    async def dispose(self) -> None:
+        # 앱 종료 시 engine 이 가진 연결 자원을 정리합니다.
+        logger.info("---- dispose datbase engein -----")
+        await self.engine.dispose()
 
-    def session(self, schema: str | None = None):
+
+    # Databse 에서는 오직 '세션 연결'을 담당하며 '트랜젝션'에 대한 부분은 
+    def session(self, schema: str ):
         """
         - 이 함수는 `async with db.session("company") as session:` 형태로 쓰기 위한
           비동기 컨텍스트 매니저 객체를 반환합니다.
@@ -56,6 +63,11 @@ class Database:
           `__aexit__` 메서드를 가진 내부 클래스를 만들어 `async with` 문법으로
           세션을 열고 닫게 합니다.
         """
+        schema = schema.strip() 
+        if schema not in COMPANY_CODES:
+            raise ValueError(f"Invalid schema: {schema}")
+        logger.debug(f"get_db_session: {schema}")
+
         session = self.session_factory()
 
         class _SessionContext:
@@ -80,23 +92,3 @@ class Database:
 
         return _SessionContext()
 
-    async def dispose(self) -> None:
-        # 앱 종료 시 engine 이 가진 연결 자원을 정리합니다.
-        logger.info("---- dispose datbase engein -----")
-        await self.engine.dispose()
-        
-
-    async def get_session_schema(self, schema: str) -> AsyncGenerator[AsyncSession, None]:
-        schema = schema.strip()
-        if schema not in COMPANY_CODES:
-            logger.error(f"회사코드 스키마 {schema} 는 정의되어 있지 않습니다.")
-            raise ValueError(f"회사코드 스키마 {schema} 는 정의되어 있지 않습니다.")
-
-        # 회사별 schema 를 적용한 세션을 제공합니다.
-        async with self.session_factory() as session:
-            # `session.begin()` 은 트랜잭션 블록을 명시적으로 여는 문법입니다.
-            # 트랜잭션 안에서 search_path 를 바꾸면 범위를 더 명확하게 관리할 수 있습니다.
-            async with session.begin():
-                # 여기서는 연결 전체가 아니라 현재 작업 흐름에만 schema 를 적용하려는 의도입니다.
-                await session.execute(text(f"SET search_path TO {schema}"))
-                yield session

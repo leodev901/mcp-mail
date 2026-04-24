@@ -22,7 +22,7 @@ class AuthRepository:
         """사용자 토큰을 새로 저장 또는 갱신합니다."""
         
         # 기존 토큰 조회 
-        existing = await self.get_user_app_token(
+        existing = await self.get_user_token(
             user_token.app_name, 
             user_token.user_id
         )
@@ -45,7 +45,7 @@ class AuthRepository:
             return existing
 
 
-    async def get_user_app_token(self, app_name: str, user_id: str) -> M365UserToken | None:
+    async def get_user_token(self, app_name: str, user_id: str) -> M365UserToken | None:
         stmt = select(M365UserToken).where(M365UserToken.app_name == app_name, M365UserToken.user_id == user_id)
         result = await self.session.execute(stmt)
         return result.scalar_one_or_none()

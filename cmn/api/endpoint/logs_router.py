@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from cmn.core.dependencies import get_db_session_for_compnay, get_db_session_authorize_header
+from cmn.core.dependencies import get_db_session_authorize_header
 from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import Depends
 from cmn.db.models.mcp_log import M365McpToolLog, M365McpApiLog

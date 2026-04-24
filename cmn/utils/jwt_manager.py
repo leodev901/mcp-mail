@@ -51,6 +51,12 @@ def decode(token: str):
     except Exception as e:
         logger.error(f"[Error] 알 수 없는 오류 발생: {exc}")
         raise exc
+    
+def decode_without_key(token: str):
+    """JWT 해석 함수"""
+    return jwt.decode(token, options={"verify_signature": False})
+
+
 
 
 async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security))->User:

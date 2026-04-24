@@ -8,6 +8,14 @@ from pydantic import ValidationError
 from cmn.base.logger import logger
 
 
+class CallbackHTMLResponseException(Exception):
+    """Base class for custom exceptions in the application."""
+    def __init__(self, message: str, status_code: int = HTTPStatus.INTERNAL_SERVER_ERROR):
+        self.message = message
+        self.status_code = status_code
+        super().__init__(self.message)
+
+
 def register_exception_handler(app: FastAPI):
     """FastAPI exception handler 등록
     """

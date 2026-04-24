@@ -173,14 +173,6 @@ python app/test.py
 
 ## 실패 예시와 해결 방법
 
-### 1. dataclass 필드명 불일치
-
-실패 예시:
-
-- `company_cd` 대신 `compnay_cd`
-- `refresh_token` 대신 `rfresh_token`
-
-해결 방법:
 
 - `TokenRecord` 필드명과 `save_tokens()` 인자명을 완전히 통일한다.
 
