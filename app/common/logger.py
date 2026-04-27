@@ -68,8 +68,10 @@ def _init_open_telemetry_provider() -> None:
         # OpenTelemetry 시스템이 이제부터 위에서 만든 설정을 사용하도록 적용합니다.
         set_logger_provider(_open_telemetry_provider)
         
-        print(f"✅ OpenTelemetry(OTLP) Exporter initialized. [Service: mcp-sample]")
-        print(f"   - Endpoint: {settings.GRAFANA_ENDPOINT}")
+        # Windows cp949 콘솔에서는 이모지 출력이 깨질 수 있어 ASCII 메시지로 남깁니다.
+        # 초기화 성공 여부만 전달하면 되므로, 가독성이 높은 일반 문자열이면 충분합니다.
+        print(f"OpenTelemetry(OTLP) Exporter initialized. [Service: mcp-sample]")
+        print(f"  - Endpoint: {settings.GRAFANA_ENDPOINT}")
 
 
 

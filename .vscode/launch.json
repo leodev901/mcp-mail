@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "MCP MAIL Server",
+      "name": "MAIL MCP",
       "type": "debugpy",
       "request": "launch",
       "cwd": "${workspaceFolder}",
@@ -19,10 +19,11 @@
       "env": {
         "PYTHONPATH": "${workspaceFolder}"
       },
+      "console": "internalConsole",
       "jinja": true
     },
     {
-      "name": "mcp-cmn Server",
+      "name": "MCP-CMN Server",
       "type": "debugpy",
       "request": "launch",
       "cwd": "${workspaceFolder}",
@@ -39,7 +40,15 @@
       "env": {
         "PYTHONPATH": "${workspaceFolder}/.venv/Scripts/python.exe"
       },
+      "console": "internalConsole",
       "jinja": true
     }
+  ],
+  "compounds": [
+    {
+      "name": "Compound",
+      "configurations": ["MAIL MCP","MCP-CMN Server"]
+    }
   ]
+  
 }

@@ -32,7 +32,20 @@ class Settings(BaseSettings):
 
     LOG_LEVEL: str
     ENV: str = "local"
-    AUTH_JWT_USER_TOKEN:bool = False
+    # app은 사용자 토큰을 직접 검증하지 않습니다.
+    # 이 값은 이전 설정 파일과의 호환을 위해 읽기만 유지합니다.
+    AUTH_JWT_USER_TOKEN: bool = False
+    # CMN API 기본 주소입니다.
+    # FastMCP 앱이 공통 인증/토큰 API를 호출할 때 사용하므로 명시적으로 분리합니다.
+    CMN_API_BASE_URL: str = "http://127.0.0.1:8004"
+    # 내부 API 타임아웃을 설정값으로 분리해 두면 운영 환경에서 조정이 쉽습니다.
+    CMN_API_TIMEOUT_SECONDS: float = 10.0
+    # 어떤 앱 이름으로 사용자 위임 토큰을 요청할지 명시적으로 고정합니다.
+    M365_USER_TOKEN_APP_NAME: str = "MAIL"
+    # 로컬 학습/테스트 환경에서 CMN용 테스트 토큰을 만들 때 참조할 수 있는 공통 JWT 설정입니다.
+    # app 런타임은 이 값을 사용해 사용자 토큰을 직접 해석하지 않습니다.
+    JWT_SECRET_KEY: str = "your_jwt_decode_secret_key"
+    JWT_ALGORITHM: str = "HS256"
 
     GRAFANA_ENDPOINT: str = "http://grafana-alloy.grafana-alloy:4317"
     GRAFANA_INSTANCE_ID: str = ""

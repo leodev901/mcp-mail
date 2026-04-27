@@ -13,7 +13,7 @@ class HttpLoggingASGIMiddleware:
     """
     가장 기본적인 ASGI HTTP 미들웨어.
 
-    1. 요청마다 trace_id, user_token, current_user를 기록하여 요청 시작부터 응답 스트림 종료까지 유지한다.
+    1. 요청마다 trace_id, biz_user_token, current_user를 기록하여 요청 시작부터 응답 스트림 종료까지 유지한다.
     2. request body / response body 로깅 위치를 잡아둔다.
     """
 

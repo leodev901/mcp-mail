@@ -4,7 +4,7 @@ from loguru import logger
 
 from app.clients.graph_client import graph_request
 from fastmcp.server.dependencies import get_http_request
-from app.models.user_info import UserInfo
+from app.schema.user import User
 from app.core.config import settings
 
 
@@ -14,7 +14,7 @@ DEFAULT_COMPANY_CD = settings.DEFAULT_COMPANY_CD
 
 def register_sharepoint_tools(mcp: FastMCP):
 
-    def _get_request_current_user() -> UserInfo | None:
+    def _get_request_current_user() -> User | None:
         try:
             request = get_http_request()
             return getattr(request.state, "current_user", None)
