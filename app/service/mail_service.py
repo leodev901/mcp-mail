@@ -186,6 +186,7 @@ class MailService:
         sender: Optional[str] = None,
         cc: Optional[str] = None,
         has_attachments: Optional[bool] = None,
+        folder_id: Optional[str] = "inbox",
     ) -> list[MailMessage]:
         """최근 메일 목록 조회 
         top_k, blacklist, Graph path 구성 비즈니스 로직은 service 계층에서 처리합니다.
@@ -198,7 +199,7 @@ class MailService:
         normalized_top_k = max(1, min(top_k, 50))
 
         path = (
-            f"/mailFolders/inbox/messages"
+            f"/mailFolders/{folder_id}/messages"
             f"?$top={normalized_top_k}"
             f"&$select=id,subject,from,sender,receivedDateTime,bodyPreview,importance,isRead,hasAttachments"
             f"&$orderby=receivedDateTime desc"
@@ -316,6 +317,37 @@ class MailService:
         )
 
         return MailMessageDetail.model_validate(result)
+
+    async def find_mail_folders_by_name(
+        self,
+        *,
+        folder_name: str,
+    ) -> list[dict]:
+        """폴더 표시 이름으로 Outlook 메일 폴더를 찾습니다.
+        현재 구현은 최상위 mailFolders 에서 displayName 이 같은 폴더만 찾습니다.
+        """
+
+        context = self._get_request_context()
+        self._ensure_user_allowed(context)
+
+        normalized_folder_name = folder_name.strip()
+        if not normalized_folder_name:
+            raise ValueError("조회할 폴더 이름이 누락되었습니다.")
+
+        path = "/mailFolders?$select=id,displayName,parentFolderId,totalItemCount,unreadItemCount"
+
+        result = await graph_request(
+            method="GET",
+            path=path,
+            access_token=context.access_token,
+            trace_id=context.trace_id,
+            current_user=context.current_user,
+        )
+
+        return [
+            folder for folder in result.get("value", [])
+            if (folder.get("displayName") or "").strip() == normalized_folder_name
+        ]
     
 
     async def search_my_mails(

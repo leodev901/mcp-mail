@@ -271,4 +271,42 @@ def register_mail_tools(mcp: FastMCP) -> None:
         4. 응답에는 제목, 발신자, 수신/발신 시각, 본문, 첨부파일 메타데이터가 포함됩니다.
         """
         return await mail_service.fetch_my_mail_detail(mail_id=id)
+    
+
+    @mcp.tool()
+    async def get_emails_folder(
+        folder_name: Annotated[str, Field(..., description="조회할 Outlook 메일 폴더 이름입니다. 사용자가 만든 폴더명과 정확히 일치해야 합니다.",examples=["청구서", "내 폴더"])],
+        from_date: Annotated[Optional[str], Field(None, description="조회 시작일 (YYYY-MM-DD 형식). 시작일 기간이 주어지면 입력합니다.",examples=["2026-04-01"])],
+        to_date: Annotated[Optional[str], Field(None, description="조회 종료일 (YYYY-MM-DD 형식). 종료일 기간이 주어지면 입력합니다.",examples=["2026-04-30"])],
+        top_k: Annotated[int, Field(...,description="가져올 메일의 최대 개수 (1~50 사이 정수, 기본 10)",examples=[10])]=10,
+    ) -> list[MailMessage]:
+        """특정 Outlook 메일 폴더의 메일을 조회합니다.
+        폴더 이름으로 folder id를 먼저 찾고, 찾은 folder id를 사용해 해당 폴더의 메일을 조회합니다.
+
+        [LLM 에이전트 사용 가이드]
+        1. 사용자가 "청구서 폴더의 메일 보여줘"처럼 특정 메일 폴더를 명시할 때 호출합니다.
+        2. folder_name은 Outlook 왼쪽 폴더 목록에 보이는 이름과 정확히 일치해야 합니다.
+        3. 같은 이름의 폴더가 여러 개 있으면 안전한 조회를 위해 에러를 반환합니다.
+        4. 사용자가 특정 기간과 갯수를 명시하지 않으면 최근 30일 기간 내 10개의 메일을 기본 조회합니다.
+        """
+
+        # folder_name 이름으로 folder_id 가져오는 서비스 구현 
+        folders = await mail_service.find_mail_folders_by_name(folder_name=folder_name)
+
+        if len(folders) == 0:
+            raise ValueError(f"사서함에 {folder_name}이름의 폴더가 없습니다.")
+        elif len(folders) > 1:
+            raise ValueError(f"사서함에 {folder_name}이름의 폴더가 여러개이므로 조회 할 수 없습니다.")
+        else:
+            folder_id = folders[0]["id"]
+
+        
+        return await mail_service.fetch_my_mails(
+            top_k=top_k,
+            from_date=from_date,
+            to_date=to_date,
+            folder_id=folder_id,
+        )
+
+
         
