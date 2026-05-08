@@ -3,55 +3,65 @@
 # Graph API 관련 에러 정의
 
 class GraphClientError(Exception):
-    """Graph API 호출을 LLM이 처리할 수 있도록 정의한 에러의 기본 클래스입니다."""
+    """
+    Graph API 호출 실패를 MCP ToolError 메시지로 바꾸기 위한 기본 예외입니다.
+    ToolError 는 구조화 필드를 받지 않으므로, 예외 문자열 자체가 최종 출력 포맷이 되게 만듭니다.
+    """
 
-    def __init__(self, code: str, message: str, error: str = "") -> None:
-        super().__init__(message)
-        self.code = code
-        self.message = message
-        self.error = error
+    code = "GRAPH_CLIENT_ERROR"
+    message = "Microsoft Graph API 호출에 실패했습니다."
+
+    def __init__(self, detail: str = "") -> None:
+        # detail 은 Graph 원본 오류처럼 디버깅에 필요한 상세 문맥을 담는 문자열입니다.
+        # super().__init__ 에 최종 메시지를 넣어 ToolError 변환 시 str(exc) 만 사용하게 합니다.
+        self.detail = detail
+        super().__init__(self.to_tool_message())
+
+    def to_tool_message(self) -> str:
+        """
+        MCP 클라이언트가 읽을 최종 tool error 메시지를 만듭니다.
+        FastMCP ToolError 는 message 하나만 전달하므로 code/detail 을 문자열에 명시합니다.
+        """
+        return f"[{self.code}] {self.message} detail={self.detail}"
 
 
 class GraphAccessDeniedError(GraphClientError):
     """MS Graph API 접근이 허용되지 않은 사용자일 때 발생합니다."""
 
+    code = "GRAPH_ACCESS_DENIED"
+    message = "해당 사용자는 접근이 허용되지 않습니다."
+
     def __init__(self, email: str) -> None:
-        super().__init__(
-            "GRAPH_ACCESS_DENIED",
-            f"해당 사용자는 접근이 허용되지 않습니다. email:{email}",
-        )
+        # email 을 detail 로 넘기면 공통 출력 형식은 유지하면서 원인을 함께 전달할 수 있습니다.
+        super().__init__(f"email:{email}")
 
 
 class GraphBadRequestError(GraphClientError):
     """MS Graph API에 잘못된 요청 파라미터를 보냈을 때 발생합니다."""
 
-    def __init__(self, error_msg: str) -> None:
-        super().__init__("GRAPH_BAD_REQUEST", "잘못된 요청 파라미터/문법입니다.", error_msg)
+    code = "GRAPH_BAD_REQUEST"
+    message = "잘못된 요청 파라미터/문법입니다."
 
 
 class GraphUnauthorizedError(GraphClientError):
     """MS Graph API 인증 실패 시 발생합니다."""
 
-    def __init__(self, error_msg: str) -> None:
-        super().__init__("GRAPH_UNAUTHORIZED", "인증 실패입니다.", error_msg)
+    code = "GRAPH_UNAUTHORIZED"
+    message = "인증 실패입니다."
 
 
 class GraphForbiddenError(GraphClientError):
     """MS Graph API 권한 부족 시 발생합니다."""
 
-    def __init__(self, error_msg: str) -> None:
-        super().__init__("GRAPH_FORBIDDEN", "접근 권한이 없습니다.", error_msg)
+    code = "GRAPH_FORBIDDEN"
+    message = "접근 권한이 없습니다."
 
 
 class GraphResourceNotFoundError(GraphClientError):
     """MS Graph API에서 리소스를 찾지 못했을 때 발생합니다."""
 
-    def __init__(self, error_msg: str) -> None:
-        super().__init__(
-            "GRAPH_RESOURCE_NOT_FOUND",
-            "해당 리소스를 찾을 수 없습니다. 사용자 이메일 또는 이벤트 ID를 확인해주세요.",
-            error_msg,
-        )
+    code = "GRAPH_RESOURCE_NOT_FOUND"
+    message = "해당 리소스를 찾을 수 없습니다. 사용자 이메일 또는 이벤트 ID를 확인해주세요."
 
 
 # MCP CMN(공통) 호출 관련 에러 정의

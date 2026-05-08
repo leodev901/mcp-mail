@@ -53,14 +53,15 @@ class MCPExceptionMiddleware(Middleware):
     ) -> Any:
         try:
             return await call_next(context)
-        except GraphClientError as exc:
-            # FastMCP ToolError 는 code/message/detail 키워드 인자를 받지 않습니다.
-            # 따라서 구조화 정보는 문자열에 명시적으로 담아 MCP tool error 로 올립니다.
-            raise ToolError(f"[{exc.code}] {exc.message} detail={exc.error}") from exc
-            
         except CmnAuthError as exc:
             raise ToolError(f"[{exc.code}] {exc.message} detail={exc.detail}") from exc
-        except ToolError:
+        except ToolError as exc:
+            # FastMCP 는 tool/service 내부 예외를 ToolError 로 감싸며, 원본 예외는 __cause__ 에 보관됩니다.
+            # 그래서 Graph 계층 예외는 여기에서 cause 타입을 확인한 뒤 프로젝트 표준 메시지로 다시 올립니다.
+            cause = exc.__cause__
+            if isinstance(cause, GraphClientError):
+                raise ToolError(str(cause)) from cause
+
             raise
         except Exception as exc:
             raise ToolError(f"[UNEXPECTED_TOOL_ERROR] {type(exc).__name__}: {exc}") from exc
