@@ -1,9 +1,11 @@
-from typing import Annotated, Optional, Literal
+from typing import Annotated, Optional
 from pydantic import Field
 from fastmcp import FastMCP
 
+from app.service.mail_report_service import MailReportService
 from app.service.mail_service import MailService
-from app.schema.mail import MailMessage, MailMessageDetail
+from app.service.mail_write_service import MailWriteService
+from app.schema.mail import MailMessage, MailMessageDetail, MailMonthlyReport, MailWeeklyReport
 
 
 def register_mail_tools(mcp: FastMCP) -> None:
@@ -13,6 +15,8 @@ def register_mail_tools(mcp: FastMCP) -> None:
     """
 
     mail_service = MailService()
+    mail_write_service = MailWriteService()
+    mail_report_service = MailReportService()
 
     @mcp.tool()
     async def get_recent_emails(
@@ -310,3 +314,107 @@ def register_mail_tools(mcp: FastMCP) -> None:
 
 
         
+    # ==============================================
+    # 메일 작성 도구
+    # ==============================================
+
+    @mcp.tool()
+    async def create_draft(
+        subject: Annotated[str, Field(..., description="작성할 메일의 제목",examples=["MCP 도구로 메일 보내드립니다."])],
+        body: Annotated[str, Field(..., description="작성할 메일의 본문 텍스트",examples=[""])],
+        to_addresses: Annotated[list[str], Field(..., description="수신자 메일 주소 목록", examples=[["test1@test.com","test2@test.com"]])],
+        cc_addresses: Annotated[Optional[list[str]], Field(None, description="참조자 메일 주소 목록", examples=[["test1@test.com","test2@test.com"]])] = None,
+    ) -> dict:
+        """이메일을 발송하지 않고 임시 보관함(Draft)에 초안으로 저장합니다.
+        
+        [LLM 에이전트 사용 가이드]
+        1. 사용자가 메일 작성을 요청하지만 바로 보내지 않고 임시보관함(Drafts)에 작성하여 내용을 검토 받아야 할 때 사용합니다. (안전 가드레일)
+        2. subject, body, to_address 항목은 필수 입니다. 
+        3. to_address, cc_address의 대상자가 여려명일 경우 리스트 목록으로 전달 합니다. 
+        """
+        # Tool 은 MCP 입력 이름과 설명을 제공하고, 실제 Graph payload 구성은 service 에 위임합니다.
+        return await mail_write_service.create_draft(
+            subject=subject,
+            body=body,
+            to_addresses=to_addresses,
+            cc_addresses=cc_addresses,
+        )
+    
+    @mcp.tool()
+    async def send_email(
+        subject: Annotated[str, Field(..., description="작성할 메일의 제목",examples=["MCP 도구로 메일 보내드립니다."])],
+        body: Annotated[str, Field(..., description="작성할 메일의 본문 텍스트",examples=[""])],
+        to_addresses: Annotated[list[str], Field(..., description="수신자 메일 주소 목록", examples=[["test1@test.com","test2@test.com"]])],
+        cc_addresses: Annotated[Optional[list[str]], Field(None, description="참조자 메일 주소 목록", examples=[["test1@test.com","test2@test.com"]])] = None,
+    ) -> dict:
+        """이메일을 발송합니다.
+
+        [LLM 에이전트 사용 가이드]
+        1. 사용자가 명시적으로 즉시 발송을 요청했을 때만 사용합니다.
+        2. 안전한 기본 흐름이 필요하면 send_email 보다 create_draft 를 우선 사용합니다.
+        3. to_addresses 는 최소 1개 이상 필요하며 여러 명은 리스트로 전달합니다.
+        """
+        
+        return await mail_write_service.send_email(
+            subject=subject,
+            body=body,
+            to_addresses=to_addresses,
+            cc_addresses=cc_addresses,
+        )
+
+    @mcp.tool()
+    async def reply_email(
+        message_id: Annotated[str, Field(..., description="답장할 대상 원본 메세지 ID")],
+        body: Annotated[str, Field(..., description="작성할 메일의 본문 텍스트",examples=[""])],
+        reply_all: Annotated[bool, Field(False, description="전체 회신 여부 (기본값 False)")] = False,
+        
+    ) -> dict:
+        """기존 이메일에 답장을 발송합니다.
+
+        [LLM 에이전트 사용 가이드]
+        1. 사용자가 특정 메일에 답장하라고 요청할 때 사용합니다.
+        2. message_id 는 반드시 메일 목록/상세 조회 결과에서 얻은 원본 id 값을 그대로 사용합니다.
+        3. reply_all 이 True 이면 원본 메일의 전체 수신자에게 회신합니다.
+        """
+        # 답장 대상 식별과 reply/replyAll 선택은 service 에서 Graph 엔드포인트로 변환합니다.
+        return await mail_write_service.reply_email(
+            message_id=message_id,
+            body=body,
+            reply_all=reply_all,
+        )
+
+        
+        
+
+
+
+
+    # ==============================================
+    # 보고서용 메일 조회 도구 
+    # ==============================================
+
+    @mcp.tool()
+    async def mail_weekly_report(
+        top_k: Annotated[int, Field(50, description="각 주차별로 가져올 메일의 최대 개수 (1~50 사이 정수)", examples=[50])] = 50,
+    ) -> MailWeeklyReport:
+        """주간보고 작성용으로 지난주와 이번주 메일 목록 및 요약 정보를 조회합니다.
+        [LLM 에이전트 가이드]
+        1. "주간보고", "위클리 리포트" "weekly report" 등의 보고서 작성 목적의 요청에서만 이 도구를 사용합니다.
+        2. 조회 범위는 오늘 기준으로 지난주 월~일요일,  이번주 월~일요일 총 2개의 주차로 고정합니다. 
+        3. "이번주 메일", "메일 보여줘" 등의 단순 메일 조회 목적은 이 도구를 사용하지 않습니다. 
+        """
+        # 기간 계산과 요약 조립은 service 에 위임하고, Tool 은 MCP 계약만 담당합니다.
+        return await mail_report_service.fetch_weekly_report(top_k=top_k)
+
+    @mcp.tool()
+    async def mail_monthly_report(
+        top_k: Annotated[int, Field(50, description="각 월별로 가져올 메일의 최대 개수 (1~50 사이 정수)", examples=[50])] = 50,
+    ) -> MailMonthlyReport:
+        """월간보고 작성용으로 지난달과 이번달 메일 목록 및 요약 정보를 조회합니다.
+        [LLM 에이전트 가이드]
+        1. "월간보고", "먼쓸리 리포트", "monthly report" 등의 보고서 작성 목적의 요청에서만 이 도구를 사용합니다.
+        2. 조회 범위는 오늘 기준으로 지난달 1일~말일, 이번달 1일~말일 총 2개의 월로 고정합니다.
+        3. "이번달 메일 보여줘" 같은 단순 조회는 기간 조건이 있는 일반 메일 조회 도구를 우선 사용합니다.
+        """
+        # 월간 리포트도 주간 리포트와 같은 응답 구조를 유지해 클라이언트 처리 방식을 단순하게 합니다.
+        return await mail_report_service.fetch_monthly_report(top_k=top_k)

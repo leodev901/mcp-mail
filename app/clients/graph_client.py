@@ -100,9 +100,16 @@ async def graph_request(
             timeout=30.0,
         )
         response.raise_for_status()
+        status_code = response.status_code
         
-        if status_code == 204:
-            return {"status_code": status_code, "status": "success"}
+        # sendMail/reply 계열 Graph API 는 성공해도 본문이 없는 202/204 응답을 줄 수 있습니다.
+        # response.content 가 비어 있으면 json() 을 호출하지 않고 표준 성공 dict 로 반환합니다.
+        if status_code in (202, 204) or not response.content:
+            response_data = {"status_code": status_code, "status": "success"}
+            record.status = "success"
+            record.http_status = status_code
+            record.response_body = response_data
+            return response_data
 
         response_data = response.json()
         

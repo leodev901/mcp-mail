@@ -14,7 +14,7 @@ README는 "구상 중인 역할"과 "현재 코드 기준 상태"를 함께 적�
 
 | 영역 | 목표 역할 | 현재 코드 기준 상태 |
 | :-- | :-- | :-- |
-| `app` | LLM/에이전트가 호출하는 MCP 서버 | FastMCP 서버로 구성되어 있고, 현재는 메일 조회 중심으로 연결되어 있으며 향후 서비스별 독립 배포 단위로 확장할 MCP 서버 역할입니다. |
+| `app` | LLM/에이전트가 호출하는 MCP 서버 | FastMCP 서버로 구성되어 있고, 현재는 Outlook 메일 조회, 작성, 답장, 주간/월간 리포트 도구를 제공하며 향후 서비스별 독립 배포 단위로 확장할 MCP 서버 역할입니다. |
 | `cmn` | 인증, 토큰, 로그, DB 세션 등 공통 기능을 제공하는 API 서버 | FastAPI 앱으로 분리되어 있으며, OAuth 콜백, 사용자 토큰 조회, 앱 토큰 발급, JWT encode/decode 유틸, Tool/API 로그 저장 API를 제공하는 공통 플랫폼 레이어 역할을 맡고 있습니다. |
 
 ## 최근 로컬 `main` 반영 사항
@@ -24,6 +24,10 @@ README는 "구상 중인 역할"과 "현재 코드 기준 상태"를 함께 적�
 - `app/clients/mcp_cmn_client.py`가 추가되어 `cmn`의 `/api/oauth/user/token/{app_name}`, `/api/logs/tool`, `/api/logs/api` 호출을 담당합니다.
 - `app/service/mail_service.py`와 `app/schema/mail.py`가 추가되어 Tool 함수에서 Graph 조회 조건 조합과 응답 모델 변환을 분리했습니다.
 - 메일 조회는 KST 기준 날짜 입력(`YYYY-MM-DD`)을 Graph API용 UTC `Z` 필터로 변환하고, 날짜가 없으면 최근 30일 범위를 기본 조회 조건으로 사용합니다.
+- `app/service/mail_write_service.py`가 추가되어 메일 초안 생성, 즉시 발송, 답장/전체답장 발송을 서비스 계층에서 처리합니다.
+- `app/service/mail_report_service.py`와 `app/utils/date_utils.py`가 추가되어 KST 기준 지난주/이번주, 지난달/이번달 메일 리포트 범위를 계산하고 요약 정보를 생성합니다.
+- `app/schema/mail.py`에는 `MailWeeklyReport`, `MailMonthlyReport`, `MailPeriodSummary` 등 리포트 응답 스키마가 추가되었습니다.
+- `app/clients/graph_client.py`는 `sendMail`, `reply`처럼 성공 시 본문이 없는 `202/204` Graph 응답도 표준 성공 응답으로 처리하도록 보완되었습니다.
 - `app/clients/graph_client.py`는 access token 발급이나 사용자 판단을 하지 않고, service 계층에서 전달받은 Graph access token으로 Microsoft Graph를 호출하고 외부 API 로그를 남기는 역할로 좁혔습니다.
 - `cmn/api/endpoint/utils_router.py`가 추가되어 JWT `encode`/`decode` 검증용 유틸 API를 제공합니다.
 - 로그 모델은 `cmn/db/models/mcp_log.py`의 `LogBase`를 기준으로 재정리되었고, `M365McpToolLog`, `M365McpApiLog` 두 모델이 공통 저장 흐름을 공유합니다.
@@ -123,7 +127,10 @@ LLM 또는 MCP 클라이언트가 이 서버의 Tool을 호출하면, 서버가 
 | `app/main.py` | FastMCP 앱 생성, 미들웨어 등록, Tool 등록 |
 | `app/tools/mail_tools.py` | 메일 관련 MCP Tool 정의 |
 | `app/service/mail_service.py` | 메일 조회 조건 조합, 사용자 접근 검사, Graph 호출 유스케이스 |
-| `app/schema/mail.py` | Graph 메일 응답 모델과 KST 시간 변환 |
+| `app/service/mail_write_service.py` | 메일 초안 생성, 즉시 발송, 답장 발송 유스케이스 |
+| `app/service/mail_report_service.py` | 주간/월간 메일 리포트 기간 계산과 요약 조립 |
+| `app/schema/mail.py` | Graph 메일 응답 모델, 리포트 응답 모델, KST 시간 변환 |
+| `app/utils/date_utils.py` | KST 기준 주간/월간 날짜 범위 계산 유틸 |
 | `app/clients/graph_client.py` | Microsoft Graph API 호출 공통 래퍼 및 외부 API 로그 기록 |
 | `app/clients/mcp_cmn_client.py` | CMN 사용자 컨텍스트 조회, Tool/API 로그 저장 호출 |
 | `app/common/exception.py` | Graph/CMN 예외 정의 |
@@ -133,9 +140,13 @@ LLM 또는 MCP 클라이언트가 이 서버의 Tool을 호출하면, 서버가 
 ### 현재 활성화된 MCP 기능
 
 - `register_mail_tools(mcp)`가 등록되어 있습니다.
-- 실제 활성 Tool은 현재 `get_recent_emails`, `get_unread_emails` 입니다.
-- 두 Tool은 공통으로 `MailService.fetch_my_mails()`를 호출하고, 날짜가 없으면 KST 기준 최근 30일 범위를 기본 필터로 사용합니다.
+- 메일 조회 Tool은 `get_recent_emails`, `get_unread_emails`, `get_important_emails`, `get_flagged_emails`, `get_emails_sender`, `get_emails_cc`, `get_email_attachment`, `search_emails_title`, `search_emails_content`, `get_sent_emails`, `get_email_detail`, `get_emails_folder` 입니다.
+- 메일 작성 Tool은 `create_draft`, `send_email`, `reply_email` 입니다.
+- 보고서용 Tool은 `mail_weekly_report`, `mail_monthly_report` 입니다.
+- 조회 Tool은 공통으로 `MailService.fetch_my_mails()` 또는 전용 조회 메서드를 호출하고, 날짜가 없으면 KST 기준 최근 30일 범위를 기본 필터로 사용합니다.
 - `from_date`, `to_date`는 `YYYY-MM-DD` 형식의 KST 날짜로 해석되며, Microsoft Graph 호출 전 UTC `Z` 형식의 `receivedDateTime` 필터로 변환됩니다.
+- `create_draft`는 `POST /me/messages`로 초안을 만들고, `send_email`은 `POST /me/sendMail`, `reply_email`은 `POST /me/messages/{id}/reply` 또는 `replyAll`을 호출합니다.
+- `mail_weekly_report`는 지난주 월~일요일과 이번주 월~일요일 메일 목록 및 집계 요약을 반환하고, `mail_monthly_report`는 지난달과 이번달을 같은 구조로 반환합니다.
 - Teams, SharePoint 등의 Tool 모듈은 존재하지만 `app/main.py`에서는 아직 등록이 주석 처리되어 있습니다.
 
 ### `app` 요청 흐름
@@ -149,7 +160,7 @@ sequenceDiagram
     participant EX as MCPExceptionMiddleware
     participant CMN as cmn API
     participant Tool as mail_tools
-    participant Service as mail_service
+    participant Service as mail/report/write service
     participant Graph as Microsoft Graph API
 
     Client->>App: MCP HTTP 요청
@@ -160,7 +171,7 @@ sequenceDiagram
     CMN-->>MCP: Graph access token + user context
     MCP->>MCP: request.state에 컨텍스트 저장
     MCP->>Tool: Tool 실행
-    Tool->>Service: 조회 조건 전달
+    Tool->>Service: 조회/작성/리포트 조건 전달
     Service->>Graph: Graph API 호출
     Graph-->>Service: 응답 반환
     Service-->>Tool: MailMessage 목록 반환
@@ -170,9 +181,11 @@ sequenceDiagram
 - `HttpMiddleware`는 `x-request-id`, `biz-user-token` 요청 헤더를 읽어 `request.state`에 값을 보관합니다.
 - `MCPLoggingMiddleware`는 Tool 실행 전에 `cmn`에서 사용자 컨텍스트를 조회하고, Tool 실행 후 성공/실패 로그를 `/api/logs/tool`로 저장합니다.
 - `MCPExceptionMiddleware`는 Graph/CMN 예외와 예상하지 못한 예외를 FastMCP `ToolError`로 변환합니다.
-- `mail_service.py`는 blacklist 검사, KST 날짜 필터 조합, Graph 호출 요청 조립을 담당합니다.
+- `mail_service.py`는 blacklist 검사, KST 날짜 필터 조합, Graph 조회 요청 조립을 담당합니다.
+- `mail_write_service.py`는 메일 작성 입력 검증, 수신자 payload 생성, 초안/발송/답장 Graph 요청 조립을 담당합니다.
+- `mail_report_service.py`는 기존 조회 서비스를 재사용해 지난주/이번주, 지난달/이번달 메일 목록과 요약 집계를 생성합니다.
 - `graph_client.py`는 실제 Graph API 호출을 감싸고, 외부 API 호출 로그를 `/api/logs/api`로 저장합니다.
-- 관련 코드 경로는 `app/core/http_middleware.py`, `app/core/mcp_midleware.py`, `app/clients/mcp_cmn_client.py`, `app/service/mail_service.py`, `app/clients/graph_client.py` 입니다.
+- 관련 코드 경로는 `app/core/http_middleware.py`, `app/core/mcp_midleware.py`, `app/clients/mcp_cmn_client.py`, `app/service/mail_service.py`, `app/service/mail_write_service.py`, `app/service/mail_report_service.py`, `app/clients/graph_client.py` 입니다.
 
 ## `cmn` 설명
 
@@ -310,12 +323,15 @@ sequenceDiagram
 - `cmn`은 서비스, 저장소, DI, DB 모델이 나뉘어 있어 기능 추가보다 유지보수와 확장 기준을 먼저 세운 구조라는 점이 분명합니다.
 - delegated OAuth 흐름도 callback 전용 코드를 라우터에 두지 않고, DTO 정규화와 late session open 패턴으로 service에 모아 두어 이후 토큰 조회/갱신 시나리오까지 재사용할 수 있습니다.
 - `app`은 미들웨어, Tool, service, schema, 클라이언트가 나뉘어 있어 MCP 서버 확장과 공통 API 진화를 서로 독립적으로 가져가기 좋습니다.
+- 메일 조회, 쓰기, 리포트가 각각 `mail_service.py`, `mail_write_service.py`, `mail_report_service.py`로 분리되어 있어 기능이 늘어나도 Tool 함수가 과도하게 비대해지지 않습니다.
 - 폴더 분리가 곧 배포 경계이기도 해서, 향후 서비스별 Helm chart와 CI 파이프라인을 따로 가져가도 구조를 다시 뜯어고칠 필요가 적습니다.
 
 ### 정리 필요 포인트
 
 - `app`은 이제 JWT 해석과 토큰 저장 책임을 직접 갖지 않고, `biz-user-token`을 CMN 사용자 컨텍스트 조회에 전달하는 실행 계층으로 정리되어 있습니다.
 - `app`의 Graph 호출은 service 계층에서 access token을 명시적으로 전달하는 구조로 바뀌었으므로, 이후 Teams/SharePoint Tool도 같은 컨텍스트 전달 방식을 맞추는 정리가 필요합니다.
+- 메일 작성 기능은 `Mail.Send`, 초안 생성은 `Mail.ReadWrite` delegated 권한이 필요하므로, 운영 테넌트의 사용자 동의/관리자 동의 정책과 함께 확인해야 합니다.
+- 리포트의 `listed_count`는 Graph 전체 건수가 아니라 `top_k` 범위 안에서 실제 응답에 포함된 메일 수입니다. 정확한 전체 건수가 필요하면 `$count` 전용 호출을 별도로 추가해야 합니다.
 - `cmn` 내부에서는 이미 라우터, dependency, 서비스, 저장소, 공통 모델, 미들웨어, 예외 처리기를 나눠 두어 공통 플랫폼 서버 방향을 유지하고 있습니다.
 
 이렇게 적어 둔 이유는 현재 저장소가 "완성된 분리 구조"라기보다 "의도를 가진 채 분리해 가는 구조"에 가깝기 때문입니다.  
@@ -422,6 +438,8 @@ npx @modelcontextprotocol/inspector
 - `docs/WINDOWS_PIP_PERMISSION_GUIDE.md`
 - `docs/APP_FASTMCP_REFACTOR_GUIDE.md`
 - `docs/APP_MCP_TOOL_CONTEXT_GUIDE.md`
+- `docs/MAIL_WRITE_GUIDE.md`
+- `docs/MAIL_REPORT_GUIDE.md`
 
 ## 한 줄 정리
 

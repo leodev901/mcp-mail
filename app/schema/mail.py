@@ -75,3 +75,45 @@ class MailMessage(GraphBaseModl):
 class MailMessageDetail(MailMessage):
     body: Annotated[Optional[MessageBody], Field(None, description="메일 본문")]
     attachments: Annotated[list[Attachment], Field(default_factory=list, description="첨부파일 목록")]
+
+
+# ===============================================================
+# Report 모델
+# ===============================================================
+class MailSenderSummary(BaseModel):
+    """보고서에서 자주 등장한 발신자를 표현하는 작은 요약 모델입니다."""
+
+    sender: Annotated[str, Field(..., description="발신자 이름 또는 이메일")]
+    count: Annotated[int, Field(..., description="해당 발신자의 메일 수")]
+
+
+class MailPeriodSummary(BaseModel):
+    """한 기간의 메일 목록을 사람이 읽기 좋은 집계 정보로 압축한 모델입니다."""
+
+    period_label: Annotated[str, Field(..., description="기간 이름 (예: 지난주, 이번주, 지난달, 이번달)")]
+    from_date: Annotated[str, Field(..., description="조회 시작일 (YYYY-MM-DD)")]
+    to_date: Annotated[str, Field(..., description="조회 종료일 (YYYY-MM-DD)")]
+    listed_count: Annotated[int, Field(..., description="응답에 포함된 메일 수")]
+    unread_count: Annotated[int, Field(..., description="응답 메일 중 안 읽은 메일 수")]
+    important_count: Annotated[int, Field(..., description="응답 메일 중 중요도가 high 인 메일 수")]
+    attachment_count: Annotated[int, Field(..., description="응답 메일 중 첨부파일이 있는 메일 수")]
+    top_senders: Annotated[list[MailSenderSummary], Field(default_factory=list, description="메일 수 기준 주요 발신자 목록")]
+    important_mails: Annotated[list[MailMessage], Field(default_factory=list, description="중요 메일 목록")]
+    recent_mails: Annotated[list[MailMessage], Field(default_factory=list, description="기간 내 최근 메일 목록")]
+    summary_text: Annotated[str, Field(..., description="기간별 요약 문장")]
+
+
+class MailWeeklyReport(BaseModel):
+    """지난주와 이번주 메일 목록 및 요약 정보를 함께 반환하는 주간 리포트 모델입니다."""
+
+    last_week: Annotated[MailPeriodSummary, Field(..., description="지난주 메일 요약")]
+    this_week: Annotated[MailPeriodSummary, Field(..., description="이번주 메일 요약")]
+    report_content: Annotated[str, Field(..., description="주간 메일 비교 요약")]
+
+
+class MailMonthlyReport(BaseModel):
+    """지난달과 이번달 메일 목록 및 요약 정보를 함께 반환하는 월간 리포트 모델입니다."""
+
+    last_month: Annotated[MailPeriodSummary, Field(..., description="지난달 메일 요약")]
+    this_month: Annotated[MailPeriodSummary, Field(..., description="이번달 메일 요약")]
+    report_content: Annotated[str, Field(..., description="월간 메일 비교 요약")]
