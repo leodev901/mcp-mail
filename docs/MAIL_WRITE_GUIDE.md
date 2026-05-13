@@ -2,17 +2,17 @@
 
 ## 목적
 
-`app/` FastMCP 서버에서 메일 초안 생성, 즉시 발송, 답장 발송 도구가 어떻게 동작하는지 설명합니다.
+`app/` FastMCP 서버에서 메일 초안 생성, 즉시 발송, 답장 발송, 전달 도구가 어떻게 동작하는지 설명합니다.
 현재 패턴은 조회 기능과 같이 `Tool -> Service -> Graph Client` 계층을 유지합니다.
 
 ## 흐름
 
 ```mermaid
 flowchart LR
-    Tool["app/tools/mail_tools.py<br/>create_draft / send_email / reply_email"]
+    Tool["app/tools/mail_tools.py<br/>create_draft / send_email / reply_email / forward_email"]
     Service["app/service/mail_write_service.py<br/>검증 / payload 생성 / 접근 검사"]
     GraphClient["app/clients/graph_client.py<br/>Microsoft Graph 호출"]
-    Graph["Microsoft Graph API<br/>/me/messages, /me/sendMail, /me/messages/{id}/reply"]
+    Graph["Microsoft Graph API<br/>/me/messages, /me/sendMail, /me/messages/{id}/reply, /forward"]
 
     Tool --> Service
     Service --> GraphClient
@@ -31,6 +31,7 @@ flowchart LR
 | `create_draft` | `POST /me/messages` | 메일을 발송하지 않고 Drafts 에 초안으로 저장합니다. |
 | `send_email` | `POST /me/sendMail` | 새 메일을 즉시 발송하고 보낸 편지함에 저장합니다. |
 | `reply_email` | `POST /me/messages/{id}/reply` 또는 `replyAll` | 기존 메일에 답장을 발송합니다. |
+| `forward_email` | `POST /me/messages/{id}/forward` | 기존 메일을 다른 수신자에게 전달합니다. |
 
 ## 예시
 
@@ -54,6 +55,7 @@ flowchart LR
 - `create_draft` 는 `status=draft_created` 와 생성된 메일 `id` 를 반환합니다.
 - `send_email` 은 `status=sent` 를 반환합니다.
 - `reply_email` 은 `status=reply_sent` 를 반환합니다.
+- `forward_email` 은 `status=forwarded` 를 반환합니다.
 
 실패 예시:
 

@@ -141,11 +141,11 @@ LLM 또는 MCP 클라이언트가 이 서버의 Tool을 호출하면, 서버가 
 
 - `register_mail_tools(mcp)`가 등록되어 있습니다.
 - 메일 조회 Tool은 `get_recent_emails`, `get_unread_emails`, `get_important_emails`, `get_flagged_emails`, `get_emails_sender`, `get_emails_cc`, `get_email_attachment`, `search_emails_title`, `search_emails_content`, `get_sent_emails`, `get_email_detail`, `get_emails_folder` 입니다.
-- 메일 작성 Tool은 `create_draft`, `send_email`, `reply_email` 입니다.
+- 메일 작성 Tool은 `create_draft`, `send_email`, `reply_email`, `forward_email` 입니다.
 - 보고서용 Tool은 `mail_weekly_report`, `mail_monthly_report` 입니다.
 - 조회 Tool은 공통으로 `MailService.fetch_my_mails()` 또는 전용 조회 메서드를 호출하고, 날짜가 없으면 KST 기준 최근 30일 범위를 기본 필터로 사용합니다.
 - `from_date`, `to_date`는 `YYYY-MM-DD` 형식의 KST 날짜로 해석되며, Microsoft Graph 호출 전 UTC `Z` 형식의 `receivedDateTime` 필터로 변환됩니다.
-- `create_draft`는 `POST /me/messages`로 초안을 만들고, `send_email`은 `POST /me/sendMail`, `reply_email`은 `POST /me/messages/{id}/reply` 또는 `replyAll`을 호출합니다.
+- `create_draft`는 `POST /me/messages`로 초안을 만들고, `send_email`은 `POST /me/sendMail`, `reply_email`은 `POST /me/messages/{id}/reply` 또는 `replyAll`, `forward_email`은 `POST /me/messages/{id}/forward`를 호출합니다.
 - `mail_weekly_report`는 지난주 월~일요일과 이번주 월~일요일 메일 목록 및 집계 요약을 반환하고, `mail_monthly_report`는 지난달과 이번달을 같은 구조로 반환합니다.
 - Teams, SharePoint 등의 Tool 모듈은 존재하지만 `app/main.py`에서는 아직 등록이 주석 처리되어 있습니다.
 
@@ -182,7 +182,7 @@ sequenceDiagram
 - `MCPLoggingMiddleware`는 Tool 실행 전에 `cmn`에서 사용자 컨텍스트를 조회하고, Tool 실행 후 성공/실패 로그를 `/api/logs/tool`로 저장합니다.
 - `MCPExceptionMiddleware`는 Graph/CMN 예외와 예상하지 못한 예외를 FastMCP `ToolError`로 변환합니다.
 - `mail_service.py`는 blacklist 검사, KST 날짜 필터 조합, Graph 조회 요청 조립을 담당합니다.
-- `mail_write_service.py`는 메일 작성 입력 검증, 수신자 payload 생성, 초안/발송/답장 Graph 요청 조립을 담당합니다.
+- `mail_write_service.py`는 메일 작성 입력 검증, 수신자 payload 생성, 초안/발송/답장/전달 Graph 요청 조립을 담당합니다.
 - `mail_report_service.py`는 기존 조회 서비스를 재사용해 지난주/이번주, 지난달/이번달 메일 목록과 요약 집계를 생성합니다.
 - `graph_client.py`는 실제 Graph API 호출을 감싸고, 외부 API 호출 로그를 `/api/logs/api`로 저장합니다.
 - 관련 코드 경로는 `app/core/http_middleware.py`, `app/core/mcp_midleware.py`, `app/clients/mcp_cmn_client.py`, `app/service/mail_service.py`, `app/service/mail_write_service.py`, `app/service/mail_report_service.py`, `app/clients/graph_client.py` 입니다.

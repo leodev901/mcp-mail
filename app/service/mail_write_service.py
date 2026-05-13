@@ -240,3 +240,46 @@ class MailWriteService():
             "message_id": normalized_message_id,
             "reply_all": reply_all,
         }
+
+    async def forward_email(
+        self,
+        *,
+        message_id: str,
+        to_addresses: list[str],
+        comment: str = "",
+    ) -> dict:
+        """
+        기존 메일을 다른 수신자에게 전달합니다.
+        전달은 원본 메일 ID 를 기준으로 수행하므로, 목록/상세 조회 결과의 id 를 그대로 받아 사용합니다.
+        """
+
+        context = self._get_request_context()
+        self._ensure_user_allowed(context)
+
+        normalized_message_id = message_id.strip()
+        normalized_comment = comment.strip() if comment else ""
+        normalized_to_addresses = self._normalize_recipients(to_addresses, "to_addresses")
+
+        if not normalized_message_id:
+            raise ValueError("전달할 메일 ID(message_id)가 필요합니다.")
+
+        # 메일 ID 는 URL path segment 로 들어가므로 특수문자를 percent-encoding 합니다.
+        encoded_message_id = quote(normalized_message_id, safe="")
+
+        await graph_request(
+            method="POST",
+            path=f"/messages/{encoded_message_id}/forward",
+            access_token=context.access_token,
+            json_body={
+                "comment": normalized_comment,
+                "toRecipients": self._build_recipient_payload(normalized_to_addresses),
+            },
+            trace_id=context.trace_id,
+            current_user=context.current_user,
+        )
+
+        return {
+            "status": "forwarded",
+            "message_id": normalized_message_id,
+            "to_count": len(normalized_to_addresses),
+        }

@@ -383,6 +383,27 @@ def register_mail_tools(mcp: FastMCP) -> None:
             reply_all=reply_all,
         )
 
+    @mcp.tool()
+    async def forward_email(
+        message_id: Annotated[str, Field(..., description="전달할 대상 원본 메세지 ID")],
+        to_addresses: Annotated[list[str], Field(..., description="전달받을 수신자 메일 주소 목록", examples=[["test1@test.com","test2@test.com"]])],
+        comment: Annotated[str, Field("", description="전달 메일에 함께 넣을 코멘트", examples=["아래 메일 전달합니다."])] = "",
+    ) -> dict:
+        """기존 이메일을 다른 수신자에게 전달합니다.
+
+        [LLM 에이전트 사용 가이드]
+        1. 사용자가 특정 메일을 다른 사람에게 전달하라고 요청할 때 사용합니다.
+        2. message_id 는 반드시 메일 목록/상세 조회 결과에서 얻은 원본 id 값을 그대로 사용합니다.
+        3. to_addresses 는 최소 1명 이상 필요하며 여러 명은 리스트로 전달합니다.
+        4. comment 는 전달 메일 상단에 덧붙일 설명 문장입니다.
+        """
+        # 전달 액션은 답장과 동일하게 원본 메일 ID 기반 Graph 액션이므로 service 계층에 위임합니다.
+        return await mail_write_service.forward_email(
+            message_id=message_id,
+            to_addresses=to_addresses,
+            comment=comment,
+        )
+
         
         
 
