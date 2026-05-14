@@ -68,7 +68,10 @@ async def graph_request(
     access_token 은 service 계층에서 명시적으로 넘기며, 이 함수는 토큰 발급/사용자 판단 같은 비즈니스 로직을 하지 않습니다.
     """
 
-    url = f"{GRAPH_BASE}/me{path}"
+    logger.debug(f"access_token: {access_token}")
+    logger.debug(f"json_body: {json_body}")
+
+    url = f"{GRAPH_BASE}{path}"
     headers = {
         "Authorization": f"Bearer {access_token}",
         "Accept": "application/json",

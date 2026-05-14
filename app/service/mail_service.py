@@ -12,6 +12,7 @@ from app.clients.graph_client import graph_request
 from app.common.exception import GraphAccessDeniedError
 from app.schema.user import User
 from app.schema.mail import MailMessage, MailMessageDetail
+from app.utils.date_utils import get_format_to_utc
 
 
 
@@ -69,43 +70,7 @@ class MailService:
             raise GraphAccessDeniedError(context.current_user.user_email or context.current_user.user_id)
 
 
-    def _build_base_filter(
-        self,
-        from_date: Optional[str] = None,
-        to_date: Optional[str] = None,
-        date_field: str = "receivedDateTime",
-    ) -> list[str]:
-        """
-        날짜 조건을 Graph OData filter 문자열로 조합합니다.
-        Microsoft Outlook에서는 날짜가 UTC로 저장, 응답하므로 사용자로부터 받은 KST 날짜를 UTC 기준으로 변환합니다.
-        """
-
-        filters: list[str] = []
-
-        KST = timedelta(hours=9)
-
-        # 날짜가 없으면 KST 기준 오늘 날짜 00:00:00을 기준으로 
-        today_kst = datetime.now(timezone(KST)).replace(hour=0, minute=0, second=0, microsecond=0)
-        
-        if from_date: # 사용자가 준 YYYY-MM-DD 날짜 
-            from_date_time=datetime.strptime(from_date, "%Y-%m-%d")
-        else: # 기본 조회는 KST 기준 최근 30일로 제한한다.
-            from_date_time=today_kst - timedelta(days=30)
-           
-
-        # 종료일을 각 날짜의 자정으로 계산
-        if to_date: 
-            to_date_time = datetime.strptime(to_date, "%Y-%m-%d") + timedelta(days=1) - timedelta(seconds=1)
-        else: 
-            to_date_time = today_kst + timedelta(days=1) - timedelta(seconds=1)
-
-            
-        # Graph 필터는 UTC로 계산 되므로 다시 KST에서 -9 시간 씩 차감해야 함.
-        filters.append(f"{date_field} ge {(from_date_time - KST).strftime('%Y-%m-%dT%H:%M:%SZ')}")
-        filters.append(f"{date_field} le {(to_date_time - KST).strftime('%Y-%m-%dT%H:%M:%SZ')}")
-        
-        return filters
-
+   
     def _is_mail_in_kst_date_range(
         self,
         mail: MailMessage,
@@ -199,14 +164,23 @@ class MailService:
         normalized_top_k = max(1, min(top_k, 50))
 
         path = (
-            f"/mailFolders/{folder_id}/messages"
+            f"/me/mailFolders/{folder_id}/messages"
             f"?$top={normalized_top_k}"
             f"&$select=id,subject,from,sender,receivedDateTime,bodyPreview,importance,isRead,hasAttachments"
             f"&$orderby=receivedDateTime desc"
         )
         
-        # 기본 필터는 날짜 미지정 시 최근 30일 ~ 오늘입니다.
-        base_filter = self._build_base_filter(from_date, to_date)
+        # from, to 없을 경우 일주일 기본 세팅
+        today = datetime.now(timezone(timedelta(hours=9)))
+        if from_date is None:
+            from_date = (today - timedelta(days=7)).strftime("%Y-%m-%d")
+        if to_date is None:
+            to_date = today.strftime("%Y-%m-%d")
+
+        base_filter:list[str] = [
+            f"receivedDateTime ge {get_format_to_utc(from_date)}",
+            f"receivedDateTime le {get_format_to_utc(to_date,is_end=True)}",
+        ]
 
         # 추가 필터 조합 로직
         if isRead is not None: 
@@ -263,14 +237,24 @@ class MailService:
         normalized_top_k = max(1, min(top_k, 50))
 
         path = (
-            f"/mailFolders/sentitems/messages"
+            f"/me/mailFolders/sentitems/messages"
             f"?$top={normalized_top_k}"
             f"&$select=id,subject,toRecipients,sentDateTime,bodyPreview,importance,isRead,hasAttachments"
             f"&$orderby=sentDateTime desc"
         )
 
         # 보낸편지함은 sentDateTime 기준으로 KST 날짜 조건을 UTC 필터로 변환합니다.
-        base_filter = self._build_base_filter(from_date, to_date, date_field="sentDateTime")
+        today = datetime.now(timezone(timedelta(hours=9)))
+        if from_date is None:
+            from_date = (today - timedelta(days=7)).strftime("%Y-%m-%d")
+        if to_date is None:
+            to_date = today.strftime("%Y-%m-%d")
+            
+        base_filter:list[str] = [
+            f"sentDateTime ge {get_format_to_utc(from_date)}",
+            f"sentDateTime le {get_format_to_utc(to_date,is_end=True)}",
+        ]
+
         joined_filter = " and ".join(base_filter)
         path += f"&$filter={joined_filter}"
 
@@ -302,7 +286,7 @@ class MailService:
             raise ValueError("메일 ID가 누락되었습니다.")
 
         path = (
-            f"/messages/{normalized_mail_id}"
+            f"/me/messages/{normalized_mail_id}"
             f"?$select=id,subject,from,sender,receivedDateTime,sentDateTime,bodyPreview,body,importance,isRead,hasAttachments,toRecipients"
             f"&$expand=attachments($select=id,name,contentType,size)"
         )
@@ -334,7 +318,7 @@ class MailService:
         if not normalized_folder_name:
             raise ValueError("조회할 폴더 이름이 누락되었습니다.")
 
-        path = "/mailFolders?$select=id,displayName,parentFolderId,totalItemCount,unreadItemCount"
+        path = "/me/mailFolders?$select=id,displayName,parentFolderId,totalItemCount,unreadItemCount"
 
         result = await graph_request(
             method="GET",
@@ -373,7 +357,7 @@ class MailService:
 
         
         path = (
-            f"/mailFolders/inbox/messages"
+            f"/me/mailFolders/inbox/messages"
             f"?$top={search_top_k}"
             f"&$select=id,subject,from,sender,receivedDateTime,bodyPreview,importance,isRead,hasAttachments"
             # f"&$search={search_query}"

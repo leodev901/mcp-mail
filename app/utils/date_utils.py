@@ -9,6 +9,16 @@ def _format_date(value: date, date_format: str = "%Y-%m-%d") -> str:
 
     return value.strftime(date_format)
 
+def get_format_to_utc(date_str: str, is_end:bool=False) -> str:
+        
+    dt = datetime.strptime(date_str, "%Y-%m-%d") # 초기 설정 00:00:00
+    if is_end:
+        dt = dt.replace(hour=23, minute=59, second=59) # 종료일인 경우 23:59:59로 설정
+
+    # UTC 변환 후 ISO 포맷으로 보내기
+    
+    utc_dt = dt - timedelta(hours=9)
+    return utc_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 def _today_kst() -> date:
     """
