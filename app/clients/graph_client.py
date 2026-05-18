@@ -92,59 +92,72 @@ async def graph_request(
         http_method=method.upper(),
     )
 
+    
+    max_retry_attempt=3
+    for attempt in range(1,max_retry_attempt+1):
+        try:
 
-    try:
-        client = await get_httpx_client()
-        response = await client.request(
-            method.upper(),
-            url,
-            headers=headers,
-            json=json_body,
-            timeout=30.0,
-        )
-        response.raise_for_status()
-        status_code = response.status_code
-        
-        # sendMail/reply 계열 Graph API 는 성공해도 본문이 없는 202/204 응답을 줄 수 있습니다.
-        # response.content 가 비어 있으면 json() 을 호출하지 않고 표준 성공 dict 로 반환합니다.
-        if status_code in (202, 204) or not response.content:
-            response_data = {"status_code": status_code, "status": "success"}
-            record.status = "success"
-            record.http_status = status_code
+            client = await get_httpx_client()
+            response = await client.request(
+                method.upper(),
+                url,
+                headers=headers,
+                json=json_body,
+                timeout=30.0,
+            )
+            response.raise_for_status()
+            status_code = response.status_code
+            
+            # sendMail/reply 계열 Graph API 는 성공해도 본문이 없는 202/204 응답을 줄 수 있습니다.
+            # response.content 가 비어 있으면 json() 을 호출하지 않고 표준 성공 dict 로 반환합니다.
+            if status_code in (202, 204) or not response.content:
+                response_data = {"status_code": status_code, "status": "success"}
+                record.status = "success"
+                record.http_status = status_code
+                record.response_body = response_data
+                return response_data
+
+            response_data = response.json()
+            
+            record.status="success"
+            record.http_status = response.status_code
             record.response_body = response_data
+
             return response_data
+        except httpx.HTTPStatusError as exc:
+            status_code = exc.response.status_code
+            error_detail = f"{type(exc).__name__}: {exc}"
 
-        response_data = response.json()
-        
-        record.status="success"
-        record.http_status = response.status_code
-        record.response_body = response_data
+            record.status = "fail"
+            record.http_status = status_code
+            record.message = error_detail
 
-        return response_data
-    except httpx.HTTPStatusError as exc:
-        status_code = exc.response.status_code
-        error_detail = f"{type(exc).__name__}: {exc}"
+            if status_code == 400:
+                raise GraphBadRequestError(error_detail)
+            elif status_code == 401:
+                raise GraphUnauthorizedError(error_detail)
+            elif status_code == 403:
+                raise GraphForbiddenError(error_detail)
+            elif status_code == 404:
+                raise GraphResourceNotFoundError(error_detail)
+            elif status_code == 429:
+                if attempt == max_retry_attempt:
+                    raise 
+                # 429 Too Many Requests 응답 Retry-After 대기 후 재시도 
+                retry_after = exc.response.headers.get("Retry-After")
+                if retry_after is None:
+                    retry_after = (2**attempt)
+                await asyncio.sleep(int(retry_after))
+                continue
+            else:
+                raise
+        except Exception as exc:
+            error_detail = f"{type(exc).__name__}: {exc}"
+            record.status = "fail"
+            record.message = error_detail
+            raise
+        finally:
+            elapsed_ms = (time.perf_counter() - started_at) * 1000
+            _logging_message( record )
 
-        record.status = "fail"
-        record.http_status = status_code
-        record.message = error_detail
-
-        if status_code == 400:
-            raise GraphBadRequestError(error_detail)
-        if status_code == 401:
-            raise GraphUnauthorizedError(error_detail)
-        if status_code == 403:
-            raise GraphForbiddenError(error_detail)
-        if status_code == 404:
-            raise GraphResourceNotFoundError(error_detail)
-        raise
-    except Exception as exc:
-        error_detail = f"{type(exc).__name__}: {exc}"
-        record.status = "fail"
-        record.message = error_detail
-        raise
-    finally:
-        elapsed_ms = (time.perf_counter() - started_at) * 1000
-        _logging_message( record )
-
-        asyncio.create_task(save_external_api_log(record))
+            asyncio.create_task(save_external_api_log(record))
