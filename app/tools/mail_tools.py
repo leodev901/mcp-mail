@@ -36,8 +36,7 @@ def register_mail_tools(mcp: FastMCP) -> None:
         """
 
         # Tool은 입력 파라미터를 서비스로 그대로 넘기고, 비즈니스 조합은 서비스가 담당합니다.
-        # return await mail_service.fetch_my_mails(
-        return await mail_search_api_service.search_my_mails(
+        return await mail_service.fetch_emails(
             top_k=top_k,
             from_date=from_date,
             to_date=to_date,
@@ -59,8 +58,7 @@ def register_mail_tools(mcp: FastMCP) -> None:
         2. 파라미터로 개수(top_k)와 날짜 기간(from_date, to_date)을 선택적으로 적용할 수 있습니다.
         3. 사용자가 특정 기간과 갯수를 명시하지 않으면 최근 일주일 기간 내 10개의 메일을 기본 조회합니다.
         """
-        # return await mail_service.fetch_my_mails(
-        return await mail_search_api_service.search_my_mails(
+        return await mail_service.fetch_emails(
             top_k=top_k,
             from_date=from_date,
             to_date=to_date,
@@ -84,7 +82,7 @@ def register_mail_tools(mcp: FastMCP) -> None:
         4. 사용자가 특정 기간과 갯수를 명시하지 않으면 최근 일주일 기간 내 10개의 메일을 기본 조회합니다.
         """
 
-        return await mail_service.fetch_my_mails(
+        return await mail_service.fetch_emails(
             top_k=top_k,
             from_date=from_date,
             to_date=to_date,
@@ -107,7 +105,7 @@ def register_mail_tools(mcp: FastMCP) -> None:
         4. 사용자가 특정 기간과 갯수를 명시하지 않으면 최근 일주일 기간 내 10개의 메일을 기본 조회합니다.
         """
 
-        return await mail_service.fetch_my_mails(
+        return await mail_service.fetch_emails(
             top_k=top_k,
             from_date=from_date,
             to_date=to_date,
@@ -133,7 +131,7 @@ def register_mail_tools(mcp: FastMCP) -> None:
         4. 사용자가 특정 기간과 갯수를 명시하지 않으면 최근 일주일 기간 내 10개의 메일을 기본 조회합니다.
 
         """
-        return await mail_service.fetch_my_mails(
+        return await mail_service.fetch_emails(
             top_k=top_k,
             from_date=from_date,
             to_date=to_date,
@@ -157,7 +155,7 @@ def register_mail_tools(mcp: FastMCP) -> None:
         4. 사용자가 특정 기간과 갯수를 명시하지 않으면 최근 일주일 기간 내 10개의 메일을 기본 조회합니다.
 
         """
-        return await mail_service.fetch_my_mails(
+        return await mail_service.fetch_emails(
             top_k=top_k,
             from_date=from_date,
             to_date=to_date,
@@ -180,70 +178,14 @@ def register_mail_tools(mcp: FastMCP) -> None:
         3. 파라미터로 개수(top_k)와 날짜 기간(from_date, to_date)을 선택적으로 적용할 수 있습니다.
         4. 사용자가 특정 기간과 갯수를 명시하지 않으면 최근 일주일 기간 내 10개의 메일을 기본 조회합니다.
         """
-        return await mail_service.fetch_my_mails(
+        return await mail_service.fetch_emails(
             top_k=top_k,
             from_date=from_date,
             to_date=to_date,
             has_attachments=True,
         )
     
-    @mcp.tool()
-    async def search_emails_title(
-        keywords: Annotated[list[str], Field(...,description="검색할 키워드 목록입니다. 각 키워드는 2자 이상이어야 하며, 여러 키워드는 ['회의', '결과']처럼 배열로 나눠 입력합니다.",examples=[["회의", "결과"], ["정산"], ["오류", "로그"]])],
-        # scope: Annotated[Literal["title", "content", "all"], Field(...,description="검색 대상 필드입니다. title은 제목, content는 본문, all은 제목/본문 전체 검색에 사용합니다.",examples=["title", "content", "all"])],
-        from_date: Annotated[Optional[str], Field(None, description="검색 결과를 KST 기준으로 후처리 필터링할 시작일 (YYYY-MM-DD 형식). 기간 의도가 있으면 입력합니다.",examples=["2026-04-01"])],
-        to_date: Annotated[Optional[str], Field(None, description="검색 결과를 KST 기준으로 후처리 필터링할 종료일 (YYYY-MM-DD 형식). 기간 의도가 있으면 입력합니다.",examples=["2026-04-30"])],
-        top_k: Annotated[int, Field(...,description="가져올 메일의 최대 개수 (1~50 사이 정수, 기본 10)",examples=[10])]=10,
-        
-    ) -> list[MailMessage]:
-        """키워드로 메일 검색 하기 
-        메일 제목에서 키워드가 포함된 메일을 찾아서 보여줍니다.
-
-        [LLM 에이전트 사용 가이드]
-        1. 사용자가 "최근 '회의' 관련된 메일 찾아줘", "제목에 '주간업무'가 들어간 메일 보여줘" 등의 요청을 할 때 사용합니다.
-        2. 검색어는 keywords 배열에 넣으며, 각 키워드는 2자 이상이어야 합니다.
-        3. 여러 키워드는 ["회의", "결과"]처럼 나눠 보내고, 서비스에서는 모든 키워드가 함께 걸리도록 검색 범위를 좁힙니다.
-        4. 사용자가 특정 기간과 갯수를 명시하지 않으면 최근 일주일 기간 내 10개의 메일을 기본 조회합니다.
-        """
-
-        # 키워드 검색은 Graph $search 제약이 있어 일반 목록 조회와 분리된 service 메서드로 구현
-        return await mail_service.search_my_mails(
-            top_k=top_k,
-            from_date=from_date,
-            to_date=to_date,
-            keywords=keywords,
-            scope="title",
-        )
     
-    @mcp.tool()
-    async def search_emails_content(
-        keywords: Annotated[list[str], Field(...,description="검색할 키워드 목록입니다. 각 키워드는 2자 이상이어야 하며, 여러 키워드는 ['회의', '결과']처럼 배열로 나눠 입력합니다.",examples=[["회의", "결과"], ["정산"], ["오류", "로그"]])],
-        # scope: Annotated[Literal["title", "content", "all"], Field(...,description="검색 대상 필드입니다. title은 제목, content는 본문, all은 제목/본문 전체 검색에 사용합니다.",examples=["title", "content", "all"])],
-        from_date: Annotated[Optional[str], Field(None, description="검색 결과를 KST 기준으로 후처리 필터링할 시작일 (YYYY-MM-DD 형식). 기간 의도가 있으면 입력합니다.",examples=["2026-04-01"])],
-        to_date: Annotated[Optional[str], Field(None, description="검색 결과를 KST 기준으로 후처리 필터링할 종료일 (YYYY-MM-DD 형식). 기간 의도가 있으면 입력합니다.",examples=["2026-04-30"])],
-        top_k: Annotated[int, Field(...,description="가져올 메일의 최대 개수 (1~50 사이 정수, 기본 10)",examples=[10])]=10,
-        
-    ) -> list[MailMessage]:
-        """키워드로 메일 검색 하기 
-        메일 제목에서 키워드가 포함된 메일을 찾아서 보여줍니다.
-
-        [LLM 에이전트 사용 가이드]
-        1. 사용자가 "최근 '회의' 관련된 메일 찾아줘", "내용에 '주간업무'가 들어간 메일 보여줘" 등의 요청을 할 때 사용합니다.
-        2. 검색어는 keywords 배열에 넣으며, 각 키워드는 2자 이상이어야 합니다.
-        3. 여러 키워드는 ["회의", "결과"]처럼 나눠 보내고, 서비스에서는 모든 키워드가 함께 걸리도록 검색 범위를 좁힙니다.
-        4. 사용자가 특정 기간과 갯수를 명시하지 않으면 최근 일주일 기간 내 10개의 메일을 기본 조회합니다.
-        """
-
-        # 키워드 검색은 Graph $search 제약이 있어 일반 목록 조회와 분리된 service 메서드로 구현
-        return await mail_service.search_my_mails(
-            top_k=top_k,
-            from_date=from_date,
-            to_date=to_date,
-            keywords=keywords,
-            scope="content",
-        )
-
-
     @mcp.tool()
     async def get_sent_emails(
         from_date: Annotated[Optional[str], Field(None, description="조회 시작일 (YYYY-MM-DD 형식). 시작일 기간이 주어지면 입력합니다.",examples=["2026-04-01"])],
@@ -259,7 +201,11 @@ def register_mail_tools(mcp: FastMCP) -> None:
         3. 보낸편지함은 수신 시간이 아니라 발신 시간(sentDateTime)을 기준으로 최신순 조회합니다.
         4. 사용자가 특정 기간과 갯수를 명시하지 않으면 최근 일주일 기간 내 10개의 메일을 기본 조회합니다.
         """
-        return await mail_service.fetch_my_sent_mails(
+
+        # return await mail_service.fetch_emails_folder(
+        #     foldscope="sentItems",
+        return await mail_service.fetch_emails(
+            foldscope="sent",
             top_k=top_k,
             from_date=from_date,
             to_date=to_date,
@@ -279,9 +225,68 @@ def register_mail_tools(mcp: FastMCP) -> None:
         3. id 파라미터에는 목록 조회 결과의 id 값을 수정하지 말고 그대로 넣어야 합니다.
         4. 응답에는 제목, 발신자, 수신/발신 시각, 본문, 첨부파일 메타데이터가 포함됩니다.
         """
-        return await mail_service.fetch_my_mail_detail(mail_id=id)
+        return await mail_service.fetch_email_detail(mail_id=id)
     
 
+    @mcp.tool()
+    async def search_recived_mails(
+        keywords: Annotated[list[str], Field(...,description="검색할 키워드 목록입니다. 각 키워드는 2자 이상이어야 하며, 여러 키워드는 ['회의', '결과']처럼 배열로 나눠 입력합니다.",examples=[["회의", "결과"], ["정산"], ["오류", "로그"]])],
+        # scope: Annotated[Literal["title", "content", "all"], Field(...,description="검색 대상 필드입니다. title은 제목, content는 본문, all은 제목/본문 전체 검색에 사용합니다.",examples=["title", "content", "all"])],
+        from_date: Annotated[Optional[str], Field(None, description="검색 결과를 KST 기준으로 후처리 필터링할 시작일 (YYYY-MM-DD 형식). 기간 의도가 있으면 입력합니다.",examples=["2026-04-01"])],
+        to_date: Annotated[Optional[str], Field(None, description="검색 결과를 KST 기준으로 후처리 필터링할 종료일 (YYYY-MM-DD 형식). 기간 의도가 있으면 입력합니다.",examples=["2026-04-30"])],
+        top_k: Annotated[int, Field(...,description="가져올 메일의 최대 개수 (1~50 사이 정수, 기본 10)",examples=[10])]=10,
+        
+    ) -> list[MailMessage]:
+        """내가 수신한/참조된 편지에서 키워드로 메일을 찾아서 보여줍니다.
+
+        [LLM 에이전트 사용 가이드]
+        1. 사용자가 "최근 '회의' 관련된 메일 찾아줘", "제목에 '주간업무'가 들어간 메일 보여줘" 등의 요청을 할 때 사용합니다.
+        2. 검색어는 keywords 배열에 넣으며, 각 키워드는 2자 이상이어야 합니다.
+        3. 요청에서 여러개의 키워드를 검색 할 경우 ["회의", "결과"]처럼 나눠 보내고, 여러 키워드는 모두 포함되어야 하는 'AND' 조건으로 처리되므로, 검색 결과가 누락되지 않도록 핵심 단어 위주로 구성하세요.
+        4. 요청한 키워드는 제목, 본문, 발신자 및 첨부파일 내용을 포함하여 검색합니다
+        5. 사용자가 특정 기간과 갯수를 명시하지 않으면 최근 일주일 기간 내 10개의 메일을 기본 조회합니다.
+        """
+
+        # 키워드 검색은 Graph $search 제약이 있어 일반 목록 조회와 분리된 service 메서드로 구현
+        # return await mail_service.search_emails_folder(
+        return await mail_service.search_emails(
+            top_k=top_k,
+            from_date=from_date,
+            to_date=to_date,
+            keywords=keywords,
+        )
+    
+    @mcp.tool()
+    async def search_sent_mails(
+        keywords: Annotated[list[str], Field(...,description="검색할 키워드 목록입니다. 각 키워드는 2자 이상이어야 하며, 여러 키워드는 ['회의', '결과']처럼 배열로 나눠 입력합니다.",examples=[["회의", "결과"], ["정산"], ["오류", "로그"]])],
+        # scope: Annotated[Literal["title", "content", "all"], Field(...,description="검색 대상 필드입니다. title은 제목, content는 본문, all은 제목/본문 전체 검색에 사용합니다.",examples=["title", "content", "all"])],
+        from_date: Annotated[Optional[str], Field(None, description="검색 결과를 KST 기준으로 후처리 필터링할 시작일 (YYYY-MM-DD 형식). 기간 의도가 있으면 입력합니다.",examples=["2026-04-01"])],
+        to_date: Annotated[Optional[str], Field(None, description="검색 결과를 KST 기준으로 후처리 필터링할 종료일 (YYYY-MM-DD 형식). 기간 의도가 있으면 입력합니다.",examples=["2026-04-30"])],
+        top_k: Annotated[int, Field(...,description="가져올 메일의 최대 개수 (1~50 사이 정수, 기본 10)",examples=[10])]=10,
+        
+    ) -> list[MailMessage]:
+        """내가 보낸 편지함에서 키워드로 메일을 찾아서 보여줍니다.
+
+        [LLM 에이전트 사용 가이드]
+        1. 사용자가 "최근 '회의' 관련된 메일 찾아줘", "제목에 '주간업무'가 들어간 메일 보여줘" 등의 요청을 할 때 사용합니다.
+        2. 검색어는 keywords 배열에 넣으며, 각 키워드는 2자 이상이어야 합니다.
+        3. 요청에서 여러개의 키워드를 검색 할 경우 ["회의", "결과"]처럼 나눠 보내고, 여러 키워드는 모두 포함되어야 하는 'AND' 조건으로 처리되므로, 검색 결과가 누락되지 않도록 핵심 단어 위주로 구성하세요.
+        4. 요청한 키워드는 제목, 본문, 발신자 및 첨부파일 내용을 포함하여 검색합니다
+        5. 사용자가 특정 기간과 갯수를 명시하지 않으면 최근 일주일 기간 내 10개의 메일을 기본 조회합니다.
+        """
+
+        # 키워드 검색은 Graph $search 제약이 있어 일반 목록 조회와 분리된 service 메서드로 구현
+        # return await mail_service.search_emails_folder(
+        #     folder_id="sentItems",
+        return await mail_service.search_emails(
+            scope="sent",
+            top_k=top_k,
+            from_date=from_date,
+            to_date=to_date,
+            keywords=keywords,
+        )
+
+    
     @mcp.tool()
     async def get_emails_folder(
         folder_name: Annotated[str, Field(..., description="조회할 Outlook 메일 폴더 이름입니다. 사용자가 만든 폴더명과 정확히 일치해야 합니다.",examples=["청구서", "내 폴더"])],
@@ -310,7 +315,7 @@ def register_mail_tools(mcp: FastMCP) -> None:
             folder_id = folders[0]["id"]
 
         
-        return await mail_service.fetch_my_mails(
+        return await mail_service.fetch_emails_folder(
             top_k=top_k,
             from_date=from_date,
             to_date=to_date,

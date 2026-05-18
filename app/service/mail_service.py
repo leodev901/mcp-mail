@@ -1,7 +1,7 @@
 from __future__ import annotations
 from datetime import datetime, timedelta, timezone
 from dataclasses import dataclass
-from typing import Optional, List
+from typing import Optional, List, Annotated, Literal
 from urllib.parse import quote
 from pydantic import TypeAdapter
 
@@ -71,32 +71,6 @@ class MailService:
 
 
    
-    def _is_mail_in_kst_date_range(
-        self,
-        mail: MailMessage,
-        from_date: Optional[str] = None,
-        to_date: Optional[str] = None,
-    ) -> bool:
-        """
-        Graph $search 는 $filter/$orderby 와 함께 쓰기 까다로우므로 날짜 범위는 응답 모델 변환 후 검사합니다.
-        MailMessage 의 received_date_time 은 schema validator 에서 KST 문자열로 변환되어 있습니다.
-        """
-
-        if not mail.received_date_time:
-            return False
-
-        received_date = datetime.fromisoformat(mail.received_date_time).date()
-        today_kst = datetime.now(timezone(timedelta(hours=9))).date()
-        start_date = datetime.strptime(from_date, "%Y-%m-%d").date() if from_date else today_kst - timedelta(days=30)
-        end_date = datetime.strptime(to_date, "%Y-%m-%d").date() if to_date else today_kst
-
-        if received_date < start_date:
-            return False
-        if received_date > end_date:
-            return False
-
-        return True
-
     def _normalize_search_keywords(self, keywords: str | list[str]) -> list[str]:
         """
         Tool 에서는 여러 검색어를 list[str] 로 받을 수 있으므로 Graph 검색 전 문자열 목록으로 정리합니다.
@@ -139,124 +113,89 @@ class MailService:
 
         return value.strip().replace("'", "''")
 
-    async def fetch_my_mails(
+    async def fetch_emails(
         self,
         *,
+        scope: Literal["received", "sent"] = "received",
         top_k: int = 10,
         from_date: Optional[str] = None,
         to_date: Optional[str] = None,
         isRead: Optional[bool] = None,
         isimportant: Optional[bool] = None,
         isflagged: Optional[bool] = None,
-        sender: Optional[str] = None,
+        sender: Annotated[Optional[str], "Sender email address filter. Display-name search is also supported."] = None,
         cc: Optional[str] = None,
         has_attachments: Optional[bool] = None,
-        folder_id: Optional[str] = "inbox",
     ) -> list[MailMessage]:
-        """최근 메일 목록 조회 
-        top_k, blacklist, Graph path 구성 비즈니스 로직은 service 계층에서 처리합니다.
+        """Fetch recent messages through /me/messages.
+        This mirrors search_emails by separating received and sent messages with the current user's email address.
         """
 
         context = self._get_request_context()
         self._ensure_user_allowed(context)
+        my_email = self._escape_odata_string(context.current_user.user_email or "")
 
-        # Graph API 에 너무 큰 조회 요청을 보내지 않도록 한 번 더 방어합니다.
+        # Graph API 에 너무 큰 조회 요청을 보내지 않도록 max 50 설정
         normalized_top_k = max(1, min(top_k, 50))
 
-        path = (
-            f"/me/mailFolders/{folder_id}/messages"
-            f"?$top={normalized_top_k}"
-            f"&$select=id,subject,from,sender,receivedDateTime,bodyPreview,importance,isRead,hasAttachments"
-            f"&$orderby=receivedDateTime desc"
-        )
-        
-        # from, to 없을 경우 일주일 기본 세팅
+        # 날짜 정렬 및 필터 기준 설정
+        #   - inbox 포함 default -> receivedDateTime 받은시간 기준으로
+        #   - sentItem -> sentDateTime 보낸시간 기준으로
+        base_datetime = "sentDateTime" if scope == "sent" else "receivedDateTime"
+
+        # from, to 공백일 경우 기본갑 설정 '일주일'
         today = datetime.now(timezone(timedelta(hours=9)))
         if from_date is None:
             from_date = (today - timedelta(days=7)).strftime("%Y-%m-%d")
         if to_date is None:
             to_date = today.strftime("%Y-%m-%d")
 
-        base_filter:list[str] = [
-            f"receivedDateTime ge {get_format_to_utc(from_date)}",
-            f"receivedDateTime le {get_format_to_utc(to_date,is_end=True)}",
+        # 필터 리스트 생성
+        base_filter: list[str] = [
+            f"{base_datetime} ge {get_format_to_utc(from_date)}",
+            f"{base_datetime} le {get_format_to_utc(to_date, is_end=True)}",
         ]
 
-        # 추가 필터 조합 로직
-        if isRead is not None: 
+        # 받은/참조 메일 또는 보낸메일로 조회 범위 설정
+        if not my_email:
+            raise ValueError("Current user email is required to filter messages.")
+        if scope == "received":
+            base_filter.append(
+                f"(toRecipients/any(t:t/emailAddress/address eq '{my_email}') "
+                f"or ccRecipients/any(c:c/emailAddress/address eq '{my_email}'))"
+            )
+        elif scope == "sent":
+            base_filter.append(f"from/emailAddress/address eq '{my_email}'")
+
+        # bool 필터
+        if isRead is not None:
             base_filter.append(f"isRead eq {str(isRead).lower()}")
-        if isimportant:
-                base_filter.append("importance eq 'high'")
+        if isimportant is not None:
+            importance_val = "high" if isimportant else "normal"
+            base_filter.append(f"importance eq '{importance_val}'")
         if isflagged:
             base_filter.append("flag/flagStatus eq 'flagged'")
         if has_attachments is not None:
             base_filter.append(f"hasAttachments eq {str(has_attachments).lower()}")
-        
+
+        # 문자열 필터 (Sender/CC)
         if sender:
-            escaped_sender = self._escape_odata_string(sender)
-            base_filter.append(
-                f"(from/emailAddress/address eq '{escaped_sender}' or from/emailAddress/name eq '{escaped_sender}')"
-            )
+            s = self._escape_odata_string(sender)
+            base_filter.append(f"(from/emailAddress/address eq '{s}' or from/emailAddress/name eq '{s}')")
         if cc:
-            escaped_cc = self._escape_odata_string(cc)
-            base_filter.append(
-                f"ccRecipients/any(c:c/emailAddress/address eq '{escaped_cc}' or c/emailAddress/name eq '{escaped_cc}')"
-            )
-        
+            c = self._escape_odata_string(cc)
+            base_filter.append(f"ccRecipients/any(c:c/emailAddress/address eq '{c}' or c/emailAddress/name eq '{c}')")
 
-        # 필터 쿼리 path 추가
         joined_filter = " and ".join(base_filter)
-        path += f"&$filter={joined_filter}"
 
-        result = await graph_request(
-            method="GET",
-            path=path,
-            access_token=context.access_token,
-            trace_id=context.trace_id,
-            current_user=context.current_user,
-        )
-
-        adapter = TypeAdapter(List[MailMessage])
-        return adapter.validate_python(result.get("value", []))
-
-    async def fetch_my_sent_mails(
-        self,
-        *,
-        top_k: int = 10,
-        from_date: Optional[str] = None,
-        to_date: Optional[str] = None,
-    ) -> list[MailMessage]:
-        """보낸편지함 메일 목록 조회
-        보낸편지함은 수신 시간이 아니라 sentDateTime 을 기준으로 기간 필터와 정렬을 적용합니다.
-        """
-
-        context = self._get_request_context()
-        self._ensure_user_allowed(context)
-
-        # Graph API 에 너무 큰 조회 요청을 보내지 않도록 한 번 더 방어합니다.
-        normalized_top_k = max(1, min(top_k, 50))
-
+        # 최종 경로 
         path = (
-            f"/me/mailFolders/sentitems/messages"
+            f"/me/messages"
             f"?$top={normalized_top_k}"
-            f"&$select=id,subject,toRecipients,sentDateTime,bodyPreview,importance,isRead,hasAttachments"
-            f"&$orderby=sentDateTime desc"
+            f"&$select=id,subject,from,sender,receivedDateTime,sentDateTime,toRecipients,bodyPreview,importance,isRead,hasAttachments"
+            f"&$orderby={base_datetime} desc"
+            f"&$filter={joined_filter}"
         )
-
-        # 보낸편지함은 sentDateTime 기준으로 KST 날짜 조건을 UTC 필터로 변환합니다.
-        today = datetime.now(timezone(timedelta(hours=9)))
-        if from_date is None:
-            from_date = (today - timedelta(days=7)).strftime("%Y-%m-%d")
-        if to_date is None:
-            to_date = today.strftime("%Y-%m-%d")
-            
-        base_filter:list[str] = [
-            f"sentDateTime ge {get_format_to_utc(from_date)}",
-            f"sentDateTime le {get_format_to_utc(to_date,is_end=True)}",
-        ]
-
-        joined_filter = " and ".join(base_filter)
-        path += f"&$filter={joined_filter}"
 
         result = await graph_request(
             method="GET",
@@ -269,7 +208,8 @@ class MailService:
         adapter = TypeAdapter(List[MailMessage])
         return adapter.validate_python(result.get("value", []))
 
-    async def fetch_my_mail_detail(
+
+    async def fetch_email_detail(
         self,
         *,
         mail_id: str,
@@ -301,6 +241,78 @@ class MailService:
         )
 
         return MailMessageDetail.model_validate(result)
+    
+    
+    async def search_emails(
+        self,
+        *,
+        scope: Literal["received", "sent"] = "received",
+        keywords: str | list[str] | None = None,
+        top_k: int = 10,
+        from_date: Optional[str] = None,
+        to_date: Optional[str] = None,
+    ) -> list[MailMessage]:
+        context = self._get_request_context()
+        self._ensure_user_allowed(context)
+        my_email = self._escape_odata_string(context.current_user.user_email or "")
+
+
+        normalized_top_k = max(1, min(top_k, 50))
+        
+        
+        search_parts = []
+
+        # 날짜 설정 (기본값 일주일)
+        today = datetime.now(timezone(timedelta(hours=9)))
+        f_date = from_date or (today - timedelta(days=7)).strftime("%Y-%m-%d")
+        t_date = to_date or today.strftime("%Y-%m-%d")
+
+        # scope에 따른 필터 조건 설정
+        #   - inboud    = 받은/참조된 메일
+        #   - outbound  = 보낸 메일
+        if scope == "received":
+            search_parts.append(f"(to:{my_email} OR cc:{my_email})")
+        elif scope == "sent":
+            search_parts.append(f"from:{my_email}")
+        date_range = f"{scope}:{get_format_to_utc(f_date)}..{get_format_to_utc(t_date, is_end=True)}"
+        search_parts.append(date_range)
+
+
+        # 키워드 리스트 추가
+        if keywords:
+            # build_search_query 결과가 "A B" 라면 search_parts에 추가
+            search_parts.append(self._build_search_query(keywords))
+
+        # 검색 파트를 공백으로 합치기 (search에서는 공백이 AND 역할)
+        full_search_string = "AND ".join( f"({part})" for part in search_parts )
+
+        # 최종 경로 
+        path = (
+            f"/me/messages"
+            f"?$top={normalized_top_k}"
+            f"&$select=id,subject,from,sender,receivedDateTime, sentDateTime,bodyPreview,importance,isRead,hasAttachments"
+            f"&$search=\"{full_search_string}\"" # 전체를 큰따옴표로 감싸는 것이 안전함
+        )
+
+        result = await graph_request(
+            method="GET",
+            path=path,
+            access_token=context.access_token,
+            trace_id=context.trace_id,
+            current_user=context.current_user,
+            custom_headers={"ConsistencyLevel": "eventual"},
+        )
+
+        adapter = TypeAdapter(List[MailMessage])
+        search_emails = adapter.validate_python(result.get("value", []))
+    
+        # 최신순 정렬
+        sort_field = "received_date_time" if scope == "received" else "sent_date_time"
+        search_emails.sort(key=lambda x: getattr(x, sort_field) or "", reverse=True)
+
+        return search_emails
+    
+
 
     async def find_mail_folders_by_name(
         self,
@@ -334,39 +346,142 @@ class MailService:
         ]
     
 
-    async def search_my_mails(
+    # ==================================================================================
+    # folder_id 기준으로 '받은편지함' '보낸편지함' 등으로 조회하는 서비스 
+    # graph 경로 "/me/mailFolders/{folder_id}/messages/~" 를 사용
+    # ==================================================================================
+
+    async def fetch_emails_folder(
         self,
         *,
-        keywords: str | list[str] | None = None,
-        scope: Optional[str] = None,
+        folder_id: Annotated[Optional[str],"메일 폴더 id ['inbox', 'sentitems', 'drafts', 'deleteditems', 'outbox', 'junk','archive']"] = "inbox",
         top_k: int = 10,
         from_date: Optional[str] = None,
         to_date: Optional[str] = None,
+        isRead: Optional[bool] = None,
+        isimportant: Optional[bool] = None,
+        isflagged: Optional[bool] = None,
+        sender: Annotated[Optional[str],"보낸사람 검색 이메일 주소 (이름검색 안됨)"] = None,
+        cc: Optional[str] = None,
+        has_attachments: Optional[bool] = None,
     ) -> list[MailMessage]:
-        """
-        키워드 기반 메일 검색을 수행합니다.
-        Graph $search 는 검색 인덱스용 쿼리이므로 일반 목록 조회의 $filter/$orderby 와 분리합니다.
+        """최근 메일 목록 조회 
+        top_k, blacklist, Graph path 구성 비즈니스 로직은 service 계층에서 처리합니다.
         """
 
         context = self._get_request_context()
         self._ensure_user_allowed(context)
 
-        # Graph 검색 결과는 최대 250개 제한이 있으므로, 날짜 후처리를 고려해 요청량을 조금 여유 있게 잡습니다.
+        # Graph API 에 너무 큰 조회 요청을 보내지 않도록 max 50 설정
         normalized_top_k = max(1, min(top_k, 50))
-        search_top_k = max(normalized_top_k, 50)
 
+        # 날짜 정렬 및 필터 기준 설정
+        #   - inbox 포함 default -> receivedDateTime 받은시간 기준으로
+        #   - sentItem -> sentDateTime 보낸시간 기준으로
+        base_datetime = "sentDateTime" if folder_id == "sentitems" else "receivedDateTime"
+
+        # from, to 공백일 경우 기본갑 설정 '일주일'
+        today = datetime.now(timezone(timedelta(hours=9)))
+        if from_date is None:
+            from_date = (today - timedelta(days=7)).strftime("%Y-%m-%d")
+        if to_date is None:
+            to_date = today.strftime("%Y-%m-%d")
+
+
+        # 필터 리스트 생성
+        base_filter:list[str] = [
+            f"{base_datetime} ge {get_format_to_utc(from_date)}",
+            f"{base_datetime} le {get_format_to_utc(to_date,is_end=True)}",
+        ]
+
+        # bool 필터
+        if isRead is not None:
+            base_filter.append(f"isRead eq {str(isRead).lower()}")
+        if isimportant is not None:
+            importance_val = "high" if isimportant else "normal"
+            base_filter.append(f"importance eq '{importance_val}'")
+        if isflagged:
+            base_filter.append("flag/flagStatus eq 'flagged'")
+        if has_attachments is not None:
+            base_filter.append(f"hasAttachments eq {str(has_attachments).lower()}")
+
+        # 문자열 필터 (Sender/CC)
+        if sender:
+            s = self._escape_odata_string(sender)
+            base_filter.append(f"(from/emailAddress/address eq '{s}' or from/emailAddress/name eq '{s}')")
+        if cc:
+            c = self._escape_odata_string(cc)
+            base_filter.append(f"ccRecipients/any(c:c/emailAddress/address eq '{c}' or c/emailAddress/name eq '{c}')")
         
+        # 필터 조립
+        joined_filter = " and ".join(base_filter)
+        
+        # 최종 전체 경로 생성
         path = (
-            f"/me/mailFolders/inbox/messages"
-            f"?$top={search_top_k}"
-            f"&$select=id,subject,from,sender,receivedDateTime,bodyPreview,importance,isRead,hasAttachments"
-            # f"&$search={search_query}"
+            f"/me/mailFolders/{folder_id}/messages"
+            f"?$top={normalized_top_k}"
+            f"&$select=id,subject,from,sender,{base_datetime},toRecipients,bodyPreview,importance,isRead,hasAttachments"
+            f"&$orderby={base_datetime} desc"
+            f"&$filter={joined_filter}"
+        )
+        
+        result = await graph_request(
+            method="GET",
+            path=path,
+            access_token=context.access_token,
+            trace_id=context.trace_id,
+            current_user=context.current_user,
         )
 
-        if keywords and scope:
-            # Graph 메일 $search 는 전체 검색식을 큰따옴표로 감싸야 합니다. 예: $search="subject:광고"
-            search_query = quote(f'"{self._build_search_query(keywords, scope)}"')
-            path += f"&$search={search_query}"
+        adapter = TypeAdapter(List[MailMessage])
+        return adapter.validate_python(result.get("value", []))
+    
+    
+    async def search_emails_folder(
+        self,
+        *,
+        folder_id: str = "inbox",
+        keywords: str | list[str] | None = None,
+        top_k: int = 10,
+        from_date: Optional[str] = None,
+        to_date: Optional[str] = None,
+    ) -> list[MailMessage]:
+        context = self._get_request_context()
+        self._ensure_user_allowed(context)
+
+        normalized_top_k = max(1, min(top_k, 50))
+        
+        
+        search_parts = []
+
+        # 날짜 설정 (기본값 일주일)
+        today = datetime.now(timezone(timedelta(hours=9)))
+        f_date = from_date or (today - timedelta(days=7)).strftime("%Y-%m-%d")
+        t_date = to_date or today.strftime("%Y-%m-%d")
+
+        # 날짜 필터 추가 
+        base_prefix = "sent" if folder_id == "sentitems" else "received"
+        date_range = f"{base_prefix}:{get_format_to_utc(f_date)}..{get_format_to_utc(t_date, is_end=True)}"
+        search_parts.append(date_range)
+
+        # 키워드 리스트 추가
+        if keywords:
+            # build_search_query 결과가 "A B" 라면 search_parts에 추가
+            search_parts.append(self._build_search_query(keywords))
+
+        # 검색 파트를 공백으로 합치기 (search에서는 공백이 AND 역할)
+        full_search_string = " ".join(search_parts)
+
+        # 정렬 기준 필드명 결정 (select용)
+        date_field = f"{base_prefix}DateTime"
+
+        # 최종 경로 
+        path = (
+            f"/me/mailFolders/{folder_id}/messages"
+            f"?$top={normalized_top_k}"
+            f"&$select=id,subject,from,sender,{date_field},bodyPreview,importance,isRead,hasAttachments"
+            f"&$search=\"{full_search_string}\"" # 전체를 큰따옴표로 감싸는 것이 안전함
+        )
 
         result = await graph_request(
             method="GET",
@@ -378,17 +493,9 @@ class MailService:
         )
 
         adapter = TypeAdapter(List[MailMessage])
-        searched_mails = adapter.validate_python(result.get("value", []))
-        filtered_mails = [
-            mail for mail in searched_mails
-            if self._is_mail_in_kst_date_range(mail, from_date, to_date)
-        ]
-        sorted_mails = sorted(
-            filtered_mails,
-            key=lambda mail: mail.received_date_time or "",
-            reverse=True,
-        )
+        return adapter.validate_python(result.get("value", []))
+    
 
-        return sorted_mails[:normalized_top_k]
+    
 
    
