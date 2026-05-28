@@ -1,6 +1,7 @@
 from urllib.parse import quote
 
 from fastmcp.server.dependencies import get_http_request
+from fastmcp.exceptions import ToolError
 
 from app.clients.graph_client import graph_request
 from app.common.exception import GraphAccessDeniedError
@@ -59,7 +60,7 @@ class MailWriteService():
         ]
 
         if field_name == "to_addresses" and not normalized_recipients:
-            raise ValueError("수신자(to_addresses)는 최소 1명 이상 필요합니다.")
+            raise ToolError("수신자(to_addresses)는 최소 1명 이상 필요합니다.")
 
         return normalized_recipients
 
@@ -95,9 +96,9 @@ class MailWriteService():
         normalized_body = body.strip()
 
         if not normalized_subject:
-            raise ValueError("메일 제목(subject)은 비어 있을 수 없습니다.")
+            raise ToolError("메일 제목(subject)은 비어 있을 수 없습니다.")
         if not normalized_body:
-            raise ValueError("메일 본문(body)은 비어 있을 수 없습니다.")
+            raise ToolError("메일 본문(body)은 비어 있을 수 없습니다.")
 
         normalized_to_addresses = self._normalize_recipients(to_addresses, "to_addresses")
         normalized_cc_addresses = self._normalize_recipients(cc_addresses, "cc_addresses")
@@ -124,11 +125,18 @@ class MailWriteService():
         body: str,
         to_addresses: list[str],
         cc_addresses: list[str] | None = None,
+        is_user_confirmed: bool = False,
     ) -> dict:
         """
         메일을 발송하지 않고 Drafts 에 초안으로 저장합니다.
         사용자가 최종 발송 전에 Outlook 에서 검토할 수 있게 하는 안전한 기본 쓰기 동작입니다.
         """
+        if not is_user_confirmed:
+            raise ToolError("메일 작성에 대한 사용자 컨펌이 확인 되지 않아 도구 실행을 중지합니다. 먼저 사용자로부터 컨펌을 받아주세요")
+            # return {
+            #     "status": "fail",
+            #     "description": "메일 작성에 대한 사용자 컨펌이 확인 되지 않아 도구 실행을 중지합니다. 먼저 사용자로부터 컨펌을 받아주세요"
+            # }
 
         context = self._get_request_context()
         self._ensure_user_allowed(context)
@@ -218,9 +226,9 @@ class MailWriteService():
         normalized_body = body.strip()
 
         if not normalized_message_id:
-            raise ValueError("답장할 메일 ID(message_id)가 필요합니다.")
+            raise ToolError("답장할 메일 ID(message_id)가 필요합니다.")
         if not normalized_body:
-            raise ValueError("답장 본문(body)은 비어 있을 수 없습니다.")
+            raise ToolError("답장 본문(body)은 비어 있을 수 없습니다.")
 
         # 메일 ID 는 URL path segment 로 들어가므로 특수문자를 percent-encoding 합니다.
         encoded_message_id = quote(normalized_message_id, safe="")
@@ -261,7 +269,7 @@ class MailWriteService():
         normalized_to_addresses = self._normalize_recipients(to_addresses, "to_addresses")
 
         if not normalized_message_id:
-            raise ValueError("전달할 메일 ID(message_id)가 필요합니다.")
+            raise ToolError("전달할 메일 ID(message_id)가 필요합니다.")
 
         # 메일 ID 는 URL path segment 로 들어가므로 특수문자를 percent-encoding 합니다.
         encoded_message_id = quote(normalized_message_id, safe="")

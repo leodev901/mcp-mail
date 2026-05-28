@@ -13,6 +13,11 @@ from app.common.exception import GraphAccessDeniedError
 from app.schema.user import User
 from app.schema.mail import MailMessage, MailMessageDetail
 from app.utils.date_utils import get_format_to_utc
+from app.common.logger import logger
+from app.service.mail_guard_service import MailGuardService
+
+
+
 
 
 
@@ -35,6 +40,8 @@ class MailService:
     메일 관련 유스케이스를 모아 두는 service 계층입니다.
     Tool 은 입출력 계약에 집중하고, 이 계층은 사용자 컨텍스트 확인과 Graph 조회 조건 조합을 담당합니다.
     """
+    def __init__(self):
+        self.mail_guard_service = MailGuardService()
 
     def _get_request_context(self) -> MailRequestContext:
         """
@@ -134,6 +141,9 @@ class MailService:
         context = self._get_request_context()
         self._ensure_user_allowed(context)
         my_email = self._escape_odata_string(context.current_user.user_email or "")
+
+        await self.mail_guard_service.ensure_api_call_allowed(user_email=my_email)
+
 
         # Graph API 에 너무 큰 조회 요청을 보내지 않도록 max 50 설정
         normalized_top_k = max(1, min(top_k, 50))
@@ -240,8 +250,26 @@ class MailService:
             custom_headers={"Prefer": 'outlook.body-content-type="text"'},
         )
 
-        return MailMessageDetail.model_validate(result)
-    
+        mail_detail = MailMessageDetail.model_validate(result)
+        if mail_detail:
+            # 메읽 읽음 처리 
+            path = f"/me/messages/{normalized_mail_id}"
+            payload = {
+                "isRead": True
+            }
+            result = await graph_request(
+                method="PATCH",
+                path=path,
+                access_token=context.access_token,
+                trace_id=context.trace_id,
+                current_user=context.current_user,
+                json_body=payload 
+            )
+            # print(result) 
+
+
+        return mail_detail
+            
     
     async def search_emails(
         self,
@@ -251,15 +279,21 @@ class MailService:
         top_k: int = 10,
         from_date: Optional[str] = None,
         to_date: Optional[str] = None,
+        isRead: Optional[bool] = None,
+        isimportant: Optional[bool] = None,
+        isflagged: Optional[bool] = None,
+        sender: Optional[str] = None,
+        cc: Optional[str] = None,
+        has_attachments: Optional[bool] = None,
+        category: Optional[str] = None,
     ) -> list[MailMessage]:
         context = self._get_request_context()
         self._ensure_user_allowed(context)
         my_email = self._escape_odata_string(context.current_user.user_email or "")
 
+        await self.mail_guard_service.ensure_api_call_allowed(user_email=my_email)
 
-        normalized_top_k = max(1, min(top_k, 50))
-        
-        
+
         search_parts = []
 
         # 날짜 설정 (기본값 일주일)
@@ -277,6 +311,25 @@ class MailService:
         date_range = f"{scope}:{get_format_to_utc(f_date)}..{get_format_to_utc(t_date, is_end=True)}"
         search_parts.append(date_range)
 
+        # bool 필터 항목 추가
+        if isRead is not None:
+            search_parts.append(f"isRead:{str(isRead).lower()}")
+        if isimportant is not None:
+            importance_val = "high" if isimportant else "normal"
+            search_parts.append(f"importance:{importance_val}")
+        if isflagged:
+            search_parts.append("isflagged:true") # KQL 표준 플래그 검색 양식
+        if has_attachments:
+            search_parts.append(f"hasattachment:true")
+        
+        # 문자열 필터 추가 
+        if sender:
+            search_parts.append(f'from:{sender}')
+        if cc:
+            search_parts.append(f'cc:{cc}')
+        if category:
+            search_parts.append(f'category:{category}')
+
 
         # 키워드 리스트 추가
         if keywords:
@@ -284,31 +337,68 @@ class MailService:
             search_parts.append(self._build_search_query(keywords))
 
         # 검색 파트를 공백으로 합치기 (search에서는 공백이 AND 역할)
-        full_search_string = "AND ".join( f"({part})" for part in search_parts )
+        full_search_string = " AND ".join( f"({part})" for part in search_parts )
 
         # 최종 경로 
         path = (
             f"/me/messages"
-            f"?$top={normalized_top_k}"
-            f"&$select=id,subject,from,sender,receivedDateTime, sentDateTime,bodyPreview,importance,isRead,hasAttachments"
+            f"?$count=true"
+            f"&$top=250"
+            f"&$select=id,conversationId,subject,from,sender,receivedDateTime,sentDateTime,bodyPreview,importance,isRead,hasAttachments"
             f"&$search=\"{full_search_string}\"" # 전체를 큰따옴표로 감싸는 것이 안전함
         )
 
-        result = await graph_request(
-            method="GET",
-            path=path,
-            access_token=context.access_token,
-            trace_id=context.trace_id,
-            current_user=context.current_user,
-            custom_headers={"ConsistencyLevel": "eventual"},
-        )
+        eamil_list = []
+        
+        while path:
+            # nex_link 존재 하는 만큼 반복해서 수행
+            result = await graph_request(
+                method="GET",
+                path=path,
+                access_token=context.access_token,
+                trace_id=context.trace_id,
+                current_user=context.current_user,
+                custom_headers={"ConsistencyLevel": "eventual"},
+            )
+
+            emails = result.get("value", [])
+            eamil_list.extend(emails)
+
+            # @odata.nextLink 존재 여부 확인 및 경로 갱신
+            next_link = result.get("@odata.nextLink")
+            if next_link:
+                path = next_link.split("https://graph.microsoft.com/v1.0")[-1]
+            else:
+                path = None
+
 
         adapter = TypeAdapter(List[MailMessage])
-        search_emails = adapter.validate_python(result.get("value", []))
+        search_emails = adapter.validate_python(eamil_list)
+        
     
-        # 최신순 정렬
-        sort_field = "received_date_time" if scope == "received" else "sent_date_time"
-        search_emails.sort(key=lambda x: getattr(x, sort_field) or "", reverse=True)
+        # 최신순 정렬 + conversaion_id 기준으로 마지막 하나만 남김 
+        if search_emails:
+            sort_field = "received_date_time" if scope == "received" else "sent_date_time"
+            # search_emails.sort(key=lambda x: getattr(x, sort_field) or "", reverse=True)
+            # 먼저 과거순으로 정렬 (오래된 메일 -> 최신 메일 순서)
+            search_emails.sort(key=lambda x: getattr(x, sort_field) or "")
+            unique_threads = {}
+            for mail in search_emails:
+                conversaion_id = mail.conversation_id
+
+                if conversaion_id:
+                    # 딕셔너리의 key를 conversaion_id으로 설정 함으로써, 최근 메일에 같은 conversaion_id가 나온다면 덮어 씌워진다.
+                    unique_threads[conversaion_id] = mail
+                else:
+                    # conversaion_id 가 없으면 id를 Key로 개별 유지
+                    unique_threads[mail.id] = mail
+            
+            # 유니크한 메일만 쌓여 있으므로 다시 최종 최신순 정렬 후 top_k 만큼만 반환 한다.
+            final_emails = list(unique_threads.values())
+            final_emails.sort(key=lambda x: getattr(x, sort_field) or "", reverse=True)
+
+            logger.debug(f" total email:{len(eamil_list)}, unique email:{len(final_emails)} ")
+            return final_emails[:top_k]
 
         return search_emails
     
@@ -330,7 +420,7 @@ class MailService:
         if not normalized_folder_name:
             raise ValueError("조회할 폴더 이름이 누락되었습니다.")
 
-        path = "/me/mailFolders?$select=id,displayName,parentFolderId,totalItemCount,unreadItemCount"
+        path = "/me/mailFolders/delta?$select=id,displayName,parentFolderId,totalItemCount,unreadItemCount"
 
         result = await graph_request(
             method="GET",
@@ -339,6 +429,7 @@ class MailService:
             trace_id=context.trace_id,
             current_user=context.current_user,
         )
+
 
         return [
             folder for folder in result.get("value", [])

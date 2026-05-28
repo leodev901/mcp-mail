@@ -126,6 +126,37 @@ async def save_external_api_log(
     except: 
         logger.error("Fail to save external api log")
 
+async def fetch_recent_api_log_count(
+    provider_email: str,
+    interval_minutes: int = 10
+)-> int:  
+    url = (
+        f"{settings.CMN_API_BASE_URL.rstrip('/')}"
+        f"/api/logs/api/{provider_email}/count"
+    )
+    headers = {
+        "Accept": "application/json",
+        "x-trace-id": _get_trace_id(),
+        "Authorization": f"Bearer {_get_biz_user_token()}",
+    }
+    params = {
+        "interval": interval_minutes
+    }
+
+    client = await get_httpx_client()
+
+    try:
+        response = await client.get(
+            url,
+            headers=headers,
+            params=params,
+        )
+        response.raise_for_status()
+        return response.json()["data"]["count"]
+    except: 
+        logger.error("Fail to save external api log")
+
+
 
 
     

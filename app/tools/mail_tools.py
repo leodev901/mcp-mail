@@ -36,7 +36,7 @@ def register_mail_tools(mcp: FastMCP) -> None:
         """
 
         # Tool은 입력 파라미터를 서비스로 그대로 넘기고, 비즈니스 조합은 서비스가 담당합니다.
-        return await mail_service.fetch_emails(
+        return await mail_service.search_emails(
             top_k=top_k,
             from_date=from_date,
             to_date=to_date,
@@ -58,7 +58,7 @@ def register_mail_tools(mcp: FastMCP) -> None:
         2. 파라미터로 개수(top_k)와 날짜 기간(from_date, to_date)을 선택적으로 적용할 수 있습니다.
         3. 사용자가 특정 기간과 갯수를 명시하지 않으면 최근 일주일 기간 내 10개의 메일을 기본 조회합니다.
         """
-        return await mail_service.fetch_emails(
+        return await mail_service.search_emails(
             top_k=top_k,
             from_date=from_date,
             to_date=to_date,
@@ -82,7 +82,7 @@ def register_mail_tools(mcp: FastMCP) -> None:
         4. 사용자가 특정 기간과 갯수를 명시하지 않으면 최근 일주일 기간 내 10개의 메일을 기본 조회합니다.
         """
 
-        return await mail_service.fetch_emails(
+        return await mail_service.search_emails(
             top_k=top_k,
             from_date=from_date,
             to_date=to_date,
@@ -105,7 +105,7 @@ def register_mail_tools(mcp: FastMCP) -> None:
         4. 사용자가 특정 기간과 갯수를 명시하지 않으면 최근 일주일 기간 내 10개의 메일을 기본 조회합니다.
         """
 
-        return await mail_service.fetch_emails(
+        return await mail_service.search_emails(
             top_k=top_k,
             from_date=from_date,
             to_date=to_date,
@@ -131,7 +131,7 @@ def register_mail_tools(mcp: FastMCP) -> None:
         4. 사용자가 특정 기간과 갯수를 명시하지 않으면 최근 일주일 기간 내 10개의 메일을 기본 조회합니다.
 
         """
-        return await mail_service.fetch_emails(
+        return await mail_service.search_emails(
             top_k=top_k,
             from_date=from_date,
             to_date=to_date,
@@ -155,7 +155,7 @@ def register_mail_tools(mcp: FastMCP) -> None:
         4. 사용자가 특정 기간과 갯수를 명시하지 않으면 최근 일주일 기간 내 10개의 메일을 기본 조회합니다.
 
         """
-        return await mail_service.fetch_emails(
+        return await mail_service.search_emails(
             top_k=top_k,
             from_date=from_date,
             to_date=to_date,
@@ -178,7 +178,7 @@ def register_mail_tools(mcp: FastMCP) -> None:
         3. 파라미터로 개수(top_k)와 날짜 기간(from_date, to_date)을 선택적으로 적용할 수 있습니다.
         4. 사용자가 특정 기간과 갯수를 명시하지 않으면 최근 일주일 기간 내 10개의 메일을 기본 조회합니다.
         """
-        return await mail_service.fetch_emails(
+        return await mail_service.search_emails(
             top_k=top_k,
             from_date=from_date,
             to_date=to_date,
@@ -204,7 +204,7 @@ def register_mail_tools(mcp: FastMCP) -> None:
 
         # return await mail_service.fetch_emails_folder(
         #     foldscope="sentItems",
-        return await mail_service.fetch_emails(
+        return await mail_service.search_emails(
             foldscope="sent",
             top_k=top_k,
             from_date=from_date,
@@ -254,6 +254,31 @@ def register_mail_tools(mcp: FastMCP) -> None:
             from_date=from_date,
             to_date=to_date,
             keywords=keywords,
+        )
+    
+    @mcp.tool()
+    async def search_category_mails(
+        category: Annotated[str, Field(...,description="검색할 범주(category) 입니다.",examples=["회의","미팅"])],
+        from_date: Annotated[Optional[str], Field(None, description="검색 결과를 KST 기준으로 후처리 필터링할 시작일 (YYYY-MM-DD 형식). 기간 의도가 있으면 입력합니다.",examples=["2026-04-01"])],
+        to_date: Annotated[Optional[str], Field(None, description="검색 결과를 KST 기준으로 후처리 필터링할 종료일 (YYYY-MM-DD 형식). 기간 의도가 있으면 입력합니다.",examples=["2026-04-30"])],
+        top_k: Annotated[int, Field(...,description="출력할 메일의 최대 개수 (기본 10)",examples=[10])]=10,
+        
+    ) -> list[MailMessage]:
+        """내가 수신한/참조된 편지에서 범주(카테고리)로 메일을 찾아서 보여줍니다.
+
+        [LLM 에이전트 사용 가이드]
+        1. 사용자가 특정 범주 또는 카테고리에 해당되는 메일을 찾아달라고 했을 때 사용 합니다. 
+        2. 파라미터로 개수(top_k)와 날짜 기간(from_date, to_date)을 선택적으로 적용할 수 있습니다.
+        3. 사용자가 특정 기간과 갯수를 명시하지 않으면 최근 일주일 기간 내 10개의 메일을 기본 조회합니다.
+        """
+
+        # 키워드 검색은 Graph $search 제약이 있어 일반 목록 조회와 분리된 service 메서드로 구현
+        # return await mail_service.search_emails_folder(
+        return await mail_service.search_emails(
+            top_k=top_k,
+            from_date=from_date,
+            to_date=to_date,
+            category=category,
         )
     
     @mcp.tool()
@@ -334,13 +359,15 @@ def register_mail_tools(mcp: FastMCP) -> None:
         body: Annotated[str, Field(..., description="작성할 메일의 본문 텍스트",examples=[""])],
         to_addresses: Annotated[list[str], Field(..., description="수신자 메일 주소 목록", examples=[["test1@test.com","test2@test.com"]])],
         cc_addresses: Annotated[Optional[list[str]], Field(None, description="참조자 메일 주소 목록", examples=[["test1@test.com","test2@test.com"]])] = None,
+        is_user_confirmed: Annotated[bool,Field(False, description="사용자 컨펌 여부")] = False
     ) -> dict:
         """이메일을 발송하지 않고 임시 보관함(Draft)에 초안으로 저장합니다.
         
         [LLM 에이전트 사용 가이드]
         1. 사용자가 메일 작성을 요청하지만 바로 보내지 않고 임시보관함(Drafts)에 작성하여 내용을 검토 받아야 할 때 사용합니다. (안전 가드레일)
         2. subject, body, to_address 항목은 필수 입니다. 
-        3. to_address, cc_address의 대상자가 여려명일 경우 리스트 목록으로 전달 합니다. 
+        3. to_address, cc_address의 대상자가 여려명일 경우 리스트 목록으로 전달 합니다.
+        4. 이 도구는 '쓰기(wirete)' 도구이므로 호출 전 반드시 작성 될 내용에 대한 사용자 컨펌을 받아야 합니다. 사용자로 컨펌 여부를 is_user_confirmed boolean 파라미터로 전달합니다.
         """
         # Tool 은 MCP 입력 이름과 설명을 제공하고, 실제 Graph payload 구성은 service 에 위임합니다.
         return await mail_write_service.create_draft(
@@ -348,6 +375,7 @@ def register_mail_tools(mcp: FastMCP) -> None:
             body=body,
             to_addresses=to_addresses,
             cc_addresses=cc_addresses,
+            is_user_confirmed=is_user_confirmed,
         )
     
     @mcp.tool()

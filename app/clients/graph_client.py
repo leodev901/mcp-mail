@@ -68,6 +68,7 @@ async def graph_request(
     access_token 은 service 계층에서 명시적으로 넘기며, 이 함수는 토큰 발급/사용자 판단 같은 비즈니스 로직을 하지 않습니다.
     """
 
+    logger.debug(f"path: {path}")
     logger.debug(f"access_token: {access_token}")
     logger.debug(f"json_body: {json_body}")
 
@@ -75,7 +76,7 @@ async def graph_request(
     headers = {
         "Authorization": f"Bearer {access_token}",
         "Accept": "application/json",
-        "Prefer": 'outlook.timezone="Korea Standard Time"'
+        "Prefer": 'outlook.timezone="Korea Standard Time", outlook.body-content-type="text"'
     }
     if custom_headers:
         # dict.update 는 기존 헤더 dict 에 추가 헤더를 병합하는 문법입니다.
@@ -123,7 +124,13 @@ async def graph_request(
             record.http_status = response.status_code
             record.response_body = response_data
 
-            return response_data
+            result = response_data
+
+            if response_data.get("@odata.nextLink"):
+                next_link = response_data.get("@odata.nextLink")
+                # next_link가 없을 때 까지 반복 수행 하여 result 더하기 
+
+            return result
         except httpx.HTTPStatusError as exc:
             status_code = exc.response.status_code
             error_detail = f"{type(exc).__name__}: {exc}"

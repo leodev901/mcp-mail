@@ -44,6 +44,7 @@ class Attachment(BaseModel):
 # ===============================================================
 class MailMessage(GraphBaseModl):
     id: Annotated[str, Field(..., description="메세지(메일) 고유 ID")]
+    conversation_id: Annotated[Optional[str], Field(None, description="대화 ID")]
 
     subject: Annotated[Optional[str], Field(None, description= "메일 제목")]
     sender: Annotated[Optional[Sender], Field(None, description= "발신자 정보",alias="from")]
@@ -56,6 +57,9 @@ class MailMessage(GraphBaseModl):
     is_read: Annotated[bool, Field(None, description="읽음 여부")]
     has_attachments: Annotated[bool, Field(None, description="첨부 파일 여부")]
     to_recipients: Annotated[list[Sender], Field(default_factory=list, description="수신자 목록")]
+
+    
+
     
     
     # 

@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Path, Query
 from cmn.core.dependencies import get_db_session_authorize_header
 from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import Depends
@@ -6,6 +6,7 @@ from cmn.db.models.mcp_log import M365McpToolLog, M365McpApiLog
 from cmn.schemas.logs import ToolLogRequest, ApiLogRequest
 from cmn.schemas.response import CommonResponse
 from cmn.base.logger import logger
+from sqlalchemy import func, select, text
 
 
 logs_router = APIRouter(prefix="/api/logs",tags=["logs"])
@@ -57,3 +58,19 @@ async def save_api_log(
         return CommonResponse.error("Api Log 저장 실패")
 
 
+@logs_router.get("/api/{provider}/count", response_model=CommonResponse)
+async def get_api_log_count(
+    provider: str = Path(..., description="apilog를 조회할 사용자 식별자", example="user@test.com"),
+    interval: int = Query(10,description="apilog를 조회 interval 시간 (단위: 분)"),
+    session: AsyncSession = Depends(get_db_session_authorize_header),
+):
+    # where()는 SQL의 WHERE 절을 만드는 SQLAlchemy 문법입니다.
+    # DB 서버 시간을 기준으로 최근 10분 로그만 세면, 앱 서버와 DB 서버의 시간 차이 영향을 줄일 수 있습니다.
+    stmt = select(func.count()).select_from(M365McpApiLog).where(
+        M365McpApiLog.provider == provider,
+        M365McpApiLog.created_at >= func.now() - text(f"interval '{interval} minutes'"),
+    )
+    result = await session.execute(stmt)
+    count = result.scalar_one()
+
+    return CommonResponse.ok({"count": count})
